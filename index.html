@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>上流に強いSEとして市場価値を高めたい方へ | SE Career Lab</title>
+  <meta name="description" content="提案・要件整理・顧客折衝まで担えるSEになることで、単価アップと市場価値向上を実現。技術を活かしながらキャリアを広げたいSEの方へ。" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1A56DB;
+      --blue-dark: #1040B0;
+      --blue-light: #EEF4FF;
+      --accent: #F59E0B;
+      --accent-light: #FEF3C7;
+      --text: #111827;
+      --text-muted: #6B7280;
+      --bg: #F9FAFB;
+      --white: #FFFFFF;
+      --border: #E5E7EB;
+      --green: #059669;
+      --green-light: #ECFDF5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: -0.3px;
+    }
+
+    .header-cta {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .header-cta:hover { background: var(--blue-dark); }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 60%, #3B82F6 100%);
+      color: var(--white);
+      padding: 80px 24px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--white);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(26px, 5vw, 46px);
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .hero-sub {
+      font-size: clamp(13px, 1.8vw, 16px);
+      color: rgba(255,255,255,0.85);
+      max-width: 800px;
+      margin: 0 auto 40px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 700px) {
+      .hero-sub {
+        white-space: normal;
+        font-size: 14px;
+      }
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #1A1A1A;
+      border: none;
+      padding: 16px 36px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 16px rgba(245,158,11,0.4);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.5); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.6);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+    /* ===== SECTION ===== */
+    section { padding: 80px 24px; }
+
+    .container { max-width: 900px; margin: 0 auto; }
+
+    .section-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 640px;
+    }
+
+    /* ===== CRISIS ===== */
+    .crisis {
+      background: #0F1C3F;
+      color: var(--white);
+      padding: 80px 24px;
+    }
+
+    .crisis .section-tag { color: #F87171; }
+
+    .crisis .section-title { color: var(--white); }
+
+    .crisis .section-desc {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0;
+    }
+
+    .crisis-stats {
+      display: flex;
+      gap: 0;
+      margin: 56px 0 64px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      flex: 1;
+      min-width: 200px;
+      padding: 36px 28px;
+      text-align: center;
+    }
+
+    .stat-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.1);
+      align-self: stretch;
+    }
+
+    .stat-num {
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .stat-num span {
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--accent);
+      display: inline-block;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+
+    .stat-source {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Trust Equation */
+    .trust-eq {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 40px 32px;
+    }
+
+    .trust-eq-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.3px;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .trust-eq-row {
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .trust-card {
+      background: rgba(26,86,219,0.25);
+      border: 1px solid rgba(26,86,219,0.4);
+      border-radius: 12px;
+      padding: 22px 18px;
+      flex: 1;
+      min-width: 160px;
+      max-width: 200px;
+    }
+
+    .trust-card-red {
+      background: rgba(180,40,40,0.2);
+      border-color: rgba(220,60,60,0.4);
+    }
+
+    .trust-letter {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .trust-letter-red { color: #F87171; }
+
+    .trust-en {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 4px;
+    }
+
+    .trust-ja {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .trust-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .trust-list li {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      padding: 4px 0;
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .trust-list li::before {
+      content: '▶';
+      font-size: 8px;
+      position: absolute;
+      left: 0;
+      top: 6px;
+      color: var(--blue);
+    }
+
+    .trust-card-red .trust-list li::before { color: #F87171; }
+
+    .trust-op {
+      display: flex;
+      align-items: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      flex-shrink: 0;
+      padding: 0 4px;
+    }
+
+    .trust-div { color: #F87171; }
+
+    .trust-note {
+      margin-top: 24px;
+      font-size: clamp(11px, 1.3vw, 13px);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      line-height: 1.7;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+      .trust-note { white-space: normal; font-size: 12px; }
+    }
+
+    @media (max-width: 640px) {
+      .stat-divider { display: none; }
+      .stat-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .trust-card { max-width: 100%; }
+      .trust-op { width: 100%; justify-content: center; padding: 4px 0; }
+      .trust-eq { padding: 24px 16px; }
+    }
+
+    /* ===== PAIN ===== */
+    .pain {
+      background: var(--bg);
+    }
+
+    .pain-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .pain-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .pain-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pain-item p {
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ===== WHY ===== */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .why-card {
+      border: 1.5px solid var(--blue-light);
+      border-radius: 14px;
+      padding: 28px 24px;
+      background: var(--white);
+      position: relative;
+    }
+
+    .why-num {
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--blue-light);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .why-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--blue-dark);
+    }
+
+    .why-card p { font-size: 14px; color: var(--text-muted); }
+
+    /* ===== WHAT YOU GET ===== */
+    .skills { background: var(--bg); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .skill-item {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      border-top: 4px solid var(--blue);
+    }
+
+    .skill-item h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .skill-item p { font-size: 14px; color: var(--text-muted); }
+
+    /* ===== CAREER PATH ===== */
+    .career-path {
+      margin-top: 56px;
+    }
+
+    .path-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .path-box {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 22px;
+      text-align: center;
+      min-width: 160px;
+    }
+
+    .path-box.highlight {
+      border-color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .path-box .label {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .path-box .role {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .path-box.highlight .role { color: var(--blue-dark); }
+
+    .path-arrow {
+      font-size: 24px;
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    /* ===== COMPARISON ===== */
+    .compare-wrap {
+      margin-top: 48px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+    }
+
+    thead tr {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    thead th {
+      padding: 14px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    tbody tr:nth-child(odd) { background: var(--bg); }
+    tbody tr:nth-child(even) { background: var(--white); }
+
+    tbody td {
+      padding: 14px 18px;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .check { color: var(--green); font-weight: 700; }
+    .cross { color: #EF4444; font-weight: 700; }
+
+    /* ===== INCENTIVE ===== */
+    .incentive { background: var(--blue-light); }
+
+    .incentive-table {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    .incentive-header {
+      background: var(--blue);
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .incentive-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+      align-items: center;
+    }
+
+    .incentive-row:last-child { border-bottom: none; }
+
+    .incentive-row.active {
+      background: var(--accent-light);
+      font-weight: 600;
+    }
+
+    .unit-up {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* ===== VOICE ===== */
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .voice-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 24px;
+      position: relative;
+    }
+
+    .voice-card::before {
+      content: '"';
+      font-size: 60px;
+      color: var(--blue-light);
+      font-family: Georgia, serif;
+      position: absolute;
+      top: 10px;
+      left: 18px;
+      line-height: 1;
+    }
+
+    .voice-text {
+      margin-top: 28px;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .voice-meta { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+
+    .voice-tag {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--blue);
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    /* ===== FAQ ===== */
+    .faq { background: var(--bg); }
+
+    .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; }
+
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 20px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-q .q-mark {
+      color: var(--blue);
+      font-size: 20px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .faq-q .icon {
+      font-size: 20px;
+      color: var(--text-muted);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .icon { transform: rotate(45deg); }
+
+    .faq-a {
+      display: none;
+      padding: 0 24px 20px;
+      font-size: 15px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      margin-top: 0;
+    }
+
+    .faq-a-inner { padding-top: 16px; }
+
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 100px 24px;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(24px, 4vw, 38px);
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.35;
+    }
+
+    .cta-section > p {
+      font-size: clamp(13px, 1.8vw, 16px);
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 40px;
+      white-space: nowrap;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .form-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px 36px;
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .form-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .form-group { margin-bottom: 18px; }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 15px;
+      color: var(--text);
+      font-family: inherit;
+      transition: border 0.2s;
+      background: var(--white);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--accent);
+      color: #1A1A1A;
+      border: none;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,158,11,0.45); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #111827;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+    }
+
+    /* ===== BADGE ===== */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green-light);
+      color: var(--green);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .badge::before { content: '✓'; }
+
+    /* ===== STEP ===== */
+    .steps { counter-reset: step; display: flex; flex-direction: column; gap: 24px; margin-top: 48px; }
+
+    .step-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--blue);
+      color: var(--white);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .step-content h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+    .step-content p { font-size: 14px; color: var(--text-muted); }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 18px 22px;
+      margin-top: 32px;
+    }
+
+    .highlight-box p { font-size: 15px; font-weight: 600; color: var(--text); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      header { padding: 12px 16px; }
+      .logo { font-size: 15px; }
+      section { padding: 60px 16px; }
+      .hero { padding: 60px 16px 90px; }
+      .form-card { padding: 28px 20px; }
+      .path-arrow { display: none; }
+      .cta-section > p { white-space: normal; font-size: 14px; }
+      .path-row { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">SE Career Lab</div>
+  <a href="#form" class="header-cta">無料キャリア相談を申し込む</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">営業ではなく「提案力」を身につける</div>
+  <h1>
+    技術を活かして<br>
+    <span>上流で価値を出せるSE</span>になる。
+  </h1>
+  <p class="hero-sub">
+    顧客折衝・要件整理・提案ができるSEは、現場で代替がきかない存在になれる。単価アップとキャリア拡大を、同時に実現する。
+  </p>
+  <div class="hero-btns">
+    <a href="#form" class="btn-primary">無料キャリア相談を申し込む →</a>
+    <a href="#what" class="btn-secondary">詳しく見る</a>
+  </div>
+</section>
+
+<!-- CRISIS -->
+<section class="crisis">
+  <div class="container">
+    <div class="section-tag">SEを取り巻く環境の変化</div>
+    <h2 class="section-title">AIが「実装する力」を代替する時代、<br>技術力だけのSEは生き残れない。</h2>
+    <p class="section-desc">コードを書く・設計する、という仕事の一部はすでにAIが担い始めている。これからのSEに必要なのは、AIには代替できない「人との信頼」を作る力だ。</p>
+
+    <div class="crisis-stats">
+      <div class="stat-item">
+        <div class="stat-num">約<span>6割</span></div>
+        <div class="stat-label">のIT業務がAIによって<br>部分的に自動化可能とされる<br><span class="stat-source">（McKinsey Global Institute 試算）</span></div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num"><span>87</span>%</div>
+        <div class="stat-label">のビジネスバイヤーが、担当者に<br>「信頼できるアドバイザー」として<br>振る舞うことを期待している<br><span class="stat-source">（Salesforce 調査）</span></div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">月<span>+30万</span></div>
+        <div class="stat-label">顧客折衝・提案ができるSEと<br>作業者SEの単価差は<br>これほど開くことがある</div>
+      </div>
+    </div>
+
+    <div class="trust-eq">
+      <div class="trust-eq-label">顧客から「代替しにくい」と思われるSEが持っているもの ―― Trust Equation</div>
+      <div class="trust-eq-row">
+        <div class="trust-card">
+          <div class="trust-letter">C</div>
+          <div class="trust-en">Credibility</div>
+          <div class="trust-ja">信憑性</div>
+          <ul class="trust-list">
+            <li>業界動向・根拠ある提案</li>
+            <li>データで裏付けた説明</li>
+            <li>専門知識を正しく使う</li>
+          </ul>
+        </div>
+        <div class="trust-op">＋</div>
+        <div class="trust-card">
+          <div class="trust-letter">R</div>
+          <div class="trust-en">Reliability</div>
+          <div class="trust-ja">信頼性</div>
+          <ul class="trust-list">
+            <li>期日通りに必ず届ける</li>
+            <li>小さな依頼も漏らさない</li>
+            <li>進捗を自ら報告する</li>
+          </ul>
+        </div>
+        <div class="trust-op">＋</div>
+        <div class="trust-card">
+          <div class="trust-letter">I</div>
+          <div class="trust-en">Intimacy</div>
+          <div class="trust-ja">親密性</div>
+          <ul class="trust-list">
+            <li>本音やリスクを共有できる</li>
+            <li>相手の懸念に共感を示す</li>
+            <li>会議外でも気軽に相談される</li>
+          </ul>
+        </div>
+        <div class="trust-op trust-div">÷</div>
+        <div class="trust-card trust-card-red">
+          <div class="trust-letter trust-letter-red">S</div>
+          <div class="trust-en">Self-orientation</div>
+          <div class="trust-ja">自己志向性</div>
+          <ul class="trust-list">
+            <li>売上より顧客課題を優先</li>
+            <li>不要な提案は正直に断る</li>
+            <li>信頼関係を最優先にする</li>
+          </ul>
+        </div>
+      </div>
+      <p class="trust-note">C・R・I が高く、S（自己中心さ）が低いほど、顧客からの信頼スコアが上がる。このスコアを高めることが、AIに代替されない人材の条件だ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="container">
+    <div class="section-tag">こんな悩みはありませんか</div>
+    <h2 class="section-title">技術力はあるのに、単価が上がらない。</h2>
+    <p class="section-desc">多くのSEが感じているキャリアの壁。その多くは、技術力とは別のところにある。</p>
+    <div class="pain-list">
+      <div class="pain-item">
+        <div class="pain-icon">😓</div>
+        <p>スキルを磨いているのに、単価が伸び悩んでいる</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">🔄</div>
+        <p>作業者扱いが続いていて、上流工程に入れない</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">💬</div>
+        <p>顧客との会話が苦手で、要望を整理するのが難しい</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">🛤️</div>
+        <p>PMやコンサル方向に進みたいが、どうすればいいか分からない</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">📊</div>
+        <p>現場での評価は高いのに、それが給与に反映されていない</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">🧩</div>
+        <p>指示待ちを脱して、自分から動ける力をつけたい</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT -->
+<section id="what">
+  <div class="container">
+    <div class="section-tag">私たちが提供するもの</div>
+    <h2 class="section-title">「売る力」ではなく、<br>「現場で価値を生む力」を育てる。</h2>
+    <p class="section-desc">
+      営業研修ではありません。顧客との会話・課題整理・提案を通じて、
+      SEとして単価と市場価値を自ら上げていく力を身につけるプログラムです。
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-item">
+        <h3>顧客ヒアリング力</h3>
+        <p>顧客の「言っていること」から「本当の課題」を引き出す。要望のズレをなくし、信頼の土台を作る。</p>
+      </div>
+      <div class="skill-item">
+        <h3>課題整理・要件定義</h3>
+        <p>あいまいな要望を構造化する。関係者が納得できる形に言語化し、プロジェクトを前に進める。</p>
+      </div>
+      <div class="skill-item">
+        <h3>提案・説明力</h3>
+        <p>技術的な内容を経営者・現場・PM向けに伝え分ける。選択肢と根拠をセットで提示できる。</p>
+      </div>
+      <div class="skill-item">
+        <h3>定例会・関係構築</h3>
+        <p>毎回の定例で信頼を積み上げる話し方。顧客が「この人は代替しにくい」と感じる動き方。</p>
+      </div>
+      <div class="skill-item">
+        <h3>増員・案件拡大提案</h3>
+        <p>現場を広げる提案の作り方。顧客の追加課題を拾い、自然に仕事を広げるアプローチ。</p>
+      </div>
+      <div class="skill-item">
+        <h3>単価アップの根拠作り</h3>
+        <p>更新時に単価交渉が通るための実績整理。顧客担当者が社内で稟議を通せる材料を作る。</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p>これは「売り込み営業」ではなく、「顧客の仕事を前に進める力」の習得です。<br>SEとしての技術的な強みを活かしながら、上流で価値を出せる人材に変わります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="section-tag">なぜ今、この力が必要なのか</div>
+    <h2 class="section-title">顧客は「作れる人」より<br>「一緒に考えられる人」を求めている。</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h3>技術力だけでは差がつきにくい時代</h3>
+        <p>クラウド・AI・ノーコードの普及で、実装力の価値が相対的に下がってきています。その分、「課題を整理して解決方向を出せる人」の価値が上がっています。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h3>顧客が本当に欲しいのは「考えてくれる人」</h3>
+        <p>要件をそのまま実装するだけでなく、「そもそもこれが必要なのか」「別の方法はないか」を一緒に考えられるSEは、現場で圧倒的に重宝されます。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h3>単価の差は「役割の差」で生まれる</h3>
+        <p>月60万円と100万円の差は、スキルの差だけではありません。顧客からの信頼・役割の広さ・代替しにくさが単価を作ります。この力が身につくと、単価交渉が通りやすくなります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCENTIVE / UNIT PRICE -->
+<section class="incentive">
+  <div class="container">
+    <div class="section-tag">単価アップの仕組み</div>
+    <h2 class="section-title">頑張った分が、<br>自分の報酬に返ってくる設計。</h2>
+    <p class="section-desc">
+      スキルが上がっても会社だけが得をする仕組みでは、誰も本気で動けません。
+      単価アップの一部を本人のインセンティブに連動させる報酬設計を採用しています。
+    </p>
+
+    <div class="incentive-table">
+      <div class="incentive-header">
+        <div>単価レンジ</div>
+        <div>月収への影響</div>
+        <div>ステータス</div>
+      </div>
+      <div class="incentive-row">
+        <div>〜 69万円</div>
+        <div>通常給与</div>
+        <div>スタンダード</div>
+      </div>
+      <div class="incentive-row">
+        <div>70〜79万円</div>
+        <div class="unit-up">＋ 月1万円 手当</div>
+        <div>アドバンス</div>
+      </div>
+      <div class="incentive-row active">
+        <div>80〜89万円</div>
+        <div class="unit-up">＋ 月3万円 手当</div>
+        <div>シニア</div>
+      </div>
+      <div class="incentive-row">
+        <div>90万円以上</div>
+        <div class="unit-up">＋ 月5万円 手当</div>
+        <div>エキスパート</div>
+      </div>
+    </div>
+
+    <p style="margin-top: 20px; font-size: 13px; color: var(--text-muted); text-align: center;">
+      ※単価は更新時に実績をもとに見直し。インセンティブは本人の顧客評価・役割拡大・提案実績を総合評価して決定。
+    </p>
+  </div>
+</section>
+
+<!-- CAREER PATH -->
+<section>
+  <div class="container">
+    <div class="section-tag">キャリアパス</div>
+    <h2 class="section-title">技術を捨てずに、<br>上流へ進む道がある。</h2>
+    <p class="section-desc">
+      「営業職になる」ではなく、技術力を土台にしながら上流工程や提案領域に進めるキャリアを設計しています。
+    </p>
+
+    <div class="career-path">
+      <div class="path-row">
+        <div class="path-box">
+          <div class="label">スタート</div>
+          <div class="role">開発SE<br>実装担当</div>
+        </div>
+        <div class="path-arrow">→</div>
+        <div class="path-box highlight">
+          <div class="label">目指すポジション</div>
+          <div class="role">顧客折衝SE<br>提案型SE</div>
+        </div>
+        <div class="path-arrow">→</div>
+        <div class="path-box">
+          <div class="label">その先</div>
+          <div class="role">PM / PL<br>アカウントSE</div>
+        </div>
+        <div class="path-arrow">→</div>
+        <div class="path-box">
+          <div class="label">さらに上流</div>
+          <div class="role">ITコンサル<br>プリセールス</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px;">
+      <div class="section-tag">対象となるSE</div>
+      <h3 style="font-size: 20px; font-weight: 700; margin: 12px 0 24px;">こんな方に向いています</h3>
+      <div class="pain-list">
+        <div class="pain-item">
+          <div class="pain-icon">✅</div>
+          <p>SE経験1〜5年で、上流に興味が出てきた</p>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">✅</div>
+          <p>顧客対応を経験したいが、一人ではやり方が分からない</p>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">✅</div>
+          <p>単価を上げたいが、何を変えればいいか見えていない</p>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">✅</div>
+          <p>PM・PL・コンサル方向にキャリアを広げたい</p>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">✅</div>
+          <p>技術力はあるが、提案や整理が苦手と感じている</p>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">✅</div>
+          <p>「ただ作業するだけのSES」から抜け出したい</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="section-tag">他社との違い</div>
+    <h2 class="section-title">「ただ案件に入れるだけ」<br>の会社とは違います。</h2>
+    <div class="compare-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>一般的なSES会社</th>
+            <th>SE Career Lab</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>顧客折衝・提案の育成</td>
+            <td class="cross">✗ ほぼなし</td>
+            <td class="check">✓ プログラム化して提供</td>
+          </tr>
+          <tr>
+            <td>単価アップ時の還元</td>
+            <td class="cross">✗ 会社のみが得をする</td>
+            <td class="check">✓ 本人報酬に連動</td>
+          </tr>
+          <tr>
+            <td>キャリアパスの設計</td>
+            <td class="cross">✗ 「技術評価」のみ</td>
+            <td class="check">✓ 提案・顧客評価・単価も評価軸</td>
+          </tr>
+          <tr>
+            <td>上流案件へのアクセス</td>
+            <td class="cross">✗ 運次第</td>
+            <td class="check">✓ 顧客折衝力に応じて積極配置</td>
+          </tr>
+          <tr>
+            <td>商談同行・定例会レビュー</td>
+            <td class="cross">✗ 機会がない</td>
+            <td class="check">✓ 実務形式で経験を積める</td>
+          </tr>
+          <tr>
+            <td>市場価値の向上支援</td>
+            <td class="cross">✗ 自己責任</td>
+            <td class="check">✓ 実績整理・単価交渉サポートあり</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section>
+  <div class="container">
+    <div class="section-tag">参加までの流れ</div>
+    <h2 class="section-title">まず、話を聞くだけで大丈夫。</h2>
+    <p class="section-desc">強引な勧誘はありません。まず現状とキャリアの方向性を一緒に整理します。</p>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>フォームから申し込む（2分）</h3>
+          <p>現在の職種・経験年数・興味のある方向性を記入するだけ。無料です。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>無料キャリア壁打ち（30分）</h3>
+          <p>オンラインで現状の課題・キャリアの方向性を整理します。その場で何かを売ることはありません。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>ロードマップを作成</h3>
+          <p>あなたのスキルと方向性に合わせて、「どの順番で何を身につけるか」を一緒に設計します。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>実務を通じて力をつける</h3>
+          <p>座学だけでなく、商談同行・定例会レビュー・提案書添削などの実務経験を積みながら成長。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="section-tag">参加者の声</div>
+    <h2 class="section-title">実際に変わった人の話。</h2>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <span class="voice-tag">インフラSE → 提案型SE</span>
+        <p class="voice-text">
+          これまでずっと設計・構築のみでした。顧客との会話の仕方を学んでから、定例会で発言できるようになり、次の更新で単価が5万円上がりました。
+        </p>
+        <div class="voice-meta">SE経験3年 / インフラ系</div>
+      </div>
+      <div class="voice-card">
+        <span class="voice-tag">開発SE → 要件整理担当へ</span>
+        <p class="voice-text">
+          要件定義に入れたことで、顧客から直接相談をもらえるようになりました。「この人は代わりが効かない」と言ってもらえたのは初めてで、自信になっています。
+        </p>
+        <div class="voice-meta">SE経験5年 / SES勤務</div>
+      </div>
+      <div class="voice-card">
+        <span class="voice-tag">SES → 上流案件にアサイン</span>
+        <p class="voice-text">
+          提案書の作り方を学んでから、PMのサポート役として上流に入れました。技術を捨てなくていいと分かって、最初の不安が消えました。
+        </p>
+        <div class="voice-meta">SE経験2年 / Webシステム系</div>
+      </div>
+    </div>
+    <p style="margin-top: 16px; font-size: 12px; color: var(--text-muted); text-align: center;">※掲載の声はイメージ・参考例です。個人の成果を保証するものではありません。</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-tag">よくある質問</div>
+    <h2 class="section-title">気になることに、先に答えます。</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="q-mark">Q</span>
+          <span style="flex: 1;">営業職に転換させられるのではないかと不安です。</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            営業職への転換ではありません。SE・技術職のままで、顧客との会話・要件整理・提案という「仕事を前に進める力」を身につけるプログラムです。テレアポや新規開拓などの営業活動はありません。
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="q-mark">Q</span>
+          <span style="flex: 1;">技術力が落ちてしまいませんか？</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            技術から離れることはありません。技術的な知見を土台にしながら、上流工程でも価値を出せるようにするのがこのプログラムの目的です。開発案件に引き続き従事しながら学べます。
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="q-mark">Q</span>
+          <span style="flex: 1;">コミュニケーションが得意でなくても参加できますか？</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            大丈夫です。むしろ「話し下手だからこそ、整理して伝える力が重要」です。SEに求められる顧客対応は、雑談力や営業トークではなく、課題を構造化して相手に分かりやすく伝えることです。ロープレと実務経験を通じてステップアップできます。
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="q-mark">Q</span>
+          <span style="flex: 1;">費用はかかりますか？</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            初回のキャリア壁打ち（30分）は無料です。その後のプログラムについては、ご面談のなかで詳しくお伝えします。なお、在籍するSEに対しては育成費用の自己負担は基本的に発生しない設計を採用しています。
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="q-mark">Q</span>
+          <span style="flex: 1;">単価がどのくらい上がりますか？</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            個人差があるためお約束はできませんが、顧客折衝・要件整理・提案力がつくと、更新時に5〜20万円/月の単価見直しが交渉しやすくなるケースがあります。単価アップにつながった実績を作り、次回更新前に根拠を持って交渉するところまでサポートします。
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="q-mark">Q</span>
+          <span style="flex: 1;">どんな業界・技術領域でも対応できますか？</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            はい。インフラ、Webシステム、基幹系、SaaS導入、社内SEなど幅広い領域の方が対象です。提案力や顧客折衝力は、技術領域を選ばず活かせます。まずご相談ください。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FORM -->
+<section class="cta-section" id="form">
+  <h2>まずは、無料で話してみてください。</h2>
+  <p>強引な勧誘はありません。現状のキャリアを整理して、次の一手を一緒に考えます。</p>
+
+  <div class="form-card">
+    <h3>無料キャリア壁打ちに申し込む</h3>
+    <div class="form-group">
+      <label>お名前 <span style="color: #EF4444;">*</span></label>
+      <input type="text" placeholder="山田 太郎" />
+    </div>
+    <div class="form-group">
+      <label>メールアドレス <span style="color: #EF4444;">*</span></label>
+      <input type="email" placeholder="example@email.com" />
+    </div>
+    <div class="form-group">
+      <label>現在の職種</label>
+      <select>
+        <option value="">選択してください</option>
+        <option>開発SE（Java / PHP / Python など）</option>
+        <option>インフラSE / 基盤担当</option>
+        <option>SaaS導入 / 実装担当</option>
+        <option>社内SE</option>
+        <option>テスター / QA</option>
+        <option>PM / PL 補佐</option>
+        <option>その他</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>SE経験年数</label>
+      <select>
+        <option value="">選択してください</option>
+        <option>未経験〜1年未満</option>
+        <option>1〜3年</option>
+        <option>3〜5年</option>
+        <option>5〜10年</option>
+        <option>10年以上</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>興味のあるキャリア方向（複数選択可）</label>
+      <select>
+        <option value="">選択してください</option>
+        <option>顧客折衝・要件整理ができるSE</option>
+        <option>提案型SE / プリセールス</option>
+        <option>PM / PL に近い動き方</option>
+        <option>単価アップ・年収向上</option>
+        <option>上流案件に入りたい</option>
+        <option>とりあえず相談したい</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>現状の悩みや聞きたいこと（任意）</label>
+      <textarea placeholder="例：顧客対応が苦手で、要件がうまく整理できない。上流に行きたいが何から始めればいいか分からない、など"></textarea>
+    </div>
+    <button class="form-submit">無料で壁打ちを申し込む →</button>
+    <p class="form-note">
+      <span class="badge">完全無料・30分</span>&nbsp;
+      強引な勧誘はありません。情報は厳重に管理します。
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 SE Career Lab. All rights reserved.</p>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>
