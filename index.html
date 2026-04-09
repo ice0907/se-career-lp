@@ -1455,13 +1455,100 @@
       <div class="form-group">
         <label>現状の悩みや聞きたいこと（任意）</label>
         <textarea name="悩み・聞きたいこと" placeholder="例：顧客対応が苦手で、要件がうまく整理できない。上流に行きたいが何から始めればいいか分からない、など"></textarea>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">差し支えのない範囲でご記入ください。体調・ご家族の事情などセンシティブな内容は、必要な場合のみご記入ください。</p>
       </div>
+
+      <div style="background: var(--bg); border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; font-size: 13px; color: var(--text-muted); line-height: 1.7;">
+        ご入力いただいた個人情報は、無料キャリア相談の受付・日程調整・お問い合わせ対応・サービスのご案内のために利用します。詳しくは<a href="#privacy-policy" style="color: var(--blue);">プライバシーポリシー</a>をご確認ください。
+      </div>
+
+      <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px;">
+        <input type="checkbox" name="privacy_agree" id="privacy_agree" required style="width: auto; margin-top: 3px; flex-shrink: 0;" />
+        <label for="privacy_agree" style="font-size: 13px; font-weight: 500; cursor: pointer;">
+          <a href="#privacy-policy" style="color: var(--blue);">プライバシーポリシー</a>に同意して送信する <span style="color: #EF4444;">*</span>
+        </label>
+      </div>
+
       <button type="submit" class="form-submit">無料で壁打ちを申し込む →</button>
       <p class="form-note">
         <span class="badge">完全無料・30分</span>&nbsp;
-        強引な勧誘はありません。情報は厳重に管理します。
+        強引な勧誘はありません。
       </p>
     </form>
+  </div>
+</section>
+
+<!-- PRIVACY POLICY -->
+<section id="privacy-policy" style="background: var(--bg); padding: 80px 24px;">
+  <div class="container" style="max-width: 760px;">
+    <div class="section-tag">Legal</div>
+    <h2 class="section-title" style="font-size: 26px;">プライバシーポリシー</h2>
+
+    <div style="font-size: 14px; color: var(--text-muted); line-height: 2; display: flex; flex-direction: column; gap: 28px;">
+
+      <div>
+        <h3 style="font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px;">1. 事業者</h3>
+        <p>屋号：SE Career Lab<br>
+        連絡先：secareerlab0410@gmail.com</p>
+      </div>
+
+      <div>
+        <h3 style="font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px;">2. 取得する情報</h3>
+        <p>本サイトのお問い合わせフォームを通じて、以下の情報を取得します。</p>
+        <ul style="padding-left: 20px; margin-top: 8px;">
+          <li>氏名</li>
+          <li>メールアドレス</li>
+          <li>現在の職種・SE経験年数・興味のあるキャリア方向</li>
+          <li>ご相談内容・お悩みなどフォームにご入力いただいた情報</li>
+          <li>アクセスログ・Cookie等の利用状況に関する情報</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 style="font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px;">3. 利用目的</h3>
+        <p>取得した個人情報は、以下の目的で利用します。</p>
+        <ul style="padding-left: 20px; margin-top: 8px;">
+          <li>無料キャリア相談の受付、本人確認、日程調整および相談対応</li>
+          <li>お問い合わせへの対応</li>
+          <li>当サービス・関連イベント・コンテンツ等のご案内</li>
+          <li>サービス品質向上・サイト改善・利用状況分析</li>
+          <li>上記に付随する連絡・運営</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 style="font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px;">4. 第三者提供</h3>
+        <p>法令に基づく場合、または本人の同意がある場合を除き、個人情報を第三者に提供しません。なお、利用目的の達成に必要な範囲で業務委託先に取り扱いを委託する場合があります。</p>
+      </div>
+
+      <div>
+        <h3 style="font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px;">5. 外部サービスの利用</h3>
+        <p>フォーム受付・メール送信・データ保管・アクセス解析等のために、Formspree・Google Analytics等の外部サービスを利用する場合があります。これらサービスへの情報提供は利用目的の達成に必要な範囲に限ります。</p>
+      </div>
+
+      <div>
+        <h3 style="font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px;">6. 安全管理措置</h3>
+        <p>取得した個人情報の漏えい・滅失・毀損を防止するため、必要かつ適切な安全管理措置を講じます。フォーム回答データへのアクセスは担当者のみに限定し、不要になった情報は速やかに削除します。</p>
+      </div>
+
+      <div>
+        <h3 style="font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px;">7. 開示・訂正・削除等のご請求</h3>
+        <p>ご本人から保有個人情報の開示・訂正・削除・利用停止等のご請求があった場合は、本人確認のうえ法令に従って対応します。下記お問い合わせ窓口までご連絡ください。</p>
+      </div>
+
+      <div>
+        <h3 style="font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px;">8. お問い合わせ窓口</h3>
+        <p>個人情報の取り扱いに関するお問い合わせは以下までご連絡ください。<br>
+        メールアドレス：<a href="mailto:secareerlab0410@gmail.com" style="color: var(--blue);">secareerlab0410@gmail.com</a></p>
+      </div>
+
+      <div>
+        <h3 style="font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px;">9. 改定</h3>
+        <p>本ポリシーは必要に応じて改定することがあります。改定後の内容は本サイト掲載時から効力を生じます。</p>
+      </div>
+
+      <p style="font-size: 13px; color: var(--text-muted);">制定日：2026年4月10日</p>
+    </div>
   </div>
 </section>
 
