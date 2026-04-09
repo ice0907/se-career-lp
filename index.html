@@ -1399,59 +1399,69 @@
 
   <div class="form-card">
     <h3>無料キャリア壁打ちに申し込む</h3>
-    <div class="form-group">
-      <label>お名前 <span style="color: #EF4444;">*</span></label>
-      <input type="text" placeholder="山田 太郎" />
+
+    <!-- 送信完了メッセージ（非表示→送信後に表示） -->
+    <div id="form-success" style="display:none; text-align:center; padding: 32px 0;">
+      <div style="font-size: 40px; margin-bottom: 12px;">✅</div>
+      <p style="font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px;">申し込みを受け付けました！</p>
+      <p style="font-size: 14px; color: var(--text-muted);">2営業日以内に <strong>secareerlab0410@gmail.com</strong> よりご連絡します。</p>
     </div>
-    <div class="form-group">
-      <label>メールアドレス <span style="color: #EF4444;">*</span></label>
-      <input type="email" placeholder="example@email.com" />
-    </div>
-    <div class="form-group">
-      <label>現在の職種</label>
-      <select>
-        <option value="">選択してください</option>
-        <option>開発SE（Java / PHP / Python など）</option>
-        <option>インフラSE / 基盤担当</option>
-        <option>SaaS導入 / 実装担当</option>
-        <option>社内SE</option>
-        <option>テスター / QA</option>
-        <option>PM / PL 補佐</option>
-        <option>その他</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>SE経験年数</label>
-      <select>
-        <option value="">選択してください</option>
-        <option>未経験〜1年未満</option>
-        <option>1〜3年</option>
-        <option>3〜5年</option>
-        <option>5〜10年</option>
-        <option>10年以上</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>興味のあるキャリア方向（複数選択可）</label>
-      <select>
-        <option value="">選択してください</option>
-        <option>顧客折衝・要件整理ができるSE</option>
-        <option>提案型SE / プリセールス</option>
-        <option>PM / PL に近い動き方</option>
-        <option>単価アップ・年収向上</option>
-        <option>上流案件に入りたい</option>
-        <option>とりあえず相談したい</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>現状の悩みや聞きたいこと（任意）</label>
-      <textarea placeholder="例：顧客対応が苦手で、要件がうまく整理できない。上流に行きたいが何から始めればいいか分からない、など"></textarea>
-    </div>
-    <button class="form-submit">無料で壁打ちを申し込む →</button>
-    <p class="form-note">
-      <span class="badge">完全無料・30分</span>&nbsp;
-      強引な勧誘はありません。情報は厳重に管理します。
-    </p>
+
+    <form id="contact-form" action="https://formspree.io/f/secareerlab0410@gmail.com" method="POST" novalidate>
+      <div class="form-group">
+        <label>お名前 <span style="color: #EF4444;">*</span></label>
+        <input type="text" name="お名前" placeholder="山田 太郎" required />
+      </div>
+      <div class="form-group">
+        <label>メールアドレス <span style="color: #EF4444;">*</span></label>
+        <input type="email" name="email" placeholder="example@email.com" required />
+      </div>
+      <div class="form-group">
+        <label>現在の職種</label>
+        <select name="現在の職種">
+          <option value="">選択してください</option>
+          <option>開発SE（Java / PHP / Python など）</option>
+          <option>インフラSE / 基盤担当</option>
+          <option>SaaS導入 / 実装担当</option>
+          <option>社内SE</option>
+          <option>テスター / QA</option>
+          <option>PM / PL 補佐</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>SE経験年数</label>
+        <select name="SE経験年数">
+          <option value="">選択してください</option>
+          <option>未経験〜1年未満</option>
+          <option>1〜3年</option>
+          <option>3〜5年</option>
+          <option>5〜10年</option>
+          <option>10年以上</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>興味のあるキャリア方向</label>
+        <select name="興味のあるキャリア方向">
+          <option value="">選択してください</option>
+          <option>顧客折衝・要件整理ができるSE</option>
+          <option>提案型SE / プリセールス</option>
+          <option>PM / PL に近い動き方</option>
+          <option>単価アップ・年収向上</option>
+          <option>上流案件に入りたい</option>
+          <option>とりあえず相談したい</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>現状の悩みや聞きたいこと（任意）</label>
+        <textarea name="悩み・聞きたいこと" placeholder="例：顧客対応が苦手で、要件がうまく整理できない。上流に行きたいが何から始めればいいか分からない、など"></textarea>
+      </div>
+      <button type="submit" class="form-submit">無料で壁打ちを申し込む →</button>
+      <p class="form-note">
+        <span class="badge">完全無料・30分</span>&nbsp;
+        強引な勧誘はありません。情報は厳重に管理します。
+      </p>
+    </form>
   </div>
 </section>
 
@@ -1469,6 +1479,30 @@
       document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     });
+  });
+
+  // Formspree Ajax送信
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = '送信中...';
+    btn.disabled = true;
+
+    const data = new FormData(form);
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      btn.textContent = '送信に失敗しました。もう一度お試しください。';
+      btn.disabled = false;
+    }
   });
 </script>
 
