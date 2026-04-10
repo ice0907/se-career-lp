@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIに代替されないSEになる3つの力 | SE Career Lab</title>
+  <meta name="description" content="コードを書く・設計するだけのSEはAIに代替される。技術力を持ちながら、顧客に信頼されるSEになるために必要な3つの力を具体的に解説。" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1A56DB;
+      --blue-dark: #1040B0;
+      --blue-light: #EEF4FF;
+      --accent: #F59E0B;
+      --text: #111827;
+      --text-muted: #6B7280;
+      --bg: #F9FAFB;
+      --white: #FFFFFF;
+      --border: #E5E7EB;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.8;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .header-cta {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .header-cta:hover { background: var(--blue-dark); }
+
+    /* ===== ARTICLE HERO ===== */
+    .article-hero {
+      background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 100%);
+      color: var(--white);
+      padding: 72px 24px 80px;
+      text-align: center;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .article-hero h1 {
+      font-size: clamp(22px, 4vw, 38px);
+      font-weight: 800;
+      line-height: 1.35;
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+
+    .article-meta {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ===== LAYOUT ===== */
+    .article-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* ===== BODY TEXT ===== */
+    .article-body {
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--text);
+    }
+
+    .article-body p { margin-bottom: 24px; }
+
+    .article-body h2 {
+      font-size: clamp(20px, 3vw, 26px);
+      font-weight: 800;
+      margin: 56px 0 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--blue-light);
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .article-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 36px 0 14px;
+      color: var(--blue-dark);
+    }
+
+    .article-body ul, .article-body ol {
+      padding-left: 24px;
+      margin-bottom: 24px;
+    }
+
+    .article-body li { margin-bottom: 8px; }
+
+    .article-body strong { font-weight: 700; }
+
+    /* ===== LEAD ===== */
+    .article-lead {
+      font-size: 17px;
+      line-height: 2;
+      color: var(--text-muted);
+      background: var(--bg);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      padding: 22px 24px;
+      margin-bottom: 40px;
+    }
+
+    /* ===== POINT BOX ===== */
+    .point-box {
+      background: var(--white);
+      border: 1.5px solid var(--blue-light);
+      border-radius: 14px;
+      padding: 28px 28px 24px;
+      margin: 36px 0;
+    }
+
+    .point-num {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .point-box h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 0 14px;
+      color: var(--text);
+    }
+
+    .point-box p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    /* ===== COMPARE ===== */
+    .compare-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .compare-item {
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .compare-item.bad {
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+    }
+
+    .compare-item.good {
+      background: #ECFDF5;
+      border: 1px solid #A7F3D0;
+    }
+
+    .compare-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .compare-item.bad .compare-label { color: #EF4444; }
+    .compare-item.good .compare-label { color: #059669; }
+
+    .compare-item p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 !important;
+    }
+
+    .compare-item.bad p { color: #7F1D1D; }
+    .compare-item.good p { color: #064E3B; }
+
+    /* ===== STAT INLINE ===== */
+    .stat-inline {
+      background: linear-gradient(135deg, #0F2B6B, #1A56DB);
+      color: var(--white);
+      border-radius: 14px;
+      padding: 28px;
+      margin: 32px 0;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .stat-inline .num {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .stat-inline .desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+    }
+
+    .stat-inline .source {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 4px;
+    }
+
+    /* ===== QUOTE ===== */
+    .blockquote {
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      margin: 32px 0;
+      background: #FFFBEB;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .blockquote p {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--text);
+      margin: 0 !important;
+      line-height: 1.8;
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 100%);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 48px 36px;
+      text-align: center;
+      margin: 56px 0 0;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 800;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .cta-banner p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #1A1A1A;
+      padding: 16px 40px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 16px rgba(245,158,11,0.4);
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.5); }
+
+    .cta-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 12px;
+    }
+
+    /* ===== RELATED ===== */
+    .article-footer-nav {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .back-link {
+      font-size: 14px;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #111827;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .compare-box { grid-template-columns: 1fr; }
+      .stat-inline { flex-direction: column; gap: 12px; }
+      .cta-banner { padding: 36px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">SE Career Lab</a>
+  <a href="index.html#form" class="header-cta">無料キャリア相談を申し込む</a>
+</header>
+
+<!-- ARTICLE HERO -->
+<div class="article-hero">
+  <div class="article-tag">キャリア戦略</div>
+  <h1>AIに代替されないSEになる<br>3つの力</h1>
+  <p class="article-meta">2026年4月10日 &nbsp;|&nbsp; SE Career Lab</p>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-wrap">
+  <div class="article-body">
+
+    <p class="article-lead">
+      コードを書く、システムを設計する、テストをする。<br>
+      そのどれもが、AIによって部分的に代替されはじめている。<br>
+      「技術力だけで戦ってきたSE」が直面している現実を、正直に書く。
+    </p>
+
+    <h2>なぜ今、技術力だけでは足りないのか</h2>
+
+    <p>
+      IT業界の構造が変わりつつある。クラウド、AI、ノーコードツールの普及によって、
+      以前は高度なスキルが必要だった実装作業のコストが急速に下がっている。
+    </p>
+
+    <div class="stat-inline">
+      <div class="num">約6割</div>
+      <div>
+        <div class="desc">のIT業務がAIによって部分的に自動化可能とされている。<br>「コードを書く」作業の価値は、相対的に下がり続けている。</div>
+        <div class="source">McKinsey Global Institute 試算</div>
+      </div>
+    </div>
+
+    <p>
+      これはSEという職種がなくなるという話ではない。
+      ただ、<strong>「言われた通りに実装するだけのSE」の市場価値は、確実に下がっていく</strong>。
+      実際、SES市場では同じ技術スタックを持つSEでも、単価に月30万円以上の差がつくケースが珍しくない。
+    </p>
+
+    <p>
+      この差を生んでいるのは、技術力の違いではない。
+      顧客から「この人は代替しにくい」と思われているかどうかの差だ。
+    </p>
+
+    <div class="blockquote">
+      <p>
+        ビジネスバイヤーの87%が、担当者に「信頼できるアドバイザー」として振る舞うことを期待している。
+        「実装してくれる人」ではなく、「一緒に考えてくれる人」を求めている。
+      </p>
+    </div>
+
+    <p>
+      では、顧客から信頼されるSEには何が必要なのか。
+      現場で高単価を維持しているSEに共通する力は、次の3つだ。
+    </p>
+
+    <h2>力1. 顧客の本音を引き出すヒアリング力</h2>
+
+    <p>
+      多くのSEが、顧客から「この機能を作ってほしい」と言われたまま動く。
+      しかしその要望の裏には、必ずもっと本質的な課題が隠れている。
+    </p>
+
+    <div class="compare-box">
+      <div class="compare-item bad">
+        <div class="compare-label">代替されやすいSEの問い方</div>
+        <p>「どんな機能が必要ですか？」<br>「仕様はこれで合っていますか？」</p>
+      </div>
+      <div class="compare-item good">
+        <div class="compare-label">信頼されるSEの問い方</div>
+        <p>「今、一番困っていることは何ですか？」<br>「それが解決したら、何が変わりますか？」</p>
+      </div>
+    </div>
+
+    <p>
+      ヒアリング力は「コミュニケーションが得意かどうか」の問題ではない。
+      <strong>目的・課題・制約を構造化して聞く技術</strong>だ。
+      これを身につけたSEは、要件定義の精度が上がり、手戻りが減り、
+      顧客から「この人に任せると話が早い」と思われるようになる。
+    </p>
+
+    <div class="point-box">
+      <div class="point-num">Point 01</div>
+      <h3>「何を作るか」より「なぜ作るか」を先に聞く</h3>
+      <p>
+        顧客の要望をそのまま受け取るのではなく、背景にある業務課題・解決したい状態を先に確認する。
+        これだけで、後工程の認識ズレと手戻りが大幅に減る。
+        現場で信頼を積み上げる最初のステップがここにある。
+      </p>
+    </div>
+
+    <h2>力2. 課題を整理して提案する力</h2>
+
+    <p>
+      ヒアリングで本音を引き出せても、それを整理して相手に伝えられなければ意味がない。
+      多くのSEが苦手とするのが、この「整理と提案」の部分だ。
+    </p>
+
+    <p>
+      提案というと、営業が行う売り込みのイメージを持つ人が多い。
+      しかし顧客が求めているのはそういうものではない。
+      <strong>「現状はこうなっていて、原因はここにある。だからこう対応するのが有効だと思う」</strong>
+      という、課題と解決の筋道を見せてもらうことだ。
+    </p>
+
+    <h3>提案は難しくない。A4一枚で十分</h3>
+
+    <p>
+      現場で実際に効いたのは、こういうシンプルな構成だ。
+    </p>
+
+    <ul>
+      <li>現状：今、何が起きているか</li>
+      <li>課題：その根本原因はどこにあるか</li>
+      <li>提案：どう対応するか、選択肢はあるか</li>
+      <li>期待効果：それで何が変わるか</li>
+    </ul>
+
+    <p>
+      これをA4一枚、あるいは定例会の冒頭5分で話せるようにするだけで、
+      顧客の担当者から見たそのSEの存在感が明確に変わる。
+      <strong>「この人は考えて動いてくれる」という印象</strong>が、単価交渉の土台になる。
+    </p>
+
+    <div class="point-box">
+      <div class="point-num">Point 02</div>
+      <h3>提案は「売り込む」ためではなく「判断を助ける」ために行う</h3>
+      <p>
+        顧客が本当に欲しいのは、何かを買わされることではなく、
+        正しい判断をするための材料だ。
+        現状・原因・選択肢・効果の4点をシンプルに整理して渡すだけで、
+        「この人は違う」と思われるようになる。
+      </p>
+    </div>
+
+    <h2>力3. 定例会・日常対話で信頼を積み上げる力</h2>
+
+    <p>
+      単価が上がるSEとそうでないSEの最大の差は、定例会のあり方にある。
+    </p>
+
+    <p>
+      多くのSEにとって定例会は「進捗を報告する場」だ。
+      しかし高単価を維持しているSEにとって、定例会は<strong>「信頼を積み上げる場」</strong>だ。
+    </p>
+
+    <div class="compare-box">
+      <div class="compare-item bad">
+        <div class="compare-label">進捗報告で終わる定例会</div>
+        <p>先週やったこと・今週やること・課題を報告する。以上。</p>
+      </div>
+      <div class="compare-item good">
+        <div class="compare-label">信頼を積む定例会</div>
+        <p>進捗に加えて「現場で気になっていること」「顧客が次に困りそうなこと」を一言添える。</p>
+      </div>
+    </div>
+
+    <p>
+      違いは小さいように見えて、積み重なると大きい。
+      毎回の定例会で顧客の立場から「この人はよく見ている」と感じてもらえると、
+      相談が来るようになる。相談が来ると、役割が広がる。役割が広がると、単価を上げる根拠ができる。
+    </p>
+
+    <h3>「代替しにくい」と思われることが、単価交渉の本質</h3>
+
+    <p>
+      単価アップは、更新のタイミングに突然お願いするものではない。
+      それまでの積み重ねが、交渉を通りやすくする。
+    </p>
+
+    <p>
+      具体的には、更新前に顧客担当者に対してこう伝えられる状態を作ることだ。
+    </p>
+
+    <ul>
+      <li>当初の開発支援に加え、要件整理・関係者調整も担ってきた</li>
+      <li>定例会で改善提案を継続してきた</li>
+      <li>現場の問い合わせや判断を一手に引き受けている</li>
+    </ul>
+
+    <p>
+      これが言える状態になれば、顧客側の担当者も社内で稟議を通しやすくなる。
+      <strong>単価交渉とは「お願いする」ものではなく、「根拠を示す」ものだ</strong>。
+    </p>
+
+    <div class="point-box">
+      <div class="point-num">Point 03</div>
+      <h3>定例会は「消化する場」ではなく「信頼を作る場」</h3>
+      <p>
+        毎回の定例会に小さな「気づきの一言」を加える。
+        顧客が次に困りそうなこと、現場で気になっていること、改善できそうなこと。
+        これを続けることで「この人は視野が広い」という印象が積み上がり、
+        やがて相談相手として選ばれるようになる。
+      </p>
+    </div>
+
+    <h2>まとめ：技術を捨てずに、上流で価値を出す</h2>
+
+    <p>
+      ここまで書いてきた3つの力は、営業職に転換することでも、
+      テクニカルスキルを捨てることでもない。
+    </p>
+
+    <p>
+      技術的な深さを土台にしながら、
+      顧客の課題を引き出し、整理し、提案できるSEになること。
+      それが「AIに代替されない」という状態の実体だ。
+    </p>
+
+    <p>
+      この力は、才能の問題ではなく、学び方と経験の積み方の問題だ。
+      正しい順番で、実務を通じて身につけていけば、
+      ほとんどのSEが1年以内に現場での立ち位置を変えることができる。
+    </p>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <h2>あなたのキャリアの次の一手を、<br>一緒に考えます。</h2>
+      <p>
+        上流に強いSEになりたい、単価を上げたい、顧客対応に自信を持ちたい。<br>
+        現状を整理して、具体的な方向性を決める30分の無料壁打ちを行っています。
+      </p>
+      <a href="index.html#form" class="cta-btn">無料キャリア壁打ちに申し込む →</a>
+      <p class="cta-note">完全無料・30分・強引な勧誘なし</p>
+    </div>
+
+    <div class="article-footer-nav">
+      <a href="index.html" class="back-link">← SE Career Lab トップへ戻る</a>
+      <span style="font-size: 13px; color: var(--text-muted);">SE Career Lab &copy; 2026</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 SE Career Lab. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
