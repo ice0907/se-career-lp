@@ -1343,6 +1343,75 @@
   </div>
 </section>
 
+<!-- NEWSLETTER -->
+<section style="background: var(--white); padding: 80px 24px;" id="newsletter">
+  <div class="container" style="max-width: 640px; text-align: center;">
+    <div class="section-tag">案件情報メール</div>
+    <h2 class="section-title">上流・高単価案件の情報を<br>メールで受け取る</h2>
+    <p class="section-desc" style="margin: 0 auto 40px;">無料キャリア相談の前に、まずは情報収集したい方へ。顧客折衝・要件整理・提案型ポジションを中心とした案件情報を定期的にお届けします。</p>
+
+    <div style="background: var(--bg); border-radius: 20px; padding: 40px 36px;">
+      <div id="nl-success" style="display:none; text-align:center; padding: 16px 0;">
+        <p style="font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 8px;">登録を受け付けました。</p>
+        <p style="font-size: 14px; color: var(--text-muted);">案件情報が届いたらメールでご連絡します。</p>
+      </div>
+
+      <form id="nl-form" action="https://formspree.io/f/NEWSLETTER_ID" method="POST" novalidate>
+        <div class="form-group">
+          <label style="text-align:left; display:block;">お名前 <span style="color:#EF4444;">*</span></label>
+          <input type="text" name="お名前" placeholder="山田 太郎" required />
+        </div>
+        <div class="form-group">
+          <label style="text-align:left; display:block;">メールアドレス <span style="color:#EF4444;">*</span></label>
+          <input type="email" name="email" placeholder="example@email.com" required />
+        </div>
+        <div class="form-group">
+          <label style="text-align:left; display:block;">現在のSE経験年数</label>
+          <select name="SE経験年数">
+            <option value="">選択してください</option>
+            <option>未経験〜1年未満</option>
+            <option>1〜3年</option>
+            <option>3〜5年</option>
+            <option>5〜10年</option>
+            <option>10年以上</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label style="text-align:left; display:block;">興味のある案件タイプ</label>
+          <select name="興味のある案件タイプ">
+            <option value="">選択してください</option>
+            <option>顧客折衝・要件整理ポジション</option>
+            <option>提案型SE / プリセールス支援</option>
+            <option>PM / PL 補佐・上流工程</option>
+            <option>単価80万円以上の案件</option>
+            <option>特に指定なし・幅広く知りたい</option>
+          </select>
+        </div>
+
+        <div style="background: var(--white); border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; font-size: 13px; color: var(--text-muted); line-height: 1.7; text-align:left;">
+          ご入力いただいた情報は、案件情報の提供・関連サービスのご案内のために利用します。詳しくは<a href="#privacy-policy" style="color: var(--blue);">プライバシーポリシー</a>をご確認ください。
+        </div>
+
+        <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px; text-align:left;">
+          <input type="checkbox" name="privacy_agree" id="nl_privacy" required style="width: auto; margin-top: 3px; flex-shrink: 0;" />
+          <label for="nl_privacy" style="font-size: 13px; font-weight: 500; cursor: pointer;">
+            <a href="#privacy-policy" style="color: var(--blue);">プライバシーポリシー</a>に同意して登録する <span style="color: #EF4444;">*</span>
+          </label>
+        </div>
+
+        <button type="submit" class="form-submit">案件情報メールに登録する →</button>
+        <p class="form-note" style="margin-top:12px;">
+          <span class="badge">無料・配信解除いつでも可</span>
+        </p>
+      </form>
+    </div>
+
+    <p style="margin-top: 24px; font-size: 13px; color: var(--text-muted);">
+      直接相談したい方は <a href="#form" style="color: var(--blue); font-weight: 600;">無料キャリア壁打ち →</a>
+    </p>
+  </div>
+</section>
+
 <!-- CTA FORM -->
 <section class="cta-section" id="form">
   <h2>まずは、無料で話してみてください。</h2>
@@ -1551,7 +1620,28 @@
     });
   });
 
-  // Formspree Ajax送信
+  // ニュースレター登録フォーム
+  const nlForm = document.getElementById('nl-form');
+  nlForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = nlForm.querySelector('.form-submit');
+    btn.textContent = '送信中...';
+    btn.disabled = true;
+    const res = await fetch(nlForm.action, {
+      method: 'POST',
+      body: new FormData(nlForm),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      nlForm.style.display = 'none';
+      document.getElementById('nl-success').style.display = 'block';
+    } else {
+      btn.textContent = '送信に失敗しました。もう一度お試しください。';
+      btn.disabled = false;
+    }
+  });
+
+  // 無料相談フォーム
   const form = document.getElementById('contact-form');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
