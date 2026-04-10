@@ -1343,30 +1343,56 @@
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section style="background: var(--white); padding: 80px 24px;" id="newsletter">
-  <div class="container" style="max-width: 640px; text-align: center;">
-    <div class="section-tag">案件情報メール</div>
-    <h2 class="section-title">上流・高単価案件の情報を<br>メールで受け取る</h2>
-    <p class="section-desc" style="margin: 0 auto 40px;">無料キャリア相談の前に、まずは情報収集したい方へ。顧客折衝・要件整理・提案型ポジションを中心とした案件情報を定期的にお届けします。</p>
+<!-- UNIFIED CTA -->
+<section class="cta-section" id="form" style="padding: 80px 24px;">
+  <h2>まずの一歩を選んでください。</h2>
+  <p>直接相談したい方も、まず情報収集したい方も、どちらの入口もご用意しています。</p>
 
-    <div style="background: var(--bg); border-radius: 20px; padding: 40px 36px;">
-      <div id="nl-success" style="display:none; text-align:center; padding: 16px 0;">
-        <p style="font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 8px;">登録を受け付けました。</p>
-        <p style="font-size: 14px; color: var(--text-muted);">案件情報が届いたらメールでご連絡します。</p>
+  <div style="max-width: 600px; margin: 0 auto;">
+
+    <!-- タブ切り替え -->
+    <div style="display: flex; background: rgba(255,255,255,0.1); border-radius: 12px; padding: 4px; margin-bottom: 28px;">
+      <button id="tab-consult" onclick="switchTab('consult')" style="flex:1; padding: 12px; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--blue);">
+        無料キャリア壁打ち
+      </button>
+      <button id="tab-newsletter" onclick="switchTab('newsletter')" style="flex:1; padding: 12px; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; background: transparent; color: rgba(255,255,255,0.7);">
+        案件情報メールに登録
+      </button>
+    </div>
+
+    <!-- 無料壁打ちフォーム -->
+    <div id="panel-consult" class="form-card">
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px; text-align:center;">現状のキャリアを整理して、次の一手を一緒に考えます。完全無料・30分・強引な勧誘なし。</p>
+
+      <div id="form-success" style="display:none; text-align:center; padding: 24px 0;">
+        <p style="font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 8px;">申し込みを受け付けました。</p>
+        <p style="font-size: 14px; color: var(--text-muted);">2営業日以内にご連絡します。</p>
       </div>
 
-      <form id="nl-form" action="https://formspree.io/f/xzdklalz" method="POST" novalidate>
+      <form id="contact-form" action="https://formspree.io/f/mykbavjw" method="POST" novalidate>
         <div class="form-group">
-          <label style="text-align:left; display:block;">お名前 <span style="color:#EF4444;">*</span></label>
+          <label>お名前 <span style="color:#EF4444;">*</span></label>
           <input type="text" name="お名前" placeholder="山田 太郎" required />
         </div>
         <div class="form-group">
-          <label style="text-align:left; display:block;">メールアドレス <span style="color:#EF4444;">*</span></label>
+          <label>メールアドレス <span style="color:#EF4444;">*</span></label>
           <input type="email" name="email" placeholder="example@email.com" required />
         </div>
         <div class="form-group">
-          <label style="text-align:left; display:block;">現在のSE経験年数</label>
+          <label>現在の職種</label>
+          <select name="現在の職種">
+            <option value="">選択してください</option>
+            <option>開発SE（Java / PHP / Python など）</option>
+            <option>インフラSE / 基盤担当</option>
+            <option>SaaS導入 / 実装担当</option>
+            <option>社内SE</option>
+            <option>テスター / QA</option>
+            <option>PM / PL 補佐</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>SE経験年数</label>
           <select name="SE経験年数">
             <option value="">選択してください</option>
             <option>未経験〜1年未満</option>
@@ -1377,7 +1403,65 @@
           </select>
         </div>
         <div class="form-group">
-          <label style="text-align:left; display:block;">興味のある案件タイプ</label>
+          <label>興味のあるキャリア方向</label>
+          <select name="興味のあるキャリア方向">
+            <option value="">選択してください</option>
+            <option>顧客折衝・要件整理ができるSE</option>
+            <option>提案型SE / プリセールス</option>
+            <option>PM / PL に近い動き方</option>
+            <option>単価アップ・年収向上</option>
+            <option>上流案件に入りたい</option>
+            <option>とりあえず相談したい</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>現状の悩みや聞きたいこと（任意）</label>
+          <textarea name="悩み・聞きたいこと" placeholder="例：顧客対応が苦手で、要件がうまく整理できない。上流に行きたいが何から始めればいいか分からない、など"></textarea>
+          <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">差し支えのない範囲でご記入ください。</p>
+        </div>
+        <div style="background: var(--bg); border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; font-size: 12px; color: var(--text-muted); line-height: 1.7;">
+          ご入力いただいた情報は、無料キャリア相談の受付・日程調整・サービスのご案内のために利用します。詳しくは<a href="#privacy-policy" style="color:var(--blue);">プライバシーポリシー</a>をご確認ください。
+        </div>
+        <div class="form-group" style="display:flex; align-items:flex-start; gap:10px;">
+          <input type="checkbox" name="privacy_agree" id="privacy_agree" required style="width:auto; margin-top:3px; flex-shrink:0;" />
+          <label for="privacy_agree" style="font-size:13px; font-weight:500; cursor:pointer;"><a href="#privacy-policy" style="color:var(--blue);">プライバシーポリシー</a>に同意して送信する <span style="color:#EF4444;">*</span></label>
+        </div>
+        <button type="submit" class="form-submit">無料で壁打ちを申し込む →</button>
+        <p class="form-note"><span class="badge">完全無料・30分</span></p>
+      </form>
+    </div>
+
+    <!-- 案件情報メールフォーム -->
+    <div id="panel-newsletter" class="form-card" style="display:none;">
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px; text-align:center;">顧客折衝・提案型・上流ポジションを中心とした案件情報を定期的にお届けします。配信解除はいつでも可能です。</p>
+
+      <div id="nl-success" style="display:none; text-align:center; padding: 24px 0;">
+        <p style="font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 8px;">登録を受け付けました。</p>
+        <p style="font-size: 14px; color: var(--text-muted);">案件情報が届き次第メールでご連絡します。</p>
+      </div>
+
+      <form id="nl-form" action="https://formspree.io/f/xzdklalz" method="POST" novalidate>
+        <div class="form-group">
+          <label>お名前 <span style="color:#EF4444;">*</span></label>
+          <input type="text" name="お名前" placeholder="山田 太郎" required />
+        </div>
+        <div class="form-group">
+          <label>メールアドレス <span style="color:#EF4444;">*</span></label>
+          <input type="email" name="email" placeholder="example@email.com" required />
+        </div>
+        <div class="form-group">
+          <label>SE経験年数</label>
+          <select name="SE経験年数">
+            <option value="">選択してください</option>
+            <option>未経験〜1年未満</option>
+            <option>1〜3年</option>
+            <option>3〜5年</option>
+            <option>5〜10年</option>
+            <option>10年以上</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>興味のある案件タイプ</label>
           <select name="興味のある案件タイプ">
             <option value="">選択してください</option>
             <option>顧客折衝・要件整理ポジション</option>
@@ -1387,113 +1471,18 @@
             <option>特に指定なし・幅広く知りたい</option>
           </select>
         </div>
-
-        <div style="background: var(--white); border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; font-size: 13px; color: var(--text-muted); line-height: 1.7; text-align:left;">
-          ご入力いただいた情報は、案件情報の提供・関連サービスのご案内のために利用します。詳しくは<a href="#privacy-policy" style="color: var(--blue);">プライバシーポリシー</a>をご確認ください。
+        <div style="background: var(--bg); border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; font-size: 12px; color: var(--text-muted); line-height: 1.7;">
+          ご入力いただいた情報は、案件情報の提供・関連サービスのご案内のために利用します。詳しくは<a href="#privacy-policy" style="color:var(--blue);">プライバシーポリシー</a>をご確認ください。
         </div>
-
-        <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px; text-align:left;">
-          <input type="checkbox" name="privacy_agree" id="nl_privacy" required style="width: auto; margin-top: 3px; flex-shrink: 0;" />
-          <label for="nl_privacy" style="font-size: 13px; font-weight: 500; cursor: pointer;">
-            <a href="#privacy-policy" style="color: var(--blue);">プライバシーポリシー</a>に同意して登録する <span style="color: #EF4444;">*</span>
-          </label>
+        <div class="form-group" style="display:flex; align-items:flex-start; gap:10px;">
+          <input type="checkbox" name="privacy_agree" id="nl_privacy" required style="width:auto; margin-top:3px; flex-shrink:0;" />
+          <label for="nl_privacy" style="font-size:13px; font-weight:500; cursor:pointer;"><a href="#privacy-policy" style="color:var(--blue);">プライバシーポリシー</a>に同意して登録する <span style="color:#EF4444;">*</span></label>
         </div>
-
         <button type="submit" class="form-submit">案件情報メールに登録する →</button>
-        <p class="form-note" style="margin-top:12px;">
-          <span class="badge">無料・配信解除いつでも可</span>
-        </p>
+        <p class="form-note"><span class="badge">無料・配信解除いつでも可</span></p>
       </form>
     </div>
 
-    <p style="margin-top: 24px; font-size: 13px; color: var(--text-muted);">
-      直接相談したい方は <a href="#form" style="color: var(--blue); font-weight: 600;">無料キャリア壁打ち →</a>
-    </p>
-  </div>
-</section>
-
-<!-- CTA FORM -->
-<section class="cta-section" id="form">
-  <h2>まずは、無料で話してみてください。</h2>
-  <p>強引な勧誘はありません。現状のキャリアを整理して、次の一手を一緒に考えます。</p>
-
-  <div class="form-card">
-    <h3>無料キャリア壁打ちに申し込む</h3>
-
-    <!-- 送信完了メッセージ（非表示→送信後に表示） -->
-    <div id="form-success" style="display:none; text-align:center; padding: 32px 0;">
-      <p style="font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px;">申し込みを受け付けました。</p>
-      <p style="font-size: 14px; color: var(--text-muted);">2営業日以内に <strong>secareerlab0410@gmail.com</strong> よりご連絡します。</p>
-    </div>
-
-    <form id="contact-form" action="https://formspree.io/f/mykbavjw" method="POST" novalidate>
-      <div class="form-group">
-        <label>お名前 <span style="color: #EF4444;">*</span></label>
-        <input type="text" name="お名前" placeholder="山田 太郎" required />
-      </div>
-      <div class="form-group">
-        <label>メールアドレス <span style="color: #EF4444;">*</span></label>
-        <input type="email" name="email" placeholder="example@email.com" required />
-      </div>
-      <div class="form-group">
-        <label>現在の職種</label>
-        <select name="現在の職種">
-          <option value="">選択してください</option>
-          <option>開発SE（Java / PHP / Python など）</option>
-          <option>インフラSE / 基盤担当</option>
-          <option>SaaS導入 / 実装担当</option>
-          <option>社内SE</option>
-          <option>テスター / QA</option>
-          <option>PM / PL 補佐</option>
-          <option>その他</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>SE経験年数</label>
-        <select name="SE経験年数">
-          <option value="">選択してください</option>
-          <option>未経験〜1年未満</option>
-          <option>1〜3年</option>
-          <option>3〜5年</option>
-          <option>5〜10年</option>
-          <option>10年以上</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>興味のあるキャリア方向</label>
-        <select name="興味のあるキャリア方向">
-          <option value="">選択してください</option>
-          <option>顧客折衝・要件整理ができるSE</option>
-          <option>提案型SE / プリセールス</option>
-          <option>PM / PL に近い動き方</option>
-          <option>単価アップ・年収向上</option>
-          <option>上流案件に入りたい</option>
-          <option>とりあえず相談したい</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>現状の悩みや聞きたいこと（任意）</label>
-        <textarea name="悩み・聞きたいこと" placeholder="例：顧客対応が苦手で、要件がうまく整理できない。上流に行きたいが何から始めればいいか分からない、など"></textarea>
-        <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">差し支えのない範囲でご記入ください。体調・ご家族の事情などセンシティブな内容は、必要な場合のみご記入ください。</p>
-      </div>
-
-      <div style="background: var(--bg); border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; font-size: 13px; color: var(--text-muted); line-height: 1.7;">
-        ご入力いただいた個人情報は、無料キャリア相談の受付・日程調整・お問い合わせ対応・サービスのご案内のために利用します。詳しくは<a href="#privacy-policy" style="color: var(--blue);">プライバシーポリシー</a>をご確認ください。
-      </div>
-
-      <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px;">
-        <input type="checkbox" name="privacy_agree" id="privacy_agree" required style="width: auto; margin-top: 3px; flex-shrink: 0;" />
-        <label for="privacy_agree" style="font-size: 13px; font-weight: 500; cursor: pointer;">
-          <a href="#privacy-policy" style="color: var(--blue);">プライバシーポリシー</a>に同意して送信する <span style="color: #EF4444;">*</span>
-        </label>
-      </div>
-
-      <button type="submit" class="form-submit">無料で壁打ちを申し込む →</button>
-      <p class="form-note">
-        <span class="badge">完全無料・30分</span>&nbsp;
-        強引な勧誘はありません。
-      </p>
-    </form>
   </div>
 </section>
 
@@ -1619,6 +1608,17 @@
       if (!isOpen) item.classList.add('open');
     });
   });
+
+  // タブ切り替え
+  function switchTab(tab) {
+    const isConsult = tab === 'consult';
+    document.getElementById('panel-consult').style.display = isConsult ? 'block' : 'none';
+    document.getElementById('panel-newsletter').style.display = isConsult ? 'none' : 'block';
+    document.getElementById('tab-consult').style.background = isConsult ? 'var(--white)' : 'transparent';
+    document.getElementById('tab-consult').style.color = isConsult ? 'var(--blue)' : 'rgba(255,255,255,0.7)';
+    document.getElementById('tab-newsletter').style.background = isConsult ? 'transparent' : 'var(--white)';
+    document.getElementById('tab-newsletter').style.color = isConsult ? 'rgba(255,255,255,0.7)' : 'var(--blue)';
+  }
 
   // ニュースレター登録フォーム
   const nlForm = document.getElementById('nl-form');
