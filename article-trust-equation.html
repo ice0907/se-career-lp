@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>顧客に「信頼される人」になるための方程式 Trust Equation | SE Career Lab</title>
+  <meta name="description" content="なぜ同じ技術力でも顧客からの信頼が違うのか。Credibility・Reliability・Intimacy・Self-orientationの4要素で構成されるTrust Equationを、SEのキャリアに引きつけて解説する。" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1A56DB;
+      --blue-dark: #1040B0;
+      --blue-light: #EEF4FF;
+      --navy: #0F2B6B;
+      --accent: #F59E0B;
+      --accent-light: #FEF3C7;
+      --red: #9B2C2C;
+      --red-light: #FEF2F2;
+      --text: #111827;
+      --text-muted: #6B7280;
+      --bg: #F9FAFB;
+      --white: #FFFFFF;
+      --border: #E5E7EB;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.8;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .header-cta {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .header-cta:hover { background: var(--blue-dark); }
+
+    /* ===== HERO ===== */
+    .article-hero {
+      background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 100%);
+      color: var(--white);
+      padding: 72px 24px 80px;
+      text-align: center;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .article-hero h1 {
+      font-size: clamp(22px, 4vw, 38px);
+      font-weight: 800;
+      line-height: 1.35;
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+
+    .article-meta {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ===== LAYOUT ===== */
+    .article-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* ===== BODY TEXT ===== */
+    .article-body {
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--text);
+    }
+
+    .article-body p { margin-bottom: 24px; }
+
+    .article-body h2 {
+      font-size: clamp(20px, 3vw, 26px);
+      font-weight: 800;
+      margin: 56px 0 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--blue-light);
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .article-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 36px 0 14px;
+      color: var(--blue-dark);
+    }
+
+    .article-body ul {
+      padding-left: 24px;
+      margin-bottom: 24px;
+    }
+
+    .article-body li { margin-bottom: 8px; }
+
+    .article-body strong { font-weight: 700; }
+
+    /* ===== LEAD ===== */
+    .article-lead {
+      font-size: 17px;
+      line-height: 2;
+      color: var(--text-muted);
+      background: var(--bg);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      padding: 22px 24px;
+      margin-bottom: 40px;
+    }
+
+    /* ===== TRUST FORMULA ===== */
+    .trust-formula {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 16px;
+      padding: 32px 28px;
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .trust-formula .label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+    }
+
+    .trust-formula .eq-top {
+      font-size: clamp(14px, 3vw, 20px);
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+    }
+
+    .trust-formula .eq-bottom {
+      font-size: clamp(14px, 3vw, 20px);
+      font-weight: 700;
+      color: #F87171;
+    }
+
+    .trust-formula .trust-title {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .trust-formula .trust-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ===== CRIS CARDS ===== */
+    .cris-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .cris-card {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1.5px solid var(--border);
+    }
+
+    .cris-card-header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 20px 22px 16px;
+      border-bottom: 4px solid var(--blue);
+    }
+
+    .cris-card-header.red { border-bottom-color: #C53030; }
+
+    .cris-letter {
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .cris-en {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 6px;
+    }
+
+    .cris-ja {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+
+    .cris-ja.red { background: #C53030; }
+
+    .cris-tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      font-style: italic;
+    }
+
+    .cris-body {
+      background: var(--white);
+      padding: 20px 22px;
+    }
+
+    .cris-section-label {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .cris-section-label.red { background: #C53030; }
+
+    .cris-items {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+    }
+
+    .cris-items li {
+      font-size: 14px;
+      color: var(--text);
+      padding: 6px 0 6px 18px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.6;
+    }
+
+    .cris-items li:last-child { border-bottom: none; }
+
+    .cris-items li::before {
+      content: '▶';
+      font-size: 8px;
+      position: absolute;
+      left: 0;
+      top: 10px;
+      color: var(--blue);
+    }
+
+    .cris-items.red li::before { color: #C53030; }
+
+    .cris-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cris-tag {
+      background: var(--accent-light);
+      color: #92400E;
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* ===== POINT BOX ===== */
+    .point-box {
+      background: var(--white);
+      border: 1.5px solid var(--blue-light);
+      border-radius: 14px;
+      padding: 28px 28px 24px;
+      margin: 36px 0;
+    }
+
+    .point-num {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .point-box h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0 0 12px;
+      color: var(--text);
+    }
+
+    .point-box p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    /* ===== SUMMARY BOX ===== */
+    .summary-box {
+      background: var(--blue-light);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 24px 20px;
+      margin: 36px 0;
+    }
+
+    .summary-box h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 10px;
+    }
+
+    .summary-box p {
+      font-size: 15px;
+      color: var(--text);
+      margin: 0 !important;
+      line-height: 1.8;
+    }
+
+    /* ===== SCORE TABLE ===== */
+    .score-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 28px 0;
+      font-size: 14px;
+    }
+
+    .score-table thead tr {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .score-table th {
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .score-table tbody tr:nth-child(odd) { background: var(--bg); }
+    .score-table tbody tr:nth-child(even) { background: var(--white); }
+
+    .score-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.6;
+    }
+
+    .score-high { color: #059669; font-weight: 700; }
+    .score-low { color: #EF4444; font-weight: 700; }
+
+    /* ===== NOTE ===== */
+    .article-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      margin-bottom: 0;
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 100%);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 48px 36px;
+      text-align: center;
+      margin: 56px 0 0;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 800;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .cta-banner p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #1A1A1A;
+      padding: 16px 40px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 16px rgba(245,158,11,0.4);
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.5); }
+
+    .cta-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 12px;
+    }
+
+    /* ===== FOOTER NAV ===== */
+    .article-footer-nav {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .back-link {
+      font-size: 14px;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #111827;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .cris-grid { grid-template-columns: 1fr; }
+      .cta-banner { padding: 36px 20px; }
+      .trust-formula { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">SE Career Lab</a>
+  <a href="index.html#form" class="header-cta">無料キャリア相談を申し込む</a>
+</header>
+
+<!-- HERO -->
+<div class="article-hero">
+  <div class="article-tag">信頼設計</div>
+  <h1>顧客に「信頼される人」になるための方程式<br>Trust Equation</h1>
+  <p class="article-meta">2026年4月10日 &nbsp;|&nbsp; SE Career Lab</p>
+</div>
+
+<!-- BODY -->
+<div class="article-wrap">
+  <div class="article-body">
+
+    <p class="article-lead">
+      同じ技術力を持つSEでも、顧客からの信頼が明確に違う人がいる。<br>
+      その差は、コミュニケーションの巧拙や性格ではない。<br>
+      顧客の信頼は、4つの要素で構成されており、それぞれを意識的に高めることができる。
+    </p>
+
+    <h2>Trust Equationとは何か</h2>
+
+    <p>
+      Trust Equation（信頼方程式）は、コンサルティング会社のCharles H. GreenらがThe Trusted Advisorのなかで提唱した、信頼を構造的に捉えるフレームワークだ。
+    </p>
+
+    <div class="trust-formula">
+      <div class="trust-title">
+        <span>Trust（信頼）</span>
+        <span style="font-size: 20px; color: rgba(255,255,255,0.5);">=</span>
+      </div>
+      <div class="eq-top">Credibility（信憑性） + Reliability（信頼性） + Intimacy（親密性）</div>
+      <div class="eq-bottom">Self-orientation（自己志向性）</div>
+      <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 16px;">分子の3要素が高く、分母のSが低いほど、信頼スコアが高くなる</p>
+    </div>
+
+    <p>
+      分子にあたる3つの要素（C・R・I）が高いほど信頼が上がり、
+      分母にあたるS（自己志向性）が高いほど信頼が下がる。
+      つまり、<strong>技術力や話術ではなく、この4要素のバランスが、顧客から見た信頼の量を決める</strong>。
+    </p>
+
+    <p>
+      SEのキャリアにおいて、この方程式は特に重要な意味を持つ。
+      顧客折衝・要件整理・提案といった上流工程に入るためには、技術スキルよりも先に、
+      この信頼スコアが高い状態を作ることが前提になるからだ。
+    </p>
+
+    <h2>4つの要素をSEの仕事に引きつけて読む</h2>
+
+    <div class="cris-grid">
+
+      <!-- C -->
+      <div class="cris-card">
+        <div class="cris-card-header">
+          <div class="cris-letter">C</div>
+          <div class="cris-en">Credibility</div>
+          <div class="cris-ja">信憑性</div>
+          <div class="cris-tagline">「この人の言葉は正しい」</div>
+        </div>
+        <div class="cris-body">
+          <div class="cris-section-label">SEとして高める行動</div>
+          <ul class="cris-items">
+            <li>業界動向・競合情報を的確に提示する</li>
+            <li>データや事例で裏付けた提案をする</li>
+            <li>過去の成功実績を具体的に共有する</li>
+            <li>専門用語を正しく使い知見を示す</li>
+          </ul>
+          <div class="cris-section-label" style="margin-top: 4px;">関連するスキル領域</div>
+          <div class="cris-tags">
+            <span class="cris-tag">ナレッジ</span>
+            <span class="cris-tag">ソリューション</span>
+            <span class="cris-tag">ビジネス</span>
+            <span class="cris-tag">ドメイン</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- R -->
+      <div class="cris-card">
+        <div class="cris-card-header">
+          <div class="cris-letter">R</div>
+          <div class="cris-en">Reliability</div>
+          <div class="cris-ja">信頼性</div>
+          <div class="cris-tagline">「この人は確実にやる」</div>
+        </div>
+        <div class="cris-body">
+          <div class="cris-section-label">SEとして高める行動</div>
+          <ul class="cris-items">
+            <li>期日通りに資料・回答を必ず届ける</li>
+            <li>小さな依頼も漏らさずフォローする</li>
+            <li>発言と行動に一貫性を保つ</li>
+            <li>進捗を自ら報告し期待値を管理する</li>
+          </ul>
+          <div class="cris-section-label" style="margin-top: 4px;">関連するスキル領域</div>
+          <div class="cris-tags">
+            <span class="cris-tag">プロジェクトマネジメント</span>
+            <span class="cris-tag">ロジ</span>
+            <span class="cris-tag">政治</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- I -->
+      <div class="cris-card">
+        <div class="cris-card-header">
+          <div class="cris-letter">I</div>
+          <div class="cris-en">Intimacy</div>
+          <div class="cris-ja">親密性</div>
+          <div class="cris-tagline">「この人には話しやすい」</div>
+        </div>
+        <div class="cris-body">
+          <div class="cris-section-label">SEとして高める行動</div>
+          <ul class="cris-items">
+            <li>本音やリスクを率直に共有できる</li>
+            <li>相手の懸念や不安に共感を示す</li>
+            <li>会議外でも気軽に連絡できる関係</li>
+            <li>相手の個人的な関心事も覚えておく</li>
+          </ul>
+          <div class="cris-section-label" style="margin-top: 4px;">関連するスキル領域</div>
+          <div class="cris-tags">
+            <span class="cris-tag">人間関係構築能力</span>
+            <span class="cris-tag">情緒的結合</span>
+            <span class="cris-tag">機能的結合</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- S -->
+      <div class="cris-card">
+        <div class="cris-card-header red">
+          <div class="cris-letter">S</div>
+          <div class="cris-en">Self-orientation</div>
+          <div class="cris-ja red">自己志向性</div>
+          <div class="cris-tagline">「この人は私のために」</div>
+        </div>
+        <div class="cris-body">
+          <div class="cris-section-label red">Sを下げる行動（分母なので低いほど良い）</div>
+          <ul class="cris-items red">
+            <li>自社利益より顧客の課題解決を優先</li>
+            <li>不要な提案は正直に「不要」と伝える</li>
+            <li>相手の話を遮らず最後まで傾聴する</li>
+            <li>売上目標より信頼関係を優先する</li>
+          </ul>
+          <div class="cris-section-label red" style="margin-top: 4px;">関連するスキル領域</div>
+          <div class="cris-tags">
+            <span class="cris-tag">トーク</span>
+            <span class="cris-tag">ヒアリング</span>
+            <span class="cris-tag">プレゼンテーション</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2>なぜSEにこの方程式が刺さるのか</h2>
+
+    <p>
+      SEは、エンジニアとビジネスサイドの境界に立つ職種だ。
+      技術的な正確さを担保しながら、顧客や関係者と会話し、課題を言語化し、提案につなげる役割を担う。
+    </p>
+
+    <p>
+      この役割において、Trust Equationの4要素はそれぞれ明確な意味を持つ。
+    </p>
+
+    <div class="point-box">
+      <div class="point-num">C — Credibility</div>
+      <h3>「この人の言葉は正しい」と思われる状態を作る</h3>
+      <p>
+        顧客が技術的な提案を受け入れるかどうかは、内容の正確さだけでなく、
+        「この人が言うなら正しいだろう」という信憑性に依存する。
+        実績の共有、データによる裏付け、専門知識の適切な使用が、Cを高める。
+        作業者止まりのSEがまず取り組むべきはここだ。
+      </p>
+    </div>
+
+    <div class="point-box">
+      <div class="point-num">R — Reliability</div>
+      <h3>「言ったことを必ずやる人」として認識される</h3>
+      <p>
+        小さな約束を守ること、期日通りに動くこと、進捗を自分から報告すること。
+        これらは技術力とは無関係に見えるが、顧客の信頼形成において最も安定した基盤になる。
+        定例会での報告方法一つで、Rは大きく変わる。
+      </p>
+    </div>
+
+    <div class="point-box">
+      <div class="point-num">I — Intimacy</div>
+      <h3>「本音を話せる相手」になる</h3>
+      <p>
+        顧客が本当に困っていることを話してくれるかどうかは、このIの高さで決まる。
+        会議の場で建前しか出ないのは、Iが低い状態だ。
+        相手の懸念に共感を示し、失敗談を正直に話せる関係を作ることで、
+        課題の本質に近づける。
+      </p>
+    </div>
+
+    <div class="point-box" style="border-color: #FECACA; background: var(--white);">
+      <div class="point-num" style="color: #C53030;">S — Self-orientation（分母）</div>
+      <h3>「この人は自分のために動いている」と思わせない</h3>
+      <p>
+        Sが高い状態とは、「自分の売上・評価・主張」が前面に出ている状態だ。
+        プレゼンで自社製品の話ばかりする、相手の話を遮って自分の意見を言う、
+        必要のない提案を押しつける。これらはすべてSを上げ、信頼スコアを下げる。
+        顧客のために動いているという事実を、行動で示し続けることがSを下げる唯一の方法だ。
+      </p>
+    </div>
+
+    <h2>信頼スコアを数字で考える</h2>
+
+    <p>
+      Trust Equationは定性的なフレームワークだが、各要素を低・中・高で評価することで、
+      自分の信頼スコアがどこで下がっているかを構造的に把握できる。
+    </p>
+
+    <table class="score-table">
+      <thead>
+        <tr>
+          <th>要素</th>
+          <th>低い状態（よくあるSEの姿）</th>
+          <th>高い状態（上流で選ばれるSEの姿）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>C（信憑性）</strong></td>
+          <td>「とりあえず仕様通りです」</td>
+          <td>「同業他社ではこの構成が主流で、理由は…」</td>
+        </tr>
+        <tr>
+          <td><strong>R（信頼性）</strong></td>
+          <td>期日に遅れる、確認待ちが多い</td>
+          <td>先回りして進捗を連絡、約束を必ず守る</td>
+        </tr>
+        <tr>
+          <td><strong>I（親密性）</strong></td>
+          <td>会議だけの関係、本音が出てこない</td>
+          <td>担当者から「実は…」と相談される関係</td>
+        </tr>
+        <tr>
+          <td><strong>S（自己志向性）</strong></td>
+          <td>自社サービスの話を優先する</td>
+          <td>不要なら「今は不要です」と言える</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>信頼は「積み上げる」ものであり、「一度で得る」ものではない</h2>
+
+    <p>
+      Trust Equationが示す最も重要な教訓は、信頼はスキルではなく行動の蓄積だということだ。
+    </p>
+
+    <p>
+      一度の提案で信頼を得ることはできない。
+      しかし、毎回の定例会でRを積み上げ、困ったときに本音を話してもらえるようにIを育て、
+      データに基づく発言でCを積み重ねながら、Sを常に低く保ち続けることで、
+      <strong>「代替しにくい存在」になっていく</strong>。
+    </p>
+
+    <div class="summary-box">
+      <h3>SE向けの実践まとめ</h3>
+      <p>
+        C：根拠のある発言をする。「〜だと思います」より「〜のデータがあります」<br>
+        R：小さな約束を100%守る。特に期日と報告。<br>
+        I：会議の場以外でも接点を作る。相手の懸念を引き出す質問をする。<br>
+        S：自分の評価より顧客の課題を優先する。不要なものは正直に言う。
+      </p>
+    </div>
+
+    <p class="article-note">
+      ※参考：Charles H. Green, Andrea P. Howe「The Trusted Advisor Field Book」および関連調査をもとに構成。
+    </p>
+
+    <!-- CTA -->
+    <div class="cta-banner">
+      <h2>信頼されるSEになるための<br>キャリア設計を、一緒に考えます。</h2>
+      <p>
+        Trust Equationの各要素を、あなたの現場でどう高めるか。<br>
+        現状を整理して具体的な方向性を決める30分の無料壁打ちを行っています。
+      </p>
+      <a href="index.html#form" class="cta-btn">無料キャリア壁打ちに申し込む →</a>
+      <p class="cta-note">完全無料・30分・強引な勧誘なし</p>
+    </div>
+
+    <div class="article-footer-nav">
+      <a href="index.html" class="back-link">← SE Career Lab トップへ戻る</a>
+      <a href="article-ai-proof-se.html" class="back-link">AIに代替されないSEになる3つの力 →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 SE Career Lab. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
