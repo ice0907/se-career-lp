@@ -42,6 +42,7 @@
       border-bottom: 1px solid var(--border);
       padding: 14px 24px;
       display: flex;
+      flex-wrap: nowrap;
       justify-content: space-between;
       align-items: center;
     }
@@ -67,6 +68,16 @@
     }
 
     .header-cta:hover { background: var(--blue-dark); }
+
+    .cta-short { display: none; }
+
+    @media (max-width: 640px) {
+      header { padding: 8px 12px; gap: 6px; flex-wrap: nowrap; }
+      .logo { font-size: 13px; flex-shrink: 0; white-space: nowrap; }
+      .header-cta { padding: 7px 12px; font-size: 12px; flex-shrink: 0; white-space: nowrap; }
+      .cta-full { display: none; }
+      .cta-short { display: inline; }
+    }
 
     /* ===== HERO ===== */
     .article-hero {
@@ -191,6 +202,7 @@
       font-weight: 900;
       margin-bottom: 8px;
       display: flex;
+      flex-wrap: nowrap;
       align-items: center;
       justify-content: center;
       gap: 16px;
@@ -306,6 +318,7 @@
 
     .cris-tags {
       display: flex;
+      flex-wrap: nowrap;
       flex-wrap: wrap;
       gap: 8px;
     }
@@ -464,6 +477,7 @@
       padding-top: 32px;
       border-top: 1px solid var(--border);
       display: flex;
+      flex-wrap: nowrap;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
@@ -501,7 +515,7 @@
 <!-- HEADER -->
 <header>
   <a href="index.html" class="logo">SE Career Lab</a>
-  <a href="index.html#form" class="header-cta">無料キャリア相談を申し込む</a>
+  <a href="index.html#form" class="header-cta"><span class="cta-full">無料キャリア相談を申し込む</span><span class="cta-short">無料で相談する</span></a>
 </header>
 
 <!-- HERO -->
