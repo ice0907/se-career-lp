@@ -229,18 +229,22 @@
       bottom: 0;
       background: var(--white);
       border-top: 1px solid var(--border);
-      padding: 12px 16px;
-      padding-bottom: max(80px, env(safe-area-inset-bottom, 80px));
       z-index: 99;
-      flex-direction: column;
-      gap: 2px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .mobile-nav.open { display: block; }
+
+    .mobile-nav-inner {
+      height: 100%;
       overflow-y: scroll;
       -webkit-overflow-scrolling: touch;
       overscroll-behavior: contain;
+      padding: 12px 16px 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
-
-    .mobile-nav.open { display: flex; }
 
     .mobile-nav a {
       display: block;
@@ -1755,10 +1759,14 @@
       .hamburger { display: flex; }
     }
 
+    .cta-short { display: none; }
+
     @media (max-width: 640px) {
       header { padding: 10px 12px; gap: 8px; }
       .logo { font-size: 14px; }
-      .header-cta { padding: 8px 12px; font-size: 12px; }
+      .header-cta { padding: 8px 14px; font-size: 13px; }
+      .cta-full { display: none; }
+      .cta-short { display: inline; }
       section { padding: 60px 16px; }
       .hero { padding: 60px 16px 90px; }
       .form-card { padding: 28px 20px; }
@@ -1883,7 +1891,10 @@
 
   </nav>
 
-  <a href="#form" class="header-cta">無料キャリア相談を申し込む</a>
+  <a href="#form" class="header-cta">
+    <span class="cta-full">無料キャリア相談を申し込む</span>
+    <span class="cta-short">無料で相談する</span>
+  </a>
 
   <button class="hamburger" id="hamburger" aria-label="メニューを開く" onclick="toggleMobileNav()">
     <span></span>
@@ -1894,29 +1905,31 @@
 
 <!-- モバイルナビ -->
 <div class="mobile-nav" id="mobile-nav">
-  <div class="mobile-nav-group">
-    <div class="mobile-nav-heading">SE Career Labとは</div>
-    <a href="#what" onclick="closeMobileNav()">サービス概要</a>
-    <a href="#crisis" onclick="closeMobileNav()">SEを取り巻く環境の変化</a>
-    <a href="#pain" onclick="closeMobileNav()">こんな悩みはありませんか</a>
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-heading">SE Career Labとは</div>
+      <a href="#what" onclick="closeMobileNav()">サービス概要</a>
+      <a href="#crisis" onclick="closeMobileNav()">SEを取り巻く環境の変化</a>
+      <a href="#pain" onclick="closeMobileNav()">こんな悩みはありませんか</a>
+    </div>
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-heading">サービスの特徴</div>
+      <a href="#incentive" onclick="closeMobileNav()">単価の仕組み</a>
+      <a href="#career" onclick="closeMobileNav()">キャリアパス</a>
+      <a href="#compare" onclick="closeMobileNav()">他社との違い</a>
+    </div>
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-heading">参加を考えている方へ</div>
+      <a href="#flow" onclick="closeMobileNav()">参加までの流れ</a>
+      <a href="#voices" onclick="closeMobileNav()">参加者の声</a>
+      <a href="#faq" onclick="closeMobileNav()">よくある質問</a>
+    </div>
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-heading">コンテンツ</div>
+      <a href="#articles" onclick="closeMobileNav()">記事一覧を見る</a>
+    </div>
+    <a href="#form" onclick="closeMobileNav()" style="color: var(--blue); border: 1.5px solid var(--blue); text-align:center; margin-top:4px; border-radius:6px; padding: 12px 14px; font-weight:700; display:block; white-space:nowrap;">無料キャリア相談を申し込む →</a>
   </div>
-  <div class="mobile-nav-group">
-    <div class="mobile-nav-heading">サービスの特徴</div>
-    <a href="#incentive" onclick="closeMobileNav()">単価の仕組み</a>
-    <a href="#career" onclick="closeMobileNav()">キャリアパス</a>
-    <a href="#compare" onclick="closeMobileNav()">他社との違い</a>
-  </div>
-  <div class="mobile-nav-group">
-    <div class="mobile-nav-heading">参加を考えている方へ</div>
-    <a href="#flow" onclick="closeMobileNav()">参加までの流れ</a>
-    <a href="#voices" onclick="closeMobileNav()">参加者の声</a>
-    <a href="#faq" onclick="closeMobileNav()">よくある質問</a>
-  </div>
-  <div class="mobile-nav-group">
-    <div class="mobile-nav-heading">コンテンツ</div>
-    <a href="#articles" onclick="closeMobileNav()">記事一覧を見る</a>
-  </div>
-  <a href="#form" onclick="closeMobileNav()" style="color: var(--blue); border: 1.5px solid var(--blue); text-align:center; margin-top:4px; border-radius:6px; padding: 12px 14px; font-weight:700;">無料キャリア相談を申し込む →</a>
 </div>
 
 <!-- HERO -->
