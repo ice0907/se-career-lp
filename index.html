@@ -44,6 +44,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 16px;
+      flex-wrap: nowrap;
     }
 
     .logo {
@@ -236,7 +237,11 @@
     .mobile-nav.open { display: block; }
 
     .mobile-nav-inner {
-      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       overflow-y: scroll;
       -webkit-overflow-scrolling: touch;
       overscroll-behavior: contain;
@@ -1762,9 +1767,9 @@
     .cta-short { display: none; }
 
     @media (max-width: 640px) {
-      header { padding: 10px 12px; gap: 8px; }
-      .logo { font-size: 14px; }
-      .header-cta { padding: 8px 14px; font-size: 13px; }
+      header { padding: 8px 12px; gap: 6px; flex-wrap: nowrap; }
+      .logo { font-size: 13px; flex-shrink: 0; }
+      .header-cta { padding: 7px 12px; font-size: 12px; flex-shrink: 0; }
       .cta-full { display: none; }
       .cta-short { display: inline; }
       section { padding: 60px 16px; }
