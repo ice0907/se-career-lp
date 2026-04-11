@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>単価交渉で「通る人」と「通らない人」の差はどこにあるか | SE Career Lab</title>
+  <meta name="description" content="単価交渉は「お願いするもの」ではなく「根拠を示すもの」。更新前に何をしているかで結果が決まる。交渉が通るSEが事前に積んでいることを具体的に解説する。" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #1A56DB; --blue-dark: #1040B0; --blue-light: #EEF4FF;
+      --accent: #F59E0B; --text: #111827; --text-muted: #6B7280;
+      --bg: #F9FAFB; --white: #FFFFFF; --border: #E5E7EB;
+      --green: #059669; --green-light: #ECFDF5;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); line-height: 1.8; }
+    header { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 17px; font-weight: 700; color: var(--blue); text-decoration: none; }
+    .header-cta { background: var(--blue); color: var(--white); border: none; padding: 10px 22px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .header-cta:hover { background: var(--blue-dark); }
+    .article-hero { background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 100%); color: var(--white); padding: 72px 24px 80px; text-align: center; }
+    .article-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 5px 16px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 20px; }
+    .article-hero h1 { font-size: clamp(22px, 4vw, 38px); font-weight: 800; line-height: 1.35; max-width: 720px; margin: 0 auto 20px; }
+    .article-meta { font-size: 13px; color: rgba(255,255,255,0.6); }
+    .article-wrap { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+    .article-body { font-size: 16px; line-height: 1.9; color: var(--text); }
+    .article-body p { margin-bottom: 24px; }
+    .article-body h2 { font-size: clamp(20px, 3vw, 26px); font-weight: 800; margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 2px solid var(--blue-light); color: var(--text); line-height: 1.4; }
+    .article-body h3 { font-size: 18px; font-weight: 700; margin: 36px 0 14px; color: var(--blue-dark); }
+    .article-body ul, .article-body ol { padding-left: 24px; margin-bottom: 24px; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { font-weight: 700; }
+    .article-lead { font-size: 17px; line-height: 2; color: var(--text-muted); background: var(--bg); border-left: 4px solid var(--blue); border-radius: 0 10px 10px 0; padding: 22px 24px; margin-bottom: 40px; }
+    .point-box { background: var(--white); border: 1.5px solid var(--blue-light); border-radius: 14px; padding: 28px 28px 24px; margin: 36px 0; }
+    .point-num { font-size: 12px; font-weight: 700; letter-spacing: 1px; color: var(--blue); text-transform: uppercase; margin-bottom: 8px; }
+    .point-box h3 { font-size: 20px; font-weight: 800; margin: 0 0 14px; color: var(--text); }
+    .point-box p { font-size: 15px; color: var(--text-muted); margin: 0; line-height: 1.8; }
+    .compare-box { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+    .compare-item { border-radius: 12px; padding: 20px; }
+    .compare-item.bad { background: #FEF2F2; border: 1px solid #FECACA; }
+    .compare-item.good { background: var(--green-light); border: 1px solid #A7F3D0; }
+    .compare-label { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 10px; }
+    .compare-item.bad .compare-label { color: #EF4444; }
+    .compare-item.good .compare-label { color: #059669; }
+    .compare-item p { font-size: 14px; line-height: 1.7; margin: 0 !important; }
+    .compare-item.bad p { color: #7F1D1D; }
+    .compare-item.good p { color: #064E3B; }
+    .blockquote { border-left: 4px solid var(--accent); padding: 16px 20px; margin: 32px 0; background: #FFFBEB; border-radius: 0 10px 10px 0; }
+    .blockquote p { font-size: 15px; font-style: italic; color: var(--text); margin: 0 !important; line-height: 1.8; }
+    .article-block { background: var(--bg); border-radius: 12px; padding: 28px 28px 20px; margin: 28px 0; }
+    .article-block h3 { font-size: 17px; font-weight: 700; color: var(--text); margin: 0 0 14px; }
+    .article-block p { font-size: 15px; color: var(--text-muted); margin-bottom: 12px !important; }
+    .article-block p:last-child { margin-bottom: 0 !important; }
+    .article-block ul { padding-left: 20px; }
+    .article-block li { font-size: 15px; color: var(--text-muted); margin-bottom: 6px; }
+    .timeline { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+    .timeline-item { display: flex; gap: 16px; align-items: flex-start; position: relative; }
+    .timeline-item:not(:last-child)::after { content: ''; position: absolute; left: 19px; top: 40px; width: 2px; height: calc(100% - 8px); background: var(--border); }
+    .timeline-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--blue); color: var(--white); font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1; }
+    .timeline-body { padding: 8px 0 28px; }
+    .timeline-body h4 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+    .timeline-body p { font-size: 14px; color: var(--text-muted); margin: 0 !important; line-height: 1.7; }
+    .article-summary { background: var(--blue-light); border-left: 4px solid var(--blue); border-radius: 0 12px 12px 0; padding: 24px 24px 20px; margin: 28px 0; }
+    .article-summary h3 { font-size: 17px; font-weight: 700; color: var(--blue-dark); margin: 0 0 10px; }
+    .article-summary p { font-size: 15px; color: var(--text); margin: 0 !important; line-height: 1.8; }
+    .cta-banner { background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 100%); color: var(--white); border-radius: 20px; padding: 48px 36px; text-align: center; margin: 56px 0 0; }
+    .cta-banner h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 800; margin-bottom: 14px; line-height: 1.4; }
+    .cta-banner p { font-size: 15px; color: rgba(255,255,255,0.8); margin-bottom: 28px; line-height: 1.7; }
+    .cta-btn { display: inline-block; background: var(--accent); color: #1A1A1A; padding: 16px 40px; border-radius: 8px; font-size: 16px; font-weight: 700; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 16px rgba(245,158,11,0.4); }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.5); }
+    .cta-note { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 12px; }
+    .article-footer-nav { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .back-link { font-size: 14px; color: var(--blue); text-decoration: none; font-weight: 600; }
+    .back-link:hover { text-decoration: underline; }
+    footer { background: #111827; color: rgba(255,255,255,0.5); text-align: center; padding: 32px 24px; font-size: 13px; }
+    @media (max-width: 640px) { .compare-box { grid-template-columns: 1fr; } .cta-banner { padding: 36px 20px; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">SE Career Lab</a>
+  <a href="index.html#form" class="header-cta">無料キャリア相談を申し込む</a>
+</header>
+
+<div class="article-hero">
+  <div class="article-tag">単価・収入</div>
+  <h1>単価交渉で「通る人」と<br>「通らない人」の差はどこにあるか</h1>
+  <p class="article-meta">2026年4月11日 &nbsp;|&nbsp; SE Career Lab</p>
+</div>
+
+<div class="article-wrap">
+  <div class="article-body">
+
+    <p class="article-lead">
+      更新のタイミングが近づくと、「単価を上げてほしい」と思うSEは多い。<br>
+      しかし実際に交渉して通る人と、毎回見送られる人の間には、はっきりした差がある。<br>
+      その差は、交渉の場で何を言うかではなく、<strong>交渉前の数ヶ月に何をしてきたか</strong>で決まる。
+    </p>
+
+    <h2>「交渉」という言葉の誤解</h2>
+
+    <p>
+      単価交渉と聞くと、「値上げをお願いする会話」をイメージするSEが多い。
+      しかしそのイメージのまま交渉に臨むと、ほぼ確実にうまくいかない。
+    </p>
+
+    <p>
+      顧客企業の担当者は、単価を上げる稟議を社内で通さなければならない。
+      つまり交渉相手も、あなたの単価アップを「社内で説明する立場」に立つことになる。
+      そのとき担当者が必要なのは、<strong>「なぜこの人の単価を上げるべきか」の根拠</strong>だ。
+    </p>
+
+    <div class="compare-box">
+      <div class="compare-item bad">
+        <div class="compare-label">通らない交渉</div>
+        <p>「もう3年経ったので、単価を上げていただけませんか」<br>「市場相場が上がっているので検討をお願いしたい」</p>
+      </div>
+      <div class="compare-item good">
+        <div class="compare-label">通る交渉</div>
+        <p>「当初の開発支援に加え、要件整理と関係者調整も担ってきました。次のフェーズでは○○の領域もカバーできます」</p>
+      </div>
+    </div>
+
+    <p>
+      通る交渉の本質は「価値の提示」だ。
+      年数や市場相場は理由にならない。
+      <strong>「この人がいることで、現場がどう変わったか」を言葉にできるかどうか</strong>が、すべてを分ける。
+    </p>
+
+    <h2>単価が上がるSEが、更新前の3ヶ月にしていること</h2>
+
+    <p>
+      単価交渉に強いSEに共通しているのは、更新直前に動くのではなく、
+      日常の業務の中で「根拠」を積み上げていることだ。
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">1</div>
+        <div class="timeline-body">
+          <h4>担ってきた価値を言語化しておく</h4>
+          <p>「当初の役割」と「実際に担ってきたこと」のギャップを整理する。要件整理・関係者調整・改善提案など、契約外の貢献を具体的に書き出す。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">2</div>
+        <div class="timeline-body">
+          <h4>顧客担当者に「見えている成果」を渡す</h4>
+          <p>定例会や日常のやり取りで「この対応が○○の改善につながりました」と言葉に出す習慣を作る。担当者の記憶に残っていないものは、稟議の材料にならない。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">3</div>
+        <div class="timeline-body">
+          <h4>次フェーズで担える役割を先に示す</h4>
+          <p>「今後はこの領域もカバーできます」と提示しておく。単価アップは過去の実績だけでなく、「これからの期待値」でも判断される。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">4</div>
+        <div class="timeline-body">
+          <h4>担当者が稟議を通しやすい言葉を渡す</h4>
+          <p>「上流工程・要件整理・顧客折衝まで担える人材として継続をお願いしたい」という文脈を、担当者自身が使えるように整えておく。</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>「根拠がない」状態で交渉するとどうなるか</h2>
+
+    <p>
+      根拠のない単価交渉が通らないのは、担当者が悪いわけではない。
+      担当者も「なぜ上げるのか」を説明できなければ、社内で動けないからだ。
+    </p>
+
+    <div class="blockquote">
+      <p>
+        単価交渉で「検討します」と言われたまま見送られた経験がある人は、
+        次の更新までの期間に何を積み上げるかを変えるだけで、結果が変わることが多い。
+        交渉の言い方を工夫するより、交渉前の状態を整える方がはるかに効く。
+      </p>
+    </div>
+
+    <h2>技術力だけでは、根拠にならない</h2>
+
+    <p>
+      「自分はこれだけの技術を持っている」は、残念ながら単価交渉の根拠として弱い。
+      技術力は同程度のSEが市場にはいくらでもいるからだ。
+    </p>
+
+    <p>
+      単価アップの根拠になるのは、<strong>「この現場でこの人がいることで生まれている固有の価値」</strong>だ。
+      課題を整理できる、関係者を動かせる、次の問題を先に見つけられる。
+      こうした力が、「代替しにくい」という評価につながり、単価を上げる根拠になる。
+    </p>
+
+    <div class="article-block">
+      <h3>単価が上がりやすいSEの現場での特徴</h3>
+      <ul>
+        <li>定例会で「今気になっていること」を毎回一言添えている</li>
+        <li>顧客の要望を受け取るだけでなく、背景にある課題を確認している</li>
+        <li>問題が起きたとき、原因と対応策をセットで報告している</li>
+        <li>自分の支援がどんな成果につながっているかを言語化できる</li>
+        <li>次のフェーズで何が必要かを先に考えて顧客に伝えている</li>
+      </ul>
+    </div>
+
+    <h2>「いくら上げるか」より「なぜ上げるか」を先に固める</h2>
+
+    <p>
+      多くのSEは「いくら上げてもらうか」から考える。
+      しかし先に固めるべきは、<strong>「なぜ上げてもらえる状態になっているか」</strong>だ。
+    </p>
+
+    <p>
+      この順序を逆にして交渉に臨むと、金額の話になった瞬間に「では少し待ってください」となる。
+      根拠が先にあれば、担当者は金額の話を社内に持ち込みやすくなる。
+    </p>
+
+    <div class="article-block">
+      <h3>更新前に整理しておく3つの問い</h3>
+      <p><strong>1. 当初の役割以上に何を担ってきたか？</strong></p>
+      <p>契約時の業務範囲と、実際に担ってきたことのギャップを書き出す。</p>
+      <p><strong>2. 自分がいることで現場が具体的にどう変わったか？</strong></p>
+      <p>「対応が早くなった」「手戻りが減った」「顧客との関係が整理された」など、言葉にできるものを集める。</p>
+      <p><strong>3. 次のフェーズで自分が担える役割は何か？</strong></p>
+      <p>「これからも続けてほしい理由」を顧客側の言葉で整理する。</p>
+    </div>
+
+    <div class="article-summary">
+      <h3>単価交渉は「交渉当日」ではなく「交渉前の数ヶ月」で決まる</h3>
+      <p>
+        通る交渉には根拠がある。根拠は日常業務の中で積み上げるものだ。
+        技術を磨くことと同時に、「自分が現場にいることの価値」を言語化し続けることが、
+        単価を上げていく最短経路になる。
+      </p>
+    </div>
+
+    <div class="cta-banner">
+      <h2>単価交渉の根拠を、一緒に整理しませんか。</h2>
+      <p>
+        現在の現場で自分が担ってきた価値・次のフェーズで提示できること。<br>
+        30分の無料壁打ちで、交渉に使える「根拠」を一緒に言語化します。
+      </p>
+      <a href="index.html#form" class="cta-btn">無料キャリア壁打ちに申し込む →</a>
+      <p class="cta-note">完全無料・30分・強引な勧誘なし</p>
+    </div>
+
+    <div class="article-footer-nav">
+      <a href="index.html" class="back-link">← SE Career Lab トップへ戻る</a>
+      <span style="font-size: 13px; color: var(--text-muted);">SE Career Lab &copy; 2026</span>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 SE Career Lab. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

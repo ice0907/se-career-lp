@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>上流工程に呼ばれるSEと呼ばれないSEの、現場での違い | SE Career Lab</title>
+  <meta name="description" content="上流に行くには資格でも転職でもなく、現場での立ち振る舞いが9割。要件整理・折衝・提案の機会を自分で作れるかどうか。現場で実践できる具体的な行動を解説する。" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #1A56DB; --blue-dark: #1040B0; --blue-light: #EEF4FF;
+      --accent: #F59E0B; --text: #111827; --text-muted: #6B7280;
+      --bg: #F9FAFB; --white: #FFFFFF; --border: #E5E7EB;
+      --green: #059669; --green-light: #ECFDF5;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); line-height: 1.8; }
+    header { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 17px; font-weight: 700; color: var(--blue); text-decoration: none; }
+    .header-cta { background: var(--blue); color: var(--white); border: none; padding: 10px 22px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .header-cta:hover { background: var(--blue-dark); }
+    .article-hero { background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 100%); color: var(--white); padding: 72px 24px 80px; text-align: center; }
+    .article-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 5px 16px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 20px; }
+    .article-hero h1 { font-size: clamp(22px, 4vw, 38px); font-weight: 800; line-height: 1.35; max-width: 720px; margin: 0 auto 20px; }
+    .article-meta { font-size: 13px; color: rgba(255,255,255,0.6); }
+    .article-wrap { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+    .article-body { font-size: 16px; line-height: 1.9; color: var(--text); }
+    .article-body p { margin-bottom: 24px; }
+    .article-body h2 { font-size: clamp(20px, 3vw, 26px); font-weight: 800; margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 2px solid var(--blue-light); color: var(--text); line-height: 1.4; }
+    .article-body h3 { font-size: 18px; font-weight: 700; margin: 36px 0 14px; color: var(--blue-dark); }
+    .article-body ul, .article-body ol { padding-left: 24px; margin-bottom: 24px; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { font-weight: 700; }
+    .article-lead { font-size: 17px; line-height: 2; color: var(--text-muted); background: var(--bg); border-left: 4px solid var(--blue); border-radius: 0 10px 10px 0; padding: 22px 24px; margin-bottom: 40px; }
+    .point-box { background: var(--white); border: 1.5px solid var(--blue-light); border-radius: 14px; padding: 28px 28px 24px; margin: 36px 0; }
+    .point-num { font-size: 12px; font-weight: 700; letter-spacing: 1px; color: var(--blue); text-transform: uppercase; margin-bottom: 8px; }
+    .point-box h3 { font-size: 20px; font-weight: 800; margin: 0 0 14px; color: var(--text); }
+    .point-box p { font-size: 15px; color: var(--text-muted); margin: 0; line-height: 1.8; }
+    .compare-box { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+    .compare-item { border-radius: 12px; padding: 20px; }
+    .compare-item.bad { background: #FEF2F2; border: 1px solid #FECACA; }
+    .compare-item.good { background: var(--green-light); border: 1px solid #A7F3D0; }
+    .compare-label { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 10px; }
+    .compare-item.bad .compare-label { color: #EF4444; }
+    .compare-item.good .compare-label { color: #059669; }
+    .compare-item p { font-size: 14px; line-height: 1.7; margin: 0 !important; }
+    .compare-item.bad p { color: #7F1D1D; }
+    .compare-item.good p { color: #064E3B; }
+    .blockquote { border-left: 4px solid var(--accent); padding: 16px 20px; margin: 32px 0; background: #FFFBEB; border-radius: 0 10px 10px 0; }
+    .blockquote p { font-size: 15px; font-style: italic; color: var(--text); margin: 0 !important; line-height: 1.8; }
+    .article-block { background: var(--bg); border-radius: 12px; padding: 28px 28px 20px; margin: 28px 0; }
+    .article-block h3 { font-size: 17px; font-weight: 700; color: var(--text); margin: 0 0 14px; }
+    .article-block p { font-size: 15px; color: var(--text-muted); margin-bottom: 12px !important; }
+    .article-block p:last-child { margin-bottom: 0 !important; }
+    .article-block ul { padding-left: 20px; }
+    .article-block li { font-size: 15px; color: var(--text-muted); margin-bottom: 6px; }
+    .scene-card { border: 1.5px solid var(--border); border-radius: 12px; padding: 24px; margin: 20px 0; }
+    .scene-label { font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 10px; }
+    .scene-card h4 { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 10px; }
+    .scene-card p { font-size: 14px; color: var(--text-muted); margin: 0 !important; line-height: 1.75; }
+    .scene-card .action { font-size: 14px; font-weight: 600; color: var(--blue); margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+    .article-summary { background: var(--blue-light); border-left: 4px solid var(--blue); border-radius: 0 12px 12px 0; padding: 24px 24px 20px; margin: 28px 0; }
+    .article-summary h3 { font-size: 17px; font-weight: 700; color: var(--blue-dark); margin: 0 0 10px; }
+    .article-summary p { font-size: 15px; color: var(--text); margin: 0 !important; line-height: 1.8; }
+    .cta-banner { background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 100%); color: var(--white); border-radius: 20px; padding: 48px 36px; text-align: center; margin: 56px 0 0; }
+    .cta-banner h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 800; margin-bottom: 14px; line-height: 1.4; }
+    .cta-banner p { font-size: 15px; color: rgba(255,255,255,0.8); margin-bottom: 28px; line-height: 1.7; }
+    .cta-btn { display: inline-block; background: var(--accent); color: #1A1A1A; padding: 16px 40px; border-radius: 8px; font-size: 16px; font-weight: 700; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 16px rgba(245,158,11,0.4); }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.5); }
+    .cta-note { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 12px; }
+    .article-footer-nav { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .back-link { font-size: 14px; color: var(--blue); text-decoration: none; font-weight: 600; }
+    .back-link:hover { text-decoration: underline; }
+    footer { background: #111827; color: rgba(255,255,255,0.5); text-align: center; padding: 32px 24px; font-size: 13px; }
+    @media (max-width: 640px) { .compare-box { grid-template-columns: 1fr; } .cta-banner { padding: 36px 20px; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">SE Career Lab</a>
+  <a href="index.html#form" class="header-cta">無料キャリア相談を申し込む</a>
+</header>
+
+<div class="article-hero">
+  <div class="article-tag">キャリアアップ</div>
+  <h1>上流工程に呼ばれるSEと<br>呼ばれないSEの、現場での違い</h1>
+  <p class="article-meta">2026年4月11日 &nbsp;|&nbsp; SE Career Lab</p>
+</div>
+
+<div class="article-wrap">
+  <div class="article-body">
+
+    <p class="article-lead">
+      「上流工程に行きたい」と言うSEは多い。<br>
+      しかし上流に行くのに、転職や資格はほとんど関係ない。<br>
+      必要なのは、今いる現場で「声がかかる人」になること。<br>
+      その差は、日常の小さな振る舞いの積み重ねで生まれている。
+    </p>
+
+    <h2>「上流工程」はどうやって入れるのか</h2>
+
+    <p>
+      上流工程に入りたいと考えるSEの多くが、「転職すれば上流に行ける」「PM資格を取れば変わる」と考えがちだ。
+      しかし現場の実態を見ると、話はずっとシンプルだ。
+    </p>
+
+    <p>
+      要件整理・顧客折衝・提案といった上流の仕事は、<strong>「この人なら任せられる」と思われた人に声がかかる</strong>。
+      その判断は、日常の業務での振る舞いをもとに、現場の担当者や上位者が下している。
+    </p>
+
+    <div class="blockquote">
+      <p>
+        上流に呼ばれるSEは、特別なスキルを持っていることより、
+        「この人に整理してもらうと話が進む」という印象が現場に積み上がっている人であることが多い。
+      </p>
+    </div>
+
+    <h2>呼ばれる人と呼ばれない人の、具体的な違い</h2>
+
+    <p>
+      同じ現場で働く2人のSEを比べると、その差は次のような場面で生まれている。
+    </p>
+
+    <div class="compare-box">
+      <div class="compare-item bad">
+        <div class="compare-label">呼ばれないSE</div>
+        <p>顧客から「この機能を追加したい」と言われたら、すぐ実装に取りかかる。要件通りに作ることが自分の仕事だと思っている。</p>
+      </div>
+      <div class="compare-item good">
+        <div class="compare-label">呼ばれるSE</div>
+        <p>「それはどんな業務課題を解決するためですか」と確認する。背景がわかってから実装方針を判断する。</p>
+      </div>
+    </div>
+
+    <div class="compare-box">
+      <div class="compare-item bad">
+        <div class="compare-label">呼ばれないSE</div>
+        <p>問題が起きたとき「〇〇の不具合が発生しました」と報告して終わる。</p>
+      </div>
+      <div class="compare-item good">
+        <div class="compare-label">呼ばれるSE</div>
+        <p>「原因は〇〇で、対応策は2つあります。A案はリスクが低く、B案は根本解決できます」とセットで報告する。</p>
+      </div>
+    </div>
+
+    <div class="compare-box">
+      <div class="compare-item bad">
+        <div class="compare-label">呼ばれないSE</div>
+        <p>定例会では進捗を報告して終わる。会議中は基本的に聞く側に回っている。</p>
+      </div>
+      <div class="compare-item good">
+        <div class="compare-label">呼ばれるSE</div>
+        <p>進捗に加えて「今週現場で気になったこと」を一言添える。顧客が次に困りそうなことを先に言葉にする。</p>
+      </div>
+    </div>
+
+    <p>
+      いずれも、特別な技術や資格は必要ない。
+      <strong>「一歩先を考える」か「言われたことをやる」かの差</strong>だけだ。
+      しかしこの差が積み重なると、現場での立ち位置が大きく変わっていく。
+    </p>
+
+    <h2>上流へのきっかけを、日常業務で作る方法</h2>
+
+    <p>
+      上流に入るチャンスは、突然来るものではない。
+      日常業務の中で少しずつ「役割を広げる瞬間」を作ることで生まれる。
+    </p>
+
+    <div class="scene-card">
+      <div class="scene-label">場面 01</div>
+      <h4>要件が曖昧なまま来たとき</h4>
+      <p>「とりあえず作り始める」のではなく、「この要件の目的は何ですか？制約条件はありますか？」と確認する。これだけで、要件整理の会話に自然に入れる。</p>
+      <div class="action">→ 「要件整理ができる人」として認識される第一歩</div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-label">場面 02</div>
+      <h4>顧客との打ち合わせに同席したとき</h4>
+      <p>ただ聞くだけでなく、「つまりこういうことですか」と整理して返す。議事録を会話の中で口頭でまとめると、「この人は整理が早い」という印象が生まれる。</p>
+      <div class="action">→ 顧客折衝・議事進行を任せてもらえる入口になる</div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-label">場面 03</div>
+      <h4>現場で気づいた改善点があるとき</h4>
+      <p>「指示されていないから言わない」ではなく、「一点気になっていることがありまして」と添える。小さな気づきを報告する習慣が、「見ている人」という評価につながる。</p>
+      <div class="action">→ 「現場をよく見ている」という信頼が積み上がる</div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-label">場面 04</div>
+      <h4>問題報告のとき</h4>
+      <p>「問題が起きました」で終わるのではなく、「原因はここで、対応策はA案とB案があります。私はA案を推奨します」とセットにする。判断を助ける報告が、上位者から頼りにされる理由になる。</p>
+      <div class="action">→ 「任せられる人」として上位者に認識される</div>
+    </div>
+
+    <h2>「役割を広げる」と「越権行為」の違い</h2>
+
+    <p>
+      「上流の仕事を自分でやろうとすると、PM・リーダーの仕事を取ることにならないか」
+      と心配するSEもいる。これは正当な懸念だが、実態は少し違う。
+    </p>
+
+    <p>
+      上流工程に呼ばれるSEは、PMやリーダーの仕事を「奪う」のではなく、<strong>「補佐する形で担う」</strong>ことが多い。
+      要件整理の会話に入る、議事録をまとめる、顧客への確認を代わりに行う。
+      こうした「手が届いていない部分を自然に埋める」行動が、信頼につながる。
+    </p>
+
+    <div class="article-block">
+      <h3>越権にならずに役割を広げるための原則</h3>
+      <p>・PMやリーダーの判断を待ちながら、補佐できる部分を先に動く</p>
+      <p>・「やっておきました」ではなく「確認したのですが、こうで良いですか」と報告する</p>
+      <p>・決定は上に渡す。整理・情報収集・オプション提示は自分でやる</p>
+      <p>・「任せてください」ではなく「一緒にやらせてください」から始める</p>
+    </div>
+
+    <h2>転職しなくても、今いる現場で上流に入れる</h2>
+
+    <p>
+      「今の現場では上流に行けない構造だから転職するしかない」と感じているSEもいる。
+      もちろんそのケースもある。しかし多くの場合、転職前に試せることがまだある。
+    </p>
+
+    <p>
+      定例会で一言添えることから始める。
+      要件が来たときに背景を確認することから始める。
+      問題報告に対応策をセットにすることから始める。
+    </p>
+
+    <p>
+      <strong>これを3ヶ月続けた人の多くが、現場での立ち位置が変わり始める</strong>と言う。
+      上流工程への入り口は、転職先ではなく今の現場に、すでに存在している可能性が高い。
+    </p>
+
+    <div class="article-summary">
+      <h3>上流に呼ばれるSEは、特別なスキルよりも「日常の習慣」が違う</h3>
+      <p>
+        要件の背景を確認する。問題に対応策をセットにする。気づきを定例会で一言添える。
+        これらは今日から始められる。この積み重ねが、3ヶ月後・半年後の現場での立ち位置を変えていく。
+      </p>
+    </div>
+
+    <div class="cta-banner">
+      <h2>今の現場で、上流への入り口を<br>一緒に探しませんか。</h2>
+      <p>
+        現在の現場での役割・日常の振る舞い・次のステップ。<br>
+        30分の無料壁打ちで、「今の現場でできること」を具体的に整理します。
+      </p>
+      <a href="index.html#form" class="cta-btn">無料キャリア壁打ちに申し込む →</a>
+      <p class="cta-note">完全無料・30分・強引な勧誘なし</p>
+    </div>
+
+    <div class="article-footer-nav">
+      <a href="index.html" class="back-link">← SE Career Lab トップへ戻る</a>
+      <span style="font-size: 13px; color: var(--text-muted);">SE Career Lab &copy; 2026</span>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 SE Career Lab. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

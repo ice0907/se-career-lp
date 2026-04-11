@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>フリーランスSEを検討する前に整理しておく5つの問い | SE Career Lab</title>
+  <meta name="description" content="フリーランスになれば単価が上がるとは限らない。独立する前に「自分が現場で持っている価値」を整理できているか。転換を後悔しないための5つの問いを解説する。" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #1A56DB; --blue-dark: #1040B0; --blue-light: #EEF4FF;
+      --accent: #F59E0B; --text: #111827; --text-muted: #6B7280;
+      --bg: #F9FAFB; --white: #FFFFFF; --border: #E5E7EB;
+      --green: #059669; --green-light: #ECFDF5;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); line-height: 1.8; }
+    header { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 17px; font-weight: 700; color: var(--blue); text-decoration: none; }
+    .header-cta { background: var(--blue); color: var(--white); border: none; padding: 10px 22px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .header-cta:hover { background: var(--blue-dark); }
+    .article-hero { background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 100%); color: var(--white); padding: 72px 24px 80px; text-align: center; }
+    .article-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 5px 16px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 20px; }
+    .article-hero h1 { font-size: clamp(22px, 4vw, 38px); font-weight: 800; line-height: 1.35; max-width: 720px; margin: 0 auto 20px; }
+    .article-meta { font-size: 13px; color: rgba(255,255,255,0.6); }
+    .article-wrap { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+    .article-body { font-size: 16px; line-height: 1.9; color: var(--text); }
+    .article-body p { margin-bottom: 24px; }
+    .article-body h2 { font-size: clamp(20px, 3vw, 26px); font-weight: 800; margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 2px solid var(--blue-light); color: var(--text); line-height: 1.4; }
+    .article-body h3 { font-size: 18px; font-weight: 700; margin: 36px 0 14px; color: var(--blue-dark); }
+    .article-body ul, .article-body ol { padding-left: 24px; margin-bottom: 24px; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { font-weight: 700; }
+    .article-lead { font-size: 17px; line-height: 2; color: var(--text-muted); background: var(--bg); border-left: 4px solid var(--blue); border-radius: 0 10px 10px 0; padding: 22px 24px; margin-bottom: 40px; }
+    .q-card { background: var(--white); border: 1.5px solid var(--blue-light); border-radius: 14px; padding: 28px; margin: 32px 0; }
+    .q-num { font-size: 12px; font-weight: 700; color: var(--blue); letter-spacing: 1px; margin-bottom: 8px; }
+    .q-card h3 { font-size: 19px; font-weight: 800; color: var(--text); margin: 0 0 16px; line-height: 1.4; }
+    .q-card p { font-size: 15px; color: var(--text-muted); margin-bottom: 12px !important; line-height: 1.8; }
+    .q-card p:last-child { margin-bottom: 0 !important; }
+    .q-card .check { font-size: 14px; color: var(--text); background: var(--bg); border-radius: 8px; padding: 10px 14px; margin-top: 12px; }
+    .blockquote { border-left: 4px solid var(--accent); padding: 16px 20px; margin: 32px 0; background: #FFFBEB; border-radius: 0 10px 10px 0; }
+    .blockquote p { font-size: 15px; font-style: italic; color: var(--text); margin: 0 !important; line-height: 1.8; }
+    .compare-box { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+    .compare-item { border-radius: 12px; padding: 20px; }
+    .compare-item.bad { background: #FEF2F2; border: 1px solid #FECACA; }
+    .compare-item.good { background: var(--green-light); border: 1px solid #A7F3D0; }
+    .compare-label { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 10px; }
+    .compare-item.bad .compare-label { color: #EF4444; }
+    .compare-item.good .compare-label { color: #059669; }
+    .compare-item p { font-size: 14px; line-height: 1.7; margin: 0 !important; }
+    .compare-item.bad p { color: #7F1D1D; }
+    .compare-item.good p { color: #064E3B; }
+    .article-block { background: var(--bg); border-radius: 12px; padding: 28px 28px 20px; margin: 28px 0; }
+    .article-block h3 { font-size: 17px; font-weight: 700; color: var(--text); margin: 0 0 14px; }
+    .article-block p { font-size: 15px; color: var(--text-muted); margin-bottom: 12px !important; }
+    .article-block p:last-child { margin-bottom: 0 !important; }
+    .article-summary { background: var(--blue-light); border-left: 4px solid var(--blue); border-radius: 0 12px 12px 0; padding: 24px 24px 20px; margin: 28px 0; }
+    .article-summary h3 { font-size: 17px; font-weight: 700; color: var(--blue-dark); margin: 0 0 10px; }
+    .article-summary p { font-size: 15px; color: var(--text); margin: 0 !important; line-height: 1.8; }
+    .cta-banner { background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 100%); color: var(--white); border-radius: 20px; padding: 48px 36px; text-align: center; margin: 56px 0 0; }
+    .cta-banner h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 800; margin-bottom: 14px; line-height: 1.4; }
+    .cta-banner p { font-size: 15px; color: rgba(255,255,255,0.8); margin-bottom: 28px; line-height: 1.7; }
+    .cta-btn { display: inline-block; background: var(--accent); color: #1A1A1A; padding: 16px 40px; border-radius: 8px; font-size: 16px; font-weight: 700; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 16px rgba(245,158,11,0.4); }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.5); }
+    .cta-note { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 12px; }
+    .article-footer-nav { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .back-link { font-size: 14px; color: var(--blue); text-decoration: none; font-weight: 600; }
+    .back-link:hover { text-decoration: underline; }
+    footer { background: #111827; color: rgba(255,255,255,0.5); text-align: center; padding: 32px 24px; font-size: 13px; }
+    @media (max-width: 640px) { .compare-box { grid-template-columns: 1fr; } .cta-banner { padding: 36px 20px; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">SE Career Lab</a>
+  <a href="index.html#form" class="header-cta">無料キャリア相談を申し込む</a>
+</header>
+
+<div class="article-hero">
+  <div class="article-tag">キャリア設計</div>
+  <h1>フリーランスSEを検討する前に<br>整理しておく5つの問い</h1>
+  <p class="article-meta">2026年4月11日 &nbsp;|&nbsp; SE Career Lab</p>
+</div>
+
+<div class="article-wrap">
+  <div class="article-body">
+
+    <p class="article-lead">
+      「フリーランスになれば単価が上がる」と考えるSEは多い。<br>
+      確かに上がるケースもある。ただ、独立してから「思ったより変わらなかった」「戻りたくなった」と感じる人も少なくない。<br>
+      その差を生むのは、独立前に「自分が何で価値を出しているか」を整理できていたかどうかだ。
+    </p>
+
+    <h2>フリーランスで単価が上がる人と上がらない人</h2>
+
+    <p>
+      フリーランスになったSEの単価が会社員時代より大幅に上がるケースには、共通点がある。
+      独立前から、顧客に「この人でないと困る」と思われていたことだ。
+    </p>
+
+    <p>
+      逆に言うと、<strong>会社員のままでも単価が上がり続けている人は、フリーランスになっても同様に評価される</strong>。
+      フリーランスという形態は、すでにある価値を表に出す手段であって、価値そのものを作るわけではない。
+    </p>
+
+    <div class="compare-box">
+      <div class="compare-item bad">
+        <div class="compare-label">独立後に伸び悩むパターン</div>
+        <p>会社名・チームの信頼が価値の源泉だった。単独では同じ評価が得られず、案件が来なくなる。</p>
+      </div>
+      <div class="compare-item good">
+        <div class="compare-label">独立後も伸びるパターン</div>
+        <p>「この人」個人への信頼が現場に積み上がっていた。独立後も同じ現場・同じ担当者から声がかかる。</p>
+      </div>
+    </div>
+
+    <p>
+      フリーランスへの転換を後悔しないために、まず自分に問いかけてほしいことがある。
+      以下の5つの問いに答えられるかどうかが、準備できているかどうかの目安になる。
+    </p>
+
+    <h2>5つの問い</h2>
+
+    <div class="q-card">
+      <div class="q-num">問い 01</div>
+      <h3>「あなたに頼みたい」と言ってくれる顧客担当者が、今の現場にいるか？</h3>
+      <p>
+        フリーランスの最初の案件は、多くの場合、現職・前職の現場から来る。
+        「またお願いしたい」と思ってくれる顧客担当者が一人でもいるかどうかが、スタートラインになる。
+      </p>
+      <p>
+        エージェントを通じて案件を探すことも可能だが、最初の実績がないと単価交渉が難しくなる。
+        独立前に「自分への個人的な信頼」を現場で積み上げておくことが、最初の半年を安定させる。
+      </p>
+      <div class="check">確認：今の現場で、あなた個人として信頼してくれる担当者がいるか？</div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">問い 02</div>
+      <h3>「自分が何で価値を出しているか」を30秒で説明できるか？</h3>
+      <p>
+        フリーランスとして案件を取るには、「なぜあなたに頼むのか」という問いに答えられる必要がある。
+        「Javaができます」「インフラ経験があります」は、同じスキルを持つ人が市場にいくらでもいる以上、差別化にならない。
+      </p>
+      <p>
+        「課題整理ができる」「顧客折衝まで担える」「要件をビジネス観点で整理できる」など、
+        <strong>技術を超えた固有の価値を自分の言葉で言えるかどうか</strong>が、単価を決める大きな要素になる。
+      </p>
+      <div class="check">確認：「なぜあなたに頼むのか」に対する自分なりの答えがあるか？</div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">問い 03</div>
+      <h3>今の単価が上がらない理由が、会社の構造にあるのか、自分の価値にあるのか？</h3>
+      <p>
+        「会社が給料を上げてくれないからフリーランスになる」という動機は、一定の合理性がある。
+        ただその前に、「単価が上がらない原因は本当に会社にあるのか」を確認する必要がある。
+      </p>
+      <p>
+        現場での役割が限定的で、替えの利く技術者として認識されているなら、
+        フリーランスになっても同じ評価を受ける可能性が高い。
+        <strong>会社という後ろ盾がなくなった分、個人の価値がより直接的に見られる</strong>のがフリーランスだ。
+      </p>
+      <div class="check">確認：今の現場で、「あなた個人」として評価されているか？</div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">問い 04</div>
+      <h3>6ヶ月間、案件がなくても生活できる蓄えがあるか？</h3>
+      <p>
+        独立直後は案件が安定しないことがある。エージェント経由でも、最初の案件が決まるまでに1〜3ヶ月かかるケースも珍しくない。
+        その間の生活費・税金・保険料をカバーできる準備が必要だ。
+      </p>
+      <p>
+        特に注意が必要なのは、国民健康保険と国民年金への切り替えにより、
+        社会保険料の負担が大きく増えるケースがあることだ。
+        手取りで比較すると、想定より増加幅が小さいと感じる人も多い。
+      </p>
+      <div class="check">確認：独立後6ヶ月分の生活費と税・保険料の概算を計算したことがあるか？</div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">問い 05</div>
+      <h3>フリーランスになることで「得るもの」と「失うもの」を両方書き出せるか？</h3>
+      <p>
+        フリーランスになることで得られるのは、自由度・単価の上限・選択の幅だ。
+        一方で失うのは、組織の信頼・チームの後ろ盾・安定した給与・社会保険・有給休暇・研修機会、そして「会社員である」という安心感だ。
+      </p>
+      <p>
+        「失うもの」が整理できていない状態で独立すると、独立後に気づいて後悔することが多い。
+        特に、<strong>組織の中で得られる「経験・案件・人脈」の価値</strong>は、外に出て初めてわかることが多い。
+      </p>
+      <div class="check">確認：「得るもの」と「失うもの」を具体的に書き出し、それでも独立したいか？</div>
+    </div>
+
+    <h2>「今すぐ独立すべきか」より「今何を積むべきか」を考える</h2>
+
+    <p>
+      以上の5つの問いを経て、「まだ準備が足りない」と感じるなら、
+      それは決してネガティブな結論ではない。
+    </p>
+
+    <p>
+      フリーランスとして高単価を維持できる状態は、
+      会社員のうちに「現場で固有の価値を積み上げた結果」として生まれることが多い。
+      上流工程に入れる・課題整理ができる・顧客に個人として信頼される。
+      <strong>この状態を作ることが、フリーランスへの最善の準備になる</strong>。
+    </p>
+
+    <div class="article-block">
+      <h3>独立前に会社員として積んでおきたいこと</h3>
+      <p>・顧客に「また頼みたい」と思わせる実績を1〜2件作る</p>
+      <p>・「自分への個人的な信頼」が積み上がった現場を作る</p>
+      <p>・技術だけでなく、課題整理・折衝・提案の経験を積む</p>
+      <p>・自分の強みを30秒で語れる言葉を持つ</p>
+      <p>・独立後の税・保険・会計の基礎知識を身につけておく</p>
+    </div>
+
+    <div class="article-summary">
+      <h3>フリーランスは「手段」であって「目的」ではない</h3>
+      <p>
+        単価を上げたい、上流に行きたい、自由に働きたい。
+        これらの目的は、フリーランスでなくても達成できる場合がある。
+        大切なのは「どういう状態になりたいか」を先に明確にして、
+        フリーランスがその手段として有効かどうかを判断することだ。
+      </p>
+    </div>
+
+    <div class="cta-banner">
+      <h2>フリーランスを考えているなら、<br>まず現状を整理しませんか。</h2>
+      <p>
+        今の現場での評価・自分が持っている価値・独立の準備状況。<br>
+        30分の無料壁打ちで、「今何をすべきか」を一緒に考えます。
+      </p>
+      <a href="index.html#form" class="cta-btn">無料キャリア壁打ちに申し込む →</a>
+      <p class="cta-note">完全無料・30分・強引な勧誘なし</p>
+    </div>
+
+    <div class="article-footer-nav">
+      <a href="index.html" class="back-link">← SE Career Lab トップへ戻る</a>
+      <span style="font-size: 13px; color: var(--text-muted);">SE Career Lab &copy; 2026</span>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 SE Career Lab. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
