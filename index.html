@@ -227,25 +227,19 @@
       top: 57px;
       left: 0;
       right: 0;
-      bottom: 0;
       background: var(--white);
       border-top: 1px solid var(--border);
       z-index: 99;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
     }
 
     .mobile-nav.open { display: block; }
 
     .mobile-nav-inner {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      overflow-y: scroll;
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior: contain;
-      padding: 12px 16px 200px;
+      padding: 12px 16px 32px;
       display: flex;
       flex-direction: column;
       gap: 2px;
@@ -2775,17 +2769,29 @@
 
   // タブ切り替え
   // モバイルナビ
+  function setNavHeight() {
+    const nav = document.getElementById('mobile-nav');
+    if (!nav) return;
+    const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    nav.style.height = (vh - 57) + 'px';
+  }
+
   function toggleMobileNav() {
     const nav = document.getElementById('mobile-nav');
     const btn = document.getElementById('hamburger');
     const isOpen = nav.classList.toggle('open');
     btn.classList.toggle('open', isOpen);
     btn.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+    if (isOpen) setNavHeight();
   }
 
   function closeMobileNav() {
     document.getElementById('mobile-nav').classList.remove('open');
     document.getElementById('hamburger').classList.remove('open');
+  }
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', setNavHeight);
   }
 
   function switchTab(tab) {
