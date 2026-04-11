@@ -43,6 +43,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
     }
 
     .logo {
@@ -50,6 +51,131 @@
       font-weight: 700;
       color: var(--blue);
       letter-spacing: -0.3px;
+      flex-shrink: 0;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    /* ドロップダウン親アイテム */
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-item > .nav-label {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 7px 11px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .nav-item > .nav-label svg {
+      transition: transform 0.2s;
+    }
+
+    .nav-item:hover > .nav-label,
+    .nav-item:focus-within > .nav-label {
+      color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .nav-item:hover > .nav-label svg,
+    .nav-item:focus-within > .nav-label svg {
+      transform: rotate(180deg);
+    }
+
+    /* ドロップダウンメニュー */
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      padding: 8px;
+      min-width: 200px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(-6px);
+      transition: opacity 0.18s, transform 0.18s;
+      z-index: 200;
+    }
+
+    .nav-item:hover .nav-dropdown,
+    .nav-item:focus-within .nav-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown a {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .nav-dropdown a:hover { background: var(--blue-light); }
+
+    .nav-dropdown a .dd-text .dd-title {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .nav-dropdown a .dd-text .dd-desc {
+      display: block;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+
+    .nav-dropdown a:hover .dd-text .dd-title { color: var(--blue); }
+
+    /* ドロップダウン区切り線 */
+    .dd-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 4px 8px;
+    }
+
+    /* 通常リンク（ドロップダウンなし） */
+    .header-nav > a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 7px 11px;
+      border-radius: 5px;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+
+    .header-nav > a:hover {
+      color: var(--blue);
+      background: var(--blue-light);
     }
 
     .header-cta {
@@ -63,9 +189,79 @@
       cursor: pointer;
       text-decoration: none;
       transition: background 0.2s;
+      flex-shrink: 0;
     }
 
     .header-cta:hover { background: var(--blue-dark); }
+
+    /* ハンバーガーメニュー（モバイル） */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 57px;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px 16px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 2px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .mobile-nav.open { display: flex; }
+
+    .mobile-nav a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      padding: 12px 14px;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .mobile-nav a:hover { background: var(--blue-light); color: var(--blue); }
+
+    .mobile-nav-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      margin-bottom: 6px;
+    }
+
+    .mobile-nav-heading {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 8px 14px 4px;
+    }
 
     /* ===== HERO ===== */
     .hero {
@@ -864,7 +1060,688 @@
 
     .highlight-box p { font-size: 15px; font-weight: 600; color: var(--text); }
 
+    /* ===== DIAGNOSTIC BUTTON ===== */
+    .btn-diagnostic {
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      border: 2px dashed rgba(255,255,255,0.5);
+      padding: 13px 30px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-diagnostic:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.8); }
+
+    /* ===== DIAGNOSTIC TEASER SECTION ===== */
+    .shindan-teaser {
+      background: linear-gradient(135deg, #0F2B6B 0%, #1A3FA0 100%);
+      color: var(--white);
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .shindan-teaser-tag {
+      display: inline-block;
+      background: rgba(245,158,11,0.2);
+      border: 1px solid rgba(245,158,11,0.6);
+      color: var(--accent);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .shindan-teaser h2 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 800;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .shindan-teaser h2 span { color: var(--accent); }
+
+    .shindan-teaser p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+
+    .shindan-teaser-cards {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .shindan-teaser-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-shindan-start {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #1A1A1A;
+      border: none;
+      padding: 18px 44px;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 20px rgba(245,158,11,0.45);
+    }
+
+    .btn-shindan-start:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,158,11,0.55); }
+
+    .shindan-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ===== DIAGNOSTIC MODAL ===== */
+    .shindan-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .shindan-modal.active { display: flex; }
+
+    .shindan-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,20,50,0.75);
+      backdrop-filter: blur(4px);
+    }
+
+    .shindan-dialog {
+      position: relative;
+      background: var(--white);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 640px;
+      max-height: 90vh;
+      overflow-y: auto;
+      margin: 16px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+    }
+
+    .shindan-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--bg);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: background 0.2s;
+      z-index: 10;
+    }
+
+    .shindan-close:hover { background: var(--border); }
+
+    /* イントロ */
+    .shindan-intro-wrap {
+      padding: 44px 40px 36px;
+      text-align: center;
+    }
+
+    .shindan-intro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blue-light);
+      color: var(--blue);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .shindan-intro-wrap h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .shindan-intro-wrap .shindan-intro-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .shindan-axes {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    .shindan-axis-item {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 10px 6px;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+
+    .shindan-intro-meta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .shindan-intro-meta span {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .shindan-intro-meta span strong { color: var(--text); }
+
+    .btn-start-quiz {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: 15px 48px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s;
+    }
+
+    .btn-start-quiz:hover { background: var(--blue-dark); }
+
+    /* 設問画面 */
+    .shindan-q-wrap {
+      padding: 28px 36px 36px;
+    }
+
+    .shindan-progress-bar {
+      height: 5px;
+      background: var(--border);
+      border-radius: 99px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .shindan-progress-fill {
+      height: 100%;
+      background: var(--blue);
+      border-radius: 99px;
+      transition: width 0.35s;
+    }
+
+    .shindan-q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .shindan-q-axis {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      background: var(--blue-light);
+      padding: 3px 10px;
+      border-radius: 99px;
+    }
+
+    .shindan-q-num {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .shindan-q-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      min-height: 80px;
+    }
+
+    .shindan-scale {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .shindan-scale-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding: 12px 4px;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .shindan-scale-btn .scale-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .shindan-scale-btn:hover {
+      border-color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .shindan-scale-btn.selected {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .shindan-scale-btn.selected .scale-num { color: var(--white); }
+
+    .shindan-scale-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      padding: 0 2px;
+    }
+
+    .shindan-nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-q-back {
+      flex: 0 0 auto;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-q-back:hover { background: var(--border); }
+
+    .btn-q-next {
+      flex: 1;
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+    }
+
+    .btn-q-next:disabled { opacity: 0.4; cursor: default; }
+    .btn-q-next:not(:disabled):hover { background: var(--blue-dark); }
+
+    /* 結果画面 */
+    .shindan-result-wrap {
+      padding: 36px 36px 40px;
+    }
+
+    .shindan-result-type-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 99px;
+      margin-bottom: 10px;
+    }
+
+    .type-impl { background: #FEE2E2; color: #DC2626; }
+    .type-tech { background: #FEF3C7; color: #D97706; }
+    .type-struct { background: #ECFDF5; color: #059669; }
+    .type-propose { background: var(--blue-light); color: var(--blue); }
+
+    .shindan-result-title {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .shindan-result-title span { color: var(--blue); }
+
+    .shindan-result-score-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin: 16px 0 4px;
+    }
+
+    .shindan-result-score {
+      font-size: 44px;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    .shindan-result-score-max {
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+
+    .shindan-result-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    /* 軸スコア */
+    .shindan-axes-result {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+
+    .shindan-axes-result h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .axis-score-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .axis-score-row:last-child { margin-bottom: 0; }
+
+    .axis-score-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      width: 90px;
+      flex-shrink: 0;
+    }
+
+    .axis-score-bar-wrap {
+      flex: 1;
+      height: 8px;
+      background: var(--border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .axis-score-bar {
+      height: 100%;
+      border-radius: 99px;
+      transition: width 0.6s 0.2s;
+    }
+
+    .axis-score-val {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      width: 30px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .axis-tag-weak { color: #DC2626; font-size: 10px; font-weight: 700; }
+    .axis-tag-ok { color: #D97706; font-size: 10px; font-weight: 700; }
+    .axis-tag-strong { color: #059669; font-size: 10px; font-weight: 700; }
+
+    /* 結果からの行動 */
+    .shindan-result-action {
+      background: linear-gradient(135deg, #0F2B6B, #1A56DB);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+
+    .shindan-result-action h4 {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .shindan-result-action p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    .btn-get-result {
+      display: block;
+      width: 100%;
+      background: var(--accent);
+      color: #1A1A1A;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      text-align: center;
+    }
+
+    .btn-get-result:hover { opacity: 0.9; }
+
+    /* メール登録画面 */
+    .shindan-register-wrap {
+      padding: 32px 36px 40px;
+    }
+
+    .shindan-register-wrap h3 {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .shindan-register-wrap .reg-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    .shindan-form-field {
+      margin-bottom: 14px;
+    }
+
+    .shindan-form-field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .shindan-form-field label .req {
+      color: #DC2626;
+      margin-left: 3px;
+    }
+
+    .shindan-form-field input,
+    .shindan-form-field select {
+      width: 100%;
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s;
+      font-family: inherit;
+    }
+
+    .shindan-form-field input:focus,
+    .shindan-form-field select:focus {
+      outline: none;
+      border-color: var(--blue);
+    }
+
+    .shindan-checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .shindan-checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text);
+      cursor: pointer;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 12px;
+      transition: all 0.15s;
+    }
+
+    .shindan-checkbox-label input { width: auto; }
+    .shindan-checkbox-label:has(input:checked) {
+      background: var(--blue-light);
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .btn-register-submit {
+      display: block;
+      width: 100%;
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 22px;
+      transition: background 0.2s;
+    }
+
+    .btn-register-submit:hover { background: var(--blue-dark); }
+
+    .shindan-register-privacy {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* 登録完了 */
+    .shindan-thanks-wrap {
+      padding: 60px 36px;
+      text-align: center;
+    }
+
+    .shindan-thanks-icon {
+      font-size: 52px;
+      margin-bottom: 16px;
+    }
+
+    .shindan-thanks-wrap h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .shindan-thanks-wrap p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .btn-consult-from-result {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      padding: 14px 36px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-consult-from-result:hover { background: var(--blue-dark); }
+
     /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .header-nav { display: none; }
+      .hamburger { display: flex; }
+    }
+
     @media (max-width: 640px) {
       header { padding: 12px 16px; }
       .logo { font-size: 15px; }
@@ -874,16 +1751,140 @@
       .path-arrow { display: none; }
       .cta-section > p { white-space: normal; font-size: 14px; }
       .path-row { gap: 12px; }
+      .header-cta { padding: 8px 14px; font-size: 13px; }
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init('BwfKq2qnwIDsvKTWp');</script>
 </head>
 <body>
 
 <!-- HEADER -->
 <header>
   <div class="logo">SE Career Lab</div>
+
+  <nav class="header-nav">
+
+    <!-- SE Career Labとは -->
+    <div class="nav-item">
+      <span class="nav-label" tabindex="0">
+        SE Career Labとは
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="nav-dropdown">
+        <a href="#what">
+          <span class="dd-text">
+            <span class="dd-title">サービス概要</span>
+            <span class="dd-desc">SE Career Labが提供する価値</span>
+          </span>
+        </a>
+        <div class="dd-divider"></div>
+        <a href="#crisis">
+          <span class="dd-text">
+            <span class="dd-title">SEを取り巻く環境の変化</span>
+            <span class="dd-desc">AIが実装を代替する時代の現実</span>
+          </span>
+        </a>
+        <a href="#pain">
+          <span class="dd-text">
+            <span class="dd-title">こんな悩みはありませんか</span>
+            <span class="dd-desc">技術力はあるのに単価が上がらない</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- サービスの特徴 -->
+    <div class="nav-item">
+      <span class="nav-label" tabindex="0">
+        サービスの特徴
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="nav-dropdown">
+        <a href="#incentive">
+          <span class="dd-text">
+            <span class="dd-title">単価の仕組み</span>
+            <span class="dd-desc">頑張った分が報酬に返ってくる設計</span>
+          </span>
+        </a>
+        <a href="#career">
+          <span class="dd-text">
+            <span class="dd-title">キャリアパス</span>
+            <span class="dd-desc">技術を捨てずに上流へ進む道</span>
+          </span>
+        </a>
+        <div class="dd-divider"></div>
+        <a href="#compare">
+          <span class="dd-text">
+            <span class="dd-title">他社との違い</span>
+            <span class="dd-desc">ただ案件を入れるだけの会社とは違う</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 参加を考えている方へ -->
+    <div class="nav-item">
+      <span class="nav-label" tabindex="0">
+        参加を考えている方へ
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="nav-dropdown">
+        <a href="#flow">
+          <span class="dd-text">
+            <span class="dd-title">参加までの流れ</span>
+            <span class="dd-desc">まず話を聞くだけで大丈夫</span>
+          </span>
+        </a>
+        <a href="#voices">
+          <span class="dd-text">
+            <span class="dd-title">参加者の声</span>
+            <span class="dd-desc">実際に変わった人の話</span>
+          </span>
+        </a>
+        <div class="dd-divider"></div>
+        <a href="#faq">
+          <span class="dd-text">
+            <span class="dd-title">よくある質問</span>
+            <span class="dd-desc">気になることに先に答えます</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </nav>
+
   <a href="#form" class="header-cta">無料キャリア相談を申し込む</a>
+
+  <button class="hamburger" id="hamburger" aria-label="メニューを開く" onclick="toggleMobileNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </header>
+
+<!-- モバイルナビ -->
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-group">
+    <div class="mobile-nav-heading">SE Career Labとは</div>
+    <a href="#what" onclick="closeMobileNav()">🎯 サービス概要</a>
+    <a href="#crisis" onclick="closeMobileNav()">⚡ SEを取り巻く環境の変化</a>
+    <a href="#pain" onclick="closeMobileNav()">💭 こんな悩みはありませんか</a>
+  </div>
+  <div class="mobile-nav-group">
+    <div class="mobile-nav-heading">サービスの特徴</div>
+    <a href="#incentive" onclick="closeMobileNav()">💰 単価の仕組み</a>
+    <a href="#career" onclick="closeMobileNav()">🚀 キャリアパス</a>
+    <a href="#compare" onclick="closeMobileNav()">📊 他社との違い</a>
+  </div>
+  <div class="mobile-nav-group">
+    <div class="mobile-nav-heading">参加を考えている方へ</div>
+    <a href="#flow" onclick="closeMobileNav()">📋 参加までの流れ</a>
+    <a href="#voices" onclick="closeMobileNav()">💬 参加者の声</a>
+    <a href="#faq" onclick="closeMobileNav()">❓ よくある質問</a>
+  </div>
+  <a href="#form" onclick="closeMobileNav()" style="color: var(--blue); border: 1.5px solid var(--blue); text-align:center; margin-top:4px; border-radius:6px; padding: 12px 14px; font-weight:700;">無料キャリア相談を申し込む →</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -898,11 +1899,12 @@
   <div class="hero-btns">
     <a href="#form" onclick="switchTab('consult')" class="btn-primary">無料キャリア壁打ちに申し込む →</a>
     <a href="#form" onclick="switchTab('newsletter')" class="btn-secondary">案件情報メールに登録</a>
+    <button onclick="openShindanModal()" class="btn-diagnostic">📊 まず自分のタイプを診断する（3分・無料）</button>
   </div>
 </section>
 
 <!-- CRISIS -->
-<section class="crisis">
+<section class="crisis" id="crisis">
   <div class="container">
     <div class="section-tag">SEを取り巻く環境の変化</div>
     <h2 class="section-title">AIが「実装する力」を代替する時代、<br>技術力だけのSEは生き残れない。</h2>
@@ -929,7 +1931,7 @@
 </section>
 
 <!-- PAIN -->
-<section class="pain">
+<section class="pain" id="pain">
   <div class="container">
     <div class="section-tag">こんな悩みはありませんか</div>
     <h2 class="section-title">技術力はあるのに、単価が上がらない。</h2>
@@ -960,6 +1962,29 @@
         <p>指示待ちを脱して、自分から動ける力をつけたい</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- DIAGNOSTIC TEASER -->
+<section id="shindan" class="shindan-teaser">
+  <div class="container">
+    <div class="shindan-teaser-tag">📊 無料・3分で完了</div>
+    <h2>あなたは<span>「単価が上がるSE」</span>ですか？</h2>
+    <p>
+      技術力があっても、顧客への伝え方・課題整理・提案力が弱いと、<br>
+      単価も役割も上がりにくい。15問の診断で、今の自分のタイプと<br>伸ばすべき力がわかります。
+    </p>
+    <div class="shindan-teaser-cards">
+      <div class="shindan-teaser-card">🎯 課題理解力</div>
+      <div class="shindan-teaser-card">💬 顧客対話力</div>
+      <div class="shindan-teaser-card">💡 提案力</div>
+      <div class="shindan-teaser-card">🗂 構造化力</div>
+      <div class="shindan-teaser-card">🤝 上位者対応力</div>
+    </div>
+    <button class="btn-shindan-start" onclick="openShindanModal()">
+      📊 無料で診断する →
+    </button>
+    <div class="shindan-note">強引な勧誘はありません。診断後にメールでより詳しい結果をお届けします。</div>
   </div>
 </section>
 
@@ -1029,7 +2054,7 @@
 </section>
 
 <!-- INCENTIVE / UNIT PRICE -->
-<section class="incentive">
+<section class="incentive" id="incentive">
   <div class="container">
     <div class="section-tag">単価アップの仕組み</div>
     <h2 class="section-title">頑張った分が、<br>自分の報酬に返ってくる設計。</h2>
@@ -1073,7 +2098,7 @@
 </section>
 
 <!-- CAREER PATH -->
-<section>
+<section id="career">
   <div class="container">
     <div class="section-tag">キャリアパス</div>
     <h2 class="section-title">技術を捨てずに、<br>上流へ進む道がある。</h2>
@@ -1139,7 +2164,7 @@
 </section>
 
 <!-- COMPARE -->
-<section style="background: var(--bg);">
+<section id="compare" style="background: var(--bg);">
   <div class="container">
     <div class="section-tag">他社との違い</div>
     <h2 class="section-title">「ただ案件に入れるだけ」<br>の会社とは違います。</h2>
@@ -1190,7 +2215,7 @@
 </section>
 
 <!-- FLOW -->
-<section>
+<section id="flow">
   <div class="container">
     <div class="section-tag">参加までの流れ</div>
     <h2 class="section-title">まず、話を聞くだけで大丈夫。</h2>
@@ -1230,7 +2255,7 @@
 </section>
 
 <!-- VOICE -->
-<section style="background: var(--bg);">
+<section id="voices" style="background: var(--bg);">
   <div class="container">
     <div class="section-tag">参加者の声</div>
     <h2 class="section-title">実際に変わった人の話。</h2>
@@ -1262,7 +2287,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="faq">
+<section class="faq" id="faq">
   <div class="container">
     <div class="section-tag">よくある質問</div>
     <h2 class="section-title">気になることに、先に答えます。</h2>
@@ -1616,6 +2641,20 @@
   });
 
   // タブ切り替え
+  // モバイルナビ
+  function toggleMobileNav() {
+    const nav = document.getElementById('mobile-nav');
+    const btn = document.getElementById('hamburger');
+    const isOpen = nav.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+  }
+
+  function closeMobileNav() {
+    document.getElementById('mobile-nav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+
   function switchTab(tab) {
     const isConsult = tab === 'consult';
     document.getElementById('panel-consult').style.display = isConsult ? 'block' : 'none';
@@ -1669,6 +2708,398 @@
       btn.textContent = '送信に失敗しました。もう一度お試しください。';
       btn.disabled = false;
     }
+  });
+</script>
+
+<!-- ===== DIAGNOSTIC MODAL ===== -->
+<div class="shindan-modal" id="shindan-modal" role="dialog" aria-modal="true" aria-label="単価アップできるSE診断">
+  <div class="shindan-backdrop" onclick="closeShindanModal()"></div>
+  <div class="shindan-dialog">
+    <button class="shindan-close" onclick="closeShindanModal()" aria-label="閉じる">✕</button>
+
+    <!-- イントロ -->
+    <div id="shindan-step-intro" class="shindan-intro-wrap">
+      <div class="shindan-intro-badge">無料診断</div>
+      <h2>単価アップできるSE診断</h2>
+      <p class="shindan-intro-sub">あなたは実装特化型か、提案型SEか、それとも上流・コンサル候補か？<br>5つの力を15問で可視化します。</p>
+      <div class="shindan-axes">
+        <div class="shindan-axis-item">課題理解力</div>
+        <div class="shindan-axis-item">顧客対話力</div>
+        <div class="shindan-axis-item">提案力</div>
+        <div class="shindan-axis-item">構造化力</div>
+        <div class="shindan-axis-item">上位者対応力</div>
+      </div>
+      <div class="shindan-intro-meta">
+        <span><strong>約3分</strong>で完了</span>
+        <span><strong>15問</strong></span>
+        <span><strong>完全無料</strong></span>
+      </div>
+      <button class="btn-start-quiz" onclick="startQuiz()">診断をはじめる →</button>
+    </div>
+
+    <!-- 設問 -->
+    <div id="shindan-step-questions" class="shindan-q-wrap" style="display:none">
+      <div class="shindan-progress-bar">
+        <div class="shindan-progress-fill" id="shindan-progress" style="width:0%"></div>
+      </div>
+      <div class="shindan-q-meta">
+        <span class="shindan-q-axis" id="q-axis-label"></span>
+        <span class="shindan-q-num" id="q-num-label"></span>
+      </div>
+      <div class="shindan-q-text" id="q-text"></div>
+      <div class="shindan-scale" id="q-scale">
+        <button class="shindan-scale-btn" onclick="selectScore(1)"><span class="scale-num">1</span>まったく当てはまらない</button>
+        <button class="shindan-scale-btn" onclick="selectScore(2)"><span class="scale-num">2</span>あまり当てはまらない</button>
+        <button class="shindan-scale-btn" onclick="selectScore(3)"><span class="scale-num">3</span>どちらともいえない</button>
+        <button class="shindan-scale-btn" onclick="selectScore(4)"><span class="scale-num">4</span>やや当てはまる</button>
+        <button class="shindan-scale-btn" onclick="selectScore(5)"><span class="scale-num">5</span>とても当てはまる</button>
+      </div>
+      <div class="shindan-scale-labels">
+        <span>低い</span>
+        <span>高い</span>
+      </div>
+      <div class="shindan-nav">
+        <button class="btn-q-back" id="btn-back" onclick="prevQuestion()">← 戻る</button>
+        <button class="btn-q-next" id="btn-next" onclick="nextQuestion()" disabled>次へ →</button>
+      </div>
+    </div>
+
+    <!-- 結果 -->
+    <div id="shindan-step-result" class="shindan-result-wrap" style="display:none">
+      <span class="shindan-result-type-badge" id="result-type-badge"></span>
+      <div class="shindan-result-title" id="result-title"></div>
+      <div class="shindan-result-score-row">
+        <span class="shindan-result-score" id="result-score"></span>
+        <span class="shindan-result-score-max">/ 75点</span>
+      </div>
+      <p class="shindan-result-desc" id="result-desc"></p>
+      <div class="shindan-axes-result">
+        <h4>5つの力のスコア</h4>
+        <div id="result-axes"></div>
+      </div>
+      <div class="shindan-result-action">
+        <h4 id="result-action-title"></h4>
+        <p id="result-action-desc"></p>
+        <button class="btn-get-result" onclick="showRegisterStep()">📩 詳しい結果をメールで受け取る</button>
+      </div>
+    </div>
+
+    <!-- メール登録 -->
+    <div id="shindan-step-register" class="shindan-register-wrap" style="display:none">
+      <h3>診断結果＋おすすめキャリアプランを送ります</h3>
+      <p class="reg-sub">メールアドレスを登録すると、診断タイプ別の詳細フィードバックと、あなたに合ったキャリアの強化ポイントをお届けします。</p>
+      <form id="shindan-form" action="https://formspree.io/f/xdapqlog" method="POST" novalidate>
+        <input type="hidden" name="form_type" value="診断結果メール登録">
+        <input type="hidden" name="diagnosis_type" id="hidden-diagnosis-type">
+        <input type="hidden" name="diagnosis_score" id="hidden-diagnosis-score">
+        <input type="hidden" name="diagnosis_axes" id="hidden-diagnosis-axes">
+
+        <div class="shindan-form-field">
+          <label>お名前（ニックネーム可）<span class="req">*</span></label>
+          <input type="text" name="name" placeholder="例：田中 太郎" required>
+        </div>
+        <div class="shindan-form-field">
+          <label>メールアドレス<span class="req">*</span></label>
+          <input type="email" name="email" placeholder="example@mail.com" required>
+        </div>
+        <div class="shindan-form-field">
+          <label>年齢帯</label>
+          <select name="age_range">
+            <option value="">選択してください</option>
+            <option>20代前半</option>
+            <option>20代後半</option>
+            <option>30代前半</option>
+            <option>30代後半</option>
+            <option>40代以上</option>
+          </select>
+        </div>
+        <div class="shindan-form-field">
+          <label>現在の職種</label>
+          <select name="job_type">
+            <option value="">選択してください</option>
+            <option>開発SE（常駐・SES）</option>
+            <option>インフラSE</option>
+            <option>社内SE</option>
+            <option>ITコンサルタント</option>
+            <option>PM・PL</option>
+            <option>その他エンジニア</option>
+          </select>
+        </div>
+        <div class="shindan-form-field">
+          <label>今後の希望（複数選択可）</label>
+          <div class="shindan-checkbox-group">
+            <label class="shindan-checkbox-label"><input type="checkbox" name="hope" value="単価アップしたい"> 単価アップしたい</label>
+            <label class="shindan-checkbox-label"><input type="checkbox" name="hope" value="上流に行きたい"> 上流に行きたい</label>
+            <label class="shindan-checkbox-label"><input type="checkbox" name="hope" value="フリーランスになりたい"> フリーランスになりたい</label>
+            <label class="shindan-checkbox-label"><input type="checkbox" name="hope" value="PMになりたい"> PMになりたい</label>
+            <label class="shindan-checkbox-label"><input type="checkbox" name="hope" value="提案力をつけたい"> 提案力をつけたい</label>
+          </div>
+        </div>
+        <button type="submit" class="btn-register-submit">診断結果を受け取る →</button>
+        <p class="shindan-register-privacy">送信することで<a href="#privacy-policy" style="color:var(--blue)">プライバシーポリシー</a>に同意したものとみなします</p>
+      </form>
+      <div id="shindan-reg-success" style="display:none; text-align:center; padding: 32px 0;">
+        <div style="font-size:48px; margin-bottom:12px;">✅</div>
+        <div style="font-size:17px; font-weight:800; margin-bottom:8px;">登録が完了しました！</div>
+        <div style="font-size:14px; color:var(--text-muted); margin-bottom:24px;">まもなくメールが届きます。迷惑メールフォルダもご確認ください。</div>
+        <a href="#form" onclick="closeShindanModal(); switchTab('consult')" class="btn-consult-from-result">無料キャリア相談を申し込む →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // ===== DIAGNOSTIC QUIZ =====
+  const QUESTIONS = [
+    { axis: '課題理解力', text: '顧客から依頼を受けたとき、内容だけでなく「なぜそれが必要か」まで確認することが多い' },
+    { axis: '課題理解力', text: '顧客の要望をそのまま受け取るのではなく、背景にある課題を考えることが多い' },
+    { axis: '課題理解力', text: '同じ問題が他部署や別業務にも影響していないかを意識している' },
+    { axis: '顧客対話力', text: '技術に詳しくない相手にも、専門用語を使いすぎずに説明できる' },
+    { axis: '顧客対話力', text: '打ち合わせで、相手の話を整理して「つまりこういう理解で合っていますか」と返すことができる' },
+    { axis: '顧客対話力', text: '顧客との会話で、受け身ではなく自分から確認や深掘りをする方だ' },
+    { axis: '提案力',     text: '仕様どおりに進めるだけでなく、より良い進め方や別案を考えることが多い' },
+    { axis: '提案力',     text: '顧客が気づいていない問題や改善点に気づくことがある' },
+    { axis: '提案力',     text: '機能説明だけでなく、「それによって何が良くなるか」という価値で話すことができる' },
+    { axis: '構造化力',   text: '複雑な問題でも、原因・影響・対応策に分けて整理できる' },
+    { axis: '構造化力',   text: '会議や打ち合わせでは、結論から話すことを意識している' },
+    { axis: '構造化力',   text: '図やホワイトボードを使って、その場で考えを整理しながら説明できる' },
+    { axis: '上位者対応力', text: '現場担当者だけでなく、管理職が気にする観点も意識して会話できる' },
+    { axis: '上位者対応力', text: 'システムや開発の話を、業務影響や組織影響に置き換えて話せる' },
+    { axis: '上位者対応力', text: '自分の支援がどんな成果につながっているかを言語化できる' },
+  ];
+
+  const AXIS_COLORS = {
+    '課題理解力':  '#3B82F6',
+    '顧客対話力':  '#8B5CF6',
+    '提案力':      '#F59E0B',
+    '構造化力':    '#10B981',
+    '上位者対応力':'#EF4444',
+  };
+
+  const TYPES = [
+    {
+      range: [15, 30],
+      key: 'impl',
+      label: '実装特化型SE',
+      badge: 'type-impl',
+      desc: 'あなたは開発・実装・対応力に強みがあるタイプです。一方で顧客の課題整理や提案はまだ伸びしろがあります。実装力を土台に、顧客対応力を加えることで単価アップへの道が開けます。',
+      actionTitle: '実装力を、単価アップにつながる顧客対応力へ。',
+      actionDesc: '課題の背景確認・顧客との対話・要望を課題に変換する練習を通じて、現場で代替がきかないSEへ成長できます。',
+    },
+    {
+      range: [31, 45],
+      key: 'tech',
+      label: '技術説明型SE',
+      badge: 'type-tech',
+      desc: '技術を伝える力はあるものの、まだ「提案」や「課題形成」まで踏み込めていないタイプです。説明が丁寧で顧客との会話に慣れているため、上流に行く土台は十分にあります。',
+      actionTitle: '説明できるSEから、提案できるSEへ。',
+      actionDesc: '課題形成・価値訴求・改善提案の3点を強化することで、仕様説明で終わらず顧客の認識を変える会話ができるようになります。',
+    },
+    {
+      range: [46, 60],
+      key: 'struct',
+      label: '課題整理型SE',
+      badge: 'type-struct',
+      desc: '顧客の課題を構造的に捉える力が強いタイプです。問題を分解し、顧客要望の背景を考えられる力があります。上流工程や提案型SEに向いています。',
+      actionTitle: '上流SE・プリセールス・コンサル候補として伸ばす。',
+      actionDesc: '提案トーク・ホワイトボード説明・上位者向け対話を磨くことで、単価アップや上流案件への広がりが出やすくなります。',
+    },
+    {
+      range: [61, 75],
+      key: 'propose',
+      label: '提案型SE・上流候補型',
+      badge: 'type-propose',
+      desc: '技術だけでなく、顧客課題の整理・提案・対話にも強いタイプです。単価アップ、上流、PM、プリセールス、ソリューションコンサル寄りの素質があります。',
+      actionTitle: '高単価・上流案件を取りにいく。',
+      actionDesc: '課題形成の精度・エグゼクティブ対話・案件拡大の会話設計を磨くことで、市場価値をさらに高められます。',
+    },
+  ];
+
+  let currentQ = 0;
+  let answers = new Array(15).fill(null);
+  let resultData = {};
+
+  function openShindanModal() {
+    currentQ = 0;
+    answers = new Array(15).fill(null);
+    document.getElementById('shindan-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    showStep('intro');
+  }
+
+  function closeShindanModal() {
+    document.getElementById('shindan-modal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function showStep(step) {
+    ['intro','questions','result','register'].forEach(s => {
+      document.getElementById('shindan-step-' + s).style.display = 'none';
+    });
+    document.getElementById('shindan-step-' + step).style.display = 'block';
+  }
+
+  function startQuiz() {
+    currentQ = 0;
+    renderQuestion();
+    showStep('questions');
+  }
+
+  function renderQuestion() {
+    const q = QUESTIONS[currentQ];
+    const total = QUESTIONS.length;
+
+    document.getElementById('shindan-progress').style.width = (currentQ / total * 100) + '%';
+    document.getElementById('q-axis-label').textContent = q.axis;
+    document.getElementById('q-num-label').textContent = (currentQ + 1) + ' / ' + total;
+    document.getElementById('q-text').textContent = q.text;
+    document.getElementById('btn-back').style.display = currentQ === 0 ? 'none' : 'inline-flex';
+
+    const btns = document.querySelectorAll('.shindan-scale-btn');
+    btns.forEach((btn, i) => {
+      btn.classList.toggle('selected', answers[currentQ] === i + 1);
+    });
+
+    const nextBtn = document.getElementById('btn-next');
+    nextBtn.disabled = answers[currentQ] === null;
+    nextBtn.textContent = currentQ === total - 1 ? '結果を見る →' : '次へ →';
+  }
+
+  function selectScore(score) {
+    answers[currentQ] = score;
+    document.querySelectorAll('.shindan-scale-btn').forEach((btn, i) => {
+      btn.classList.toggle('selected', i + 1 === score);
+    });
+    document.getElementById('btn-next').disabled = false;
+  }
+
+  function nextQuestion() {
+    if (answers[currentQ] === null) return;
+    if (currentQ < QUESTIONS.length - 1) {
+      currentQ++;
+      renderQuestion();
+    } else {
+      showResults();
+    }
+  }
+
+  function prevQuestion() {
+    if (currentQ > 0) {
+      currentQ--;
+      renderQuestion();
+    }
+  }
+
+  function showResults() {
+    const total = answers.reduce((a, b) => a + b, 0);
+
+    // 軸別スコア
+    const axes = {};
+    QUESTIONS.forEach((q, i) => {
+      if (!axes[q.axis]) axes[q.axis] = 0;
+      axes[q.axis] += answers[i];
+    });
+
+    // タイプ判定
+    const type = TYPES.find(t => total >= t.range[0] && total <= t.range[1]) || TYPES[3];
+    resultData = { total, axes, type };
+
+    // 表示
+    const badge = document.getElementById('result-type-badge');
+    badge.textContent = '診断結果：' + type.label;
+    badge.className = 'shindan-result-type-badge ' + type.badge;
+
+    document.getElementById('result-title').innerHTML = 'あなたは「<span>' + type.label + '</span>」です';
+    document.getElementById('result-score').textContent = total;
+    document.getElementById('result-desc').textContent = type.desc;
+    document.getElementById('result-action-title').textContent = type.actionTitle;
+    document.getElementById('result-action-desc').textContent = type.actionDesc;
+
+    // 軸スコア棒グラフ
+    const axesContainer = document.getElementById('result-axes');
+    axesContainer.innerHTML = '';
+    const axisOrder = ['課題理解力','顧客対話力','提案力','構造化力','上位者対応力'];
+    axisOrder.forEach(name => {
+      const score = axes[name];
+      const pct = Math.round((score / 15) * 100);
+      const tag = score <= 6 ? '<span class="axis-tag-weak">弱み</span>'
+                : score <= 11 ? '<span class="axis-tag-ok">標準</span>'
+                : '<span class="axis-tag-strong">強み</span>';
+      axesContainer.innerHTML += `
+        <div class="axis-score-row">
+          <span class="axis-score-label">${name}</span>
+          <div class="axis-score-bar-wrap">
+            <div class="axis-score-bar" style="width:${pct}%; background:${AXIS_COLORS[name]}"></div>
+          </div>
+          <span class="axis-score-val">${score}/15</span>
+          ${tag}
+        </div>`;
+    });
+
+    // 隠しフィールドにセット
+    document.getElementById('hidden-diagnosis-type').value = type.label;
+    document.getElementById('hidden-diagnosis-score').value = total + '点';
+    document.getElementById('hidden-diagnosis-axes').value = axisOrder.map(n => n + ':' + axes[n]).join(', ');
+
+    // プログレスを100%に
+    document.getElementById('shindan-progress').style.width = '100%';
+
+    showStep('result');
+  }
+
+  function showRegisterStep() {
+    showStep('register');
+  }
+
+  // 診断登録フォーム送信
+  document.getElementById('shindan-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.btn-register-submit');
+    btn.textContent = '送信中...';
+    btn.disabled = true;
+
+    const formData = new FormData(this);
+    const name  = formData.get('name') || '';
+    const email = formData.get('email') || '';
+
+    // Formspree（管理者通知）
+    const res = await fetch(this.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      // EmailJS（登録者への自動返信）
+      try {
+        await emailjs.send('service_tond365', 'template_qwaa313', {
+          to_email:       email,
+          name:           name,
+          diagnosis_type: resultData.type ? resultData.type.label : '',
+          diagnosis_score: resultData.total ? resultData.total + '点' : '',
+          diagnosis_axes: resultData.axes
+            ? ['課題理解力','顧客対話力','提案力','構造化力','上位者対応力']
+                .map(k => k + '：' + resultData.axes[k] + '/15')
+                .join('\n')
+            : '',
+          action_title: resultData.type ? resultData.type.actionTitle : '',
+          action_desc:  resultData.type ? resultData.type.actionDesc  : '',
+        });
+      } catch (err) {
+        console.warn('EmailJS送信エラー:', err);
+      }
+      this.style.display = 'none';
+      document.getElementById('shindan-reg-success').style.display = 'block';
+    } else {
+      btn.textContent = '送信に失敗しました。もう一度お試しください。';
+      btn.disabled = false;
+    }
+  });
+
+  // Escキーで閉じる
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeShindanModal();
   });
 </script>
 
