@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEに必要な「営業力」とは何か。押し売りでも転職でもない、5つの力 | SE Career Lab</title>
+  <meta name="description" content="エンジニアが持つべき営業力を再定義。課題形成力・影響拡大力・論点提示力・意味変換力・経営対話力の5つを、実務に落とし込んだ形で解説する。" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1A56DB;
+      --blue-dark: #1040B0;
+      --blue-light: #EEF4FF;
+      --accent: #F59E0B;
+      --text: #111827;
+      --text-muted: #6B7280;
+      --bg: #F9FAFB;
+      --white: #FFFFFF;
+      --border: #E5E7EB;
+      --green: #059669;
+      --green-light: #ECFDF5;
+      --red-light: #FEF2F2;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.8;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .header-cta {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .header-cta:hover { background: var(--blue-dark); }
+
+    /* ===== ARTICLE HERO ===== */
+    .article-hero {
+      background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 100%);
+      color: var(--white);
+      padding: 72px 24px 80px;
+      text-align: center;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .article-hero h1 {
+      font-size: clamp(22px, 4vw, 38px);
+      font-weight: 800;
+      line-height: 1.35;
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+
+    .article-meta {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ===== LAYOUT ===== */
+    .article-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* ===== BODY TEXT ===== */
+    .article-body {
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--text);
+    }
+
+    .article-body p { margin-bottom: 24px; }
+
+    .article-body h2 {
+      font-size: clamp(20px, 3vw, 26px);
+      font-weight: 800;
+      margin: 56px 0 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--blue-light);
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .article-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 36px 0 14px;
+      color: var(--blue-dark);
+    }
+
+    .article-body ul, .article-body ol {
+      padding-left: 24px;
+      margin-bottom: 24px;
+    }
+
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { font-weight: 700; }
+
+    /* ===== LEAD ===== */
+    .article-lead {
+      font-size: 17px;
+      line-height: 2;
+      color: var(--text-muted);
+      background: var(--bg);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      padding: 22px 24px;
+      margin-bottom: 40px;
+    }
+
+    /* ===== POINT BOX ===== */
+    .point-box {
+      background: var(--white);
+      border: 1.5px solid var(--blue-light);
+      border-radius: 14px;
+      padding: 28px 28px 24px;
+      margin: 36px 0;
+    }
+
+    .point-num {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .point-box h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 0 14px;
+      color: var(--text);
+    }
+
+    .point-box p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    /* ===== SKILL GRID ===== */
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 32px 0;
+    }
+
+    .skill-card {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 18px 16px;
+      border: 1.5px solid var(--border);
+    }
+
+    .skill-card-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .skill-card h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .skill-card p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 0 !important;
+      line-height: 1.6;
+    }
+
+    /* ===== COMPARE ===== */
+    .compare-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .compare-item {
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .compare-item.bad {
+      background: var(--red-light);
+      border: 1px solid #FECACA;
+    }
+
+    .compare-item.good {
+      background: var(--green-light);
+      border: 1px solid #A7F3D0;
+    }
+
+    .compare-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .compare-item.bad .compare-label { color: #EF4444; }
+    .compare-item.good .compare-label { color: #059669; }
+
+    .compare-item p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 !important;
+    }
+
+    .compare-item.bad p { color: #7F1D1D; }
+    .compare-item.good p { color: #064E3B; }
+
+    /* ===== FLOW STEPS ===== */
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 32px 0;
+    }
+
+    .flow-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      width: 2px;
+      height: calc(100% - 8px);
+      background: var(--border);
+    }
+
+    .flow-step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .flow-step-body {
+      padding: 8px 0 28px;
+    }
+
+    .flow-step-body h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .flow-step-body p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin: 0 !important;
+      line-height: 1.7;
+    }
+
+    /* ===== TEMPLATE BOX ===== */
+    .template-box {
+      background: #FFFBEB;
+      border: 1.5px solid #FDE68A;
+      border-radius: 12px;
+      padding: 24px 24px 20px;
+      margin: 28px 0;
+    }
+
+    .template-box-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #D97706;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .template-box p {
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 10px !important;
+      line-height: 1.75;
+    }
+
+    .template-box p:last-child { margin-bottom: 0 !important; }
+
+    /* ===== QUOTE ===== */
+    .blockquote {
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      margin: 32px 0;
+      background: #FFFBEB;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .blockquote p {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--text);
+      margin: 0 !important;
+      line-height: 1.8;
+    }
+
+    /* ===== ARTICLE BLOCK ===== */
+    .article-block {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 28px 28px 20px;
+      margin: 28px 0;
+    }
+
+    .article-block h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 14px;
+    }
+
+    .article-block p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 12px !important;
+    }
+
+    .article-block p:last-child { margin-bottom: 0 !important; }
+
+    .article-summary {
+      background: var(--blue-light);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 24px 20px;
+      margin: 28px 0;
+    }
+
+    .article-summary h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin: 0 0 10px;
+    }
+
+    .article-summary p {
+      font-size: 15px;
+      color: var(--text);
+      margin: 0 !important;
+      line-height: 1.8;
+    }
+
+    /* ===== WHITEBOARD TEMPLATE ===== */
+    .whiteboard {
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 8px;
+      margin: 28px 0;
+      background: #FAFAFA;
+    }
+
+    .whiteboard-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 8px 0;
+      letter-spacing: 0.5px;
+    }
+
+    .whiteboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .wb-cell {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 80px;
+    }
+
+    .wb-cell-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .wb-cell p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0 !important;
+      line-height: 1.6;
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: linear-gradient(135deg, #0F2B6B 0%, #1A56DB 100%);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 48px 36px;
+      text-align: center;
+      margin: 56px 0 0;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 800;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .cta-banner p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #1A1A1A;
+      padding: 16px 40px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 16px rgba(245,158,11,0.4);
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.5); }
+
+    .cta-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 12px;
+    }
+
+    /* ===== RELATED ===== */
+    .article-footer-nav {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .back-link {
+      font-size: 14px;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #111827;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .compare-box { grid-template-columns: 1fr; }
+      .skill-grid { grid-template-columns: 1fr 1fr; }
+      .whiteboard-grid { grid-template-columns: 1fr; }
+      .cta-banner { padding: 36px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">SE Career Lab</a>
+  <a href="index.html#form" class="header-cta">無料キャリア相談を申し込む</a>
+</header>
+
+<!-- ARTICLE HERO -->
+<div class="article-hero">
+  <div class="article-tag">スキル強化</div>
+  <h1>SEに必要な「営業力」とは何か。<br>押し売りでも転職でもない、5つの力</h1>
+  <p class="article-meta">2026年4月11日 &nbsp;|&nbsp; SE Career Lab</p>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-wrap">
+  <div class="article-body">
+
+    <p class="article-lead">
+      「営業力をつけろ」と言われると、押し売りや口八丁のイメージを持つエンジニアは多い。<br>
+      しかしここで言う営業力は、全く違うものだ。<br>
+      顧客の意思決定を支援し、認識を変え、動かす力。<br>
+      それは、技術力を持つSEだからこそ、誰よりも自然に身につけられる。
+    </p>
+
+    <h2>「営業力」の誤解を解く</h2>
+
+    <p>
+      多くのSEが「営業」という言葉に拒否感を持つのは当然だ。
+      学生時代から技術を磨いてきて、「モノを売り込む仕事」に自分を重ねることはできない。
+    </p>
+
+    <p>
+      しかし実際の現場で起きていることを見ると、話は違う。
+      技術力が高いのに単価が上がらないSEと、技術は同程度なのに単価が上がり続けるSEがいる。
+      この差を作っているのは、<strong>「顧客の意思決定を前に進める力があるかどうか」</strong>だ。
+    </p>
+
+    <div class="compare-box">
+      <div class="compare-item bad">
+        <div class="compare-label">技術説明で終わるSE</div>
+        <p>「この機能を実装しました」<br>「仕様どおりに動いています」<br>→ 作業者として認識される</p>
+      </div>
+      <div class="compare-item good">
+        <div class="compare-label">顧客を動かせるSE</div>
+        <p>「問題の根本はここにあります」<br>「この方向に変えると、こう改善します」<br>→ 相談相手として認識される</p>
+      </div>
+    </div>
+
+    <p>
+      これは「営業職になる」ことを意味しない。
+      技術を理解した上で、顧客の課題を整理し、認識を変え、行動を促す力。
+      エンジニア固有の「営業力」の正体がそこにある。
+    </p>
+
+    <div class="article-summary">
+      <h3>エンジニアが持つべき「営業力」の定義</h3>
+      <p>
+        押しの強さではない。顧客の曖昧な問題を構造化し、まだ見えていない課題を示し、
+        意思決定に必要な会話ができる力。技術力を持つSEだからこそ、この力は本物になる。
+      </p>
+    </div>
+
+    <h2>5つの力：エンジニアが伸ばすべき営業スキル</h2>
+
+    <p>
+      この力を5つに分解すると、次のようになる。それぞれ「技術力の延長線上」にある力だ。
+    </p>
+
+    <div class="skill-grid">
+      <div class="skill-card">
+        <div class="skill-card-num">SKILL 01</div>
+        <h4>問題構造化力</h4>
+        <p>顧客の曖昧な問題を整理・分解し、本質的な課題を明確にする力</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-num">SKILL 02</div>
+        <h4>影響拡大力</h4>
+        <p>問題の影響範囲を広げて認識させ、優先度を上げる力</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-num">SKILL 03</div>
+        <h4>論点提示力</h4>
+        <p>顧客がまだ見えていない論点・盲点を示す力</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-num">SKILL 04</div>
+        <h4>意味変換力</h4>
+        <p>技術を「機能」ではなく「意味と価値」で伝える力</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-num">SKILL 05</div>
+        <h4>経営対話力</h4>
+        <p>上位管理職の意思決定に必要な会話ができる力</p>
+      </div>
+    </div>
+
+    <p>
+      これらはすべて、実務の中で身につけていける。
+      むしろ技術的な背景を持つSEのほうが、これらを自然に実践できるポジションにいる。
+    </p>
+
+    <h2>課題形成：「課題を受け取る」から「課題を作る」へ</h2>
+
+    <p>
+      多くのSEは、顧客から「こういうものを作ってほしい」という依頼を受けて動く。
+      しかしその要望の裏には、もっと本質的な問題が必ず隠れている。
+    </p>
+
+    <p>
+      <strong>「課題形成」とは、顧客がまだ十分に言語化できていない問題を、一緒に形にする作業だ。</strong>
+      これができると、顧客から「この人は違う」と思われ、関係が深まり、役割が広がっていく。
+    </p>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">1</div>
+        <div class="flow-step-body">
+          <h4>現象を聞く</h4>
+          <p>「今、何が一番困っていますか」「どの工程で負荷が集中していますか」</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">2</div>
+        <div class="flow-step-body">
+          <h4>原因を分解する</h4>
+          <p>「原因は運用・体制・システムのどれに近いですか」と仮説を提示しながら掘り下げる</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">3</div>
+        <div class="flow-step-body">
+          <h4>影響を広げる</h4>
+          <p>「この問題は他部署にも影響していますか」「管理職の判断や月次レポートにも影響していますか」</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">4</div>
+        <div class="flow-step-body">
+          <h4>放置コストを明らかにする</h4>
+          <p>「それにより何が遅れていますか」「このまま放置するとどうなりますか」</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">5</div>
+        <div class="flow-step-body">
+          <h4>あるべき姿を描く</h4>
+          <p>「理想的にはどこまで見える状態が必要ですか」「それが実現したら何が一番変わりますか」</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-block">
+      <h3>実例：「要望」から「形成された課題」への変換</h3>
+      <p><strong>顧客の要望：</strong>「レポートを自動化したい」</p>
+      <p><strong>課題形成後：</strong></p>
+      <ul style="padding-left:20px; margin-top:8px;">
+        <li>部門間で情報の粒度がバラバラで、比較できない状態になっている</li>
+        <li>月次の経営判断が常に1テンポ遅れている</li>
+        <li>管理職が現場の状況を正確に把握できていない</li>
+      </ul>
+      <p style="margin-top:12px;">
+        「レポートを自動化する」だけでは、本質的な問題は解決しない。
+        この構造を見せることで、顧客自身が「より大きな問題がある」と気づき、
+        対話が深まる。
+      </p>
+    </div>
+
+    <h2>Challenger型「教示」：顧客の見方を変える話し方</h2>
+
+    <p>
+      課題を形成したら、次は顧客の認識を変える話し方だ。
+      「Challenger Selling」で言う「Teach」（教示）とは、
+      知識を教えることではなく、<strong>顧客がまだ見えていない構造や機会を洞察として示すこと</strong>だ。
+    </p>
+
+    <div class="compare-box">
+      <div class="compare-item bad">
+        <div class="compare-label">機能説明（認識は変わらない）</div>
+        <p>「この機能を使えば解決できます」</p>
+      </div>
+      <div class="compare-item good">
+        <div class="compare-label">認識変容（顧客が動く）</div>
+        <p>「今の課題は入力工数ではなく、情報が部門ごとに分断されていることです。管理職の意思決定が常に1テンポ遅れています。ここを整えることで、判断速度が変わります」</p>
+      </div>
+    </div>
+
+    <p>
+      エンジニアが出せる洞察（Insight）には、次のようなものがある。
+      これらは現場を知っているSEだからこそ見えることだ。
+    </p>
+
+    <ul>
+      <li>データのつながりが断絶している箇所</li>
+      <li>プロセスの分断とそれによる手戻り</li>
+      <li>属人化によって組織に蓄積されているリスク</li>
+      <li>手作業の隠れたコスト（見えていない工数）</li>
+      <li>部門間連携の遅延が引き起こしている意思決定の遅れ</li>
+    </ul>
+
+    <div class="template-box">
+      <div class="template-box-label">Challenger型「教示」4ステップ テンプレート</div>
+      <p><strong>1. 一般的な認識を提示する</strong><br>「多くの現場では〇〇が原因だと考えがちです」</p>
+      <p><strong>2. 真因へリフレームする</strong><br>「ただ実際には△△が根本原因になっていることが多いです」</p>
+      <p><strong>3. 隠れたコストを提示する</strong><br>「その結果、□□という見えにくい損失が起きています」</p>
+      <p><strong>4. 行動を提案する</strong><br>「なので先に見直すべきなのは ××です」</p>
+    </div>
+
+    <h2>ホワイトボーディング：スライドなしで説明できる力</h2>
+
+    <p>
+      高単価を維持しているSEに共通するのが、<strong>ホワイトボード一枚で論点を整理できる力</strong>だ。
+      スライドに頼らず、その場で相手の反応を見ながら話を組み立てられるスキルは、
+      特に上位管理職との短時間の面談で威力を発揮する。
+    </p>
+
+    <div class="article-block">
+      <h3>ホワイトボードを使う4つの利点</h3>
+      <ul style="padding-left:20px; margin-top:4px;">
+        <li>相手の反応を見ながら話の組み立てを変えられる</li>
+        <li>会話を一方的な説明でなく双方向にできる</li>
+        <li>論点の構造が視覚的に見えるため理解が速い</li>
+        <li>上位管理職との短時間面談に圧倒的に強い</li>
+      </ul>
+    </div>
+
+    <div class="whiteboard">
+      <div class="whiteboard-label">ホワイトボード 4区画テンプレート</div>
+      <div class="whiteboard-grid">
+        <div class="wb-cell">
+          <div class="wb-cell-title">現状</div>
+          <p>今、何が起きているか<br>どこで詰まっているか</p>
+        </div>
+        <div class="wb-cell">
+          <div class="wb-cell-title">問題</div>
+          <p>なぜそれが起きているか<br>真因はどこにあるか</p>
+        </div>
+        <div class="wb-cell">
+          <div class="wb-cell-title">影響</div>
+          <p>誰に影響するか<br>放置するとどうなるか</p>
+        </div>
+        <div class="wb-cell">
+          <div class="wb-cell-title">あるべき姿</div>
+          <p>何が変われば理想か<br>どこを変えると効果が出るか</p>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      この4区画を埋めながら話すだけで、顧客は「整理されている」と感じ、
+      「この人に任せると判断が早い」という印象が生まれる。
+    </p>
+
+    <h2>経営対話力：管理職・決裁者に刺さる話し方</h2>
+
+    <p>
+      現場担当者との信頼を築けたとしても、意思決定が上位管理職に委ねられる場面は必ずある。
+      そのとき、技術的な話をそのまま持ち込むと「で、何が言いたいの？」となってしまう。
+    </p>
+
+    <p>
+      上位管理職が見ているのは、<strong>優先順位・組織への影響・投資判断・実行難易度・再現性</strong>だ。
+      「機能がどう動くか」ではなく、「組織として何が変わるか」を語る必要がある。
+    </p>
+
+    <div class="compare-box">
+      <div class="compare-item bad">
+        <div class="compare-label">技術説明（刺さらない）</div>
+        <p>「APIで連携すれば自動化できます」<br>「この設計にすれば処理速度が上がります」</p>
+      </div>
+      <div class="compare-item good">
+        <div class="compare-label">経営対話（決裁が動く）</div>
+        <p>「部門間の情報分断が意思決定を遅らせています。整えることで判断速度と対応品質が変わります」</p>
+      </div>
+    </div>
+
+    <div class="template-box">
+      <div class="template-box-label">Executive Connection テンプレート</div>
+      <p><strong>1. スコープを広げる</strong><br>「今の問題は現場の手間だけの話ではありません」</p>
+      <p><strong>2. 経営インパクトを示す</strong><br>「部門横断で情報が分断されているため、管理判断も遅れています」</p>
+      <p><strong>3. 放置コストを語る</strong><br>「放置すると、対応品質のばらつきと意思決定遅延が続きます」</p>
+      <p><strong>4. 優先順位を提案する</strong><br>「先に整えるべきは、機能追加より情報の見え方です」</p>
+    </div>
+
+    <div class="point-box">
+      <div class="point-num">Key Point</div>
+      <h3>技術用語・機能説明ではなく、組織課題・意思決定速度で語る</h3>
+      <p>
+        管理職が聞きたいのは「何ができるか」ではなく「何が変わるか」だ。
+        技術の詳細は必要最小限にして、組織課題・生産性への影響・部門横断の効果で話す。
+        このスイッチができると、決裁者に直接届く会話が自然にできるようになる。
+      </p>
+    </div>
+
+    <h2>案件拡大の会話設計：営業同行なしに自分で動ける</h2>
+
+    <p>
+      これまでの力を実案件に落とし込むと、<strong>「支援範囲を自分で広げる」</strong>ことができるようになる。
+      営業に頼らず、エンジニア自身が次の課題を見つけ、提案し、継続・拡大につなげていく。
+    </p>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">1</div>
+        <div class="flow-step-body">
+          <h4>当初の支援範囲を振り返る</h4>
+          <p>最初に依頼された内容・役割・担ってきた範囲を整理する</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">2</div>
+        <div class="flow-step-body">
+          <h4>現在担っている価値を言語化する</h4>
+          <p>「要件整理も担った」「関係者調整も引き受けた」など、当初以上の貢献を示す</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">3</div>
+        <div class="flow-step-body">
+          <h4>新たに見えてきた課題を提示する</h4>
+          <p>現場を知っているからこそ見えた「次の問題」を課題形成スキルで提示する</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">4</div>
+        <div class="flow-step-body">
+          <h4>次に取り組むべきテーマを提案する</h4>
+          <p>「次はここを整えると、さらに改善できます」と具体的な方向性を示す</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="blockquote">
+      <p>
+        単価アップは「お願いするもの」ではなく「根拠を示すもの」だ。
+        担ってきた価値・見えている次の課題・提案できる方向性。
+        この3点が揃えば、顧客担当者も社内で稟議を通しやすくなる。
+      </p>
+    </div>
+
+    <h2>まとめ：「説明する人」から「顧客を動かす人」へ</h2>
+
+    <p>
+      ここまで紹介した5つの力は、営業職になることでも、技術を捨てることでもない。
+      技術的な深さを土台にしながら、課題を形成し、認識を変え、意思決定を前に進める力だ。
+    </p>
+
+    <p>
+      この力がある人は、現場で「作業者」ではなく「相談相手」として認識される。
+      その差が、単価に直結し、上流案件への招待状になっていく。
+    </p>
+
+    <div class="skill-grid">
+      <div class="skill-card">
+        <div class="skill-card-num">まとめ 01</div>
+        <h4>課題形成力</h4>
+        <p>顧客の発言をそのまま受け取らず、問題を5ステップで構造化する</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-num">まとめ 02</div>
+        <h4>Insight提示力</h4>
+        <p>4ステップの話法で顧客の見方をリフレームする</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-num">まとめ 03</div>
+        <h4>対話型プレゼン力</h4>
+        <p>ホワイトボード4区画でスライドなしに論点整理できる</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-num">まとめ 04</div>
+        <h4>経営対話力</h4>
+        <p>管理職には組織課題・意思決定速度で話す</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-num">まとめ 05</div>
+        <h4>案件拡大力</h4>
+        <p>課題形成から追加提案・継続につなげる会話設計ができる</p>
+      </div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <h2>この力を、実案件を通じて身につけたい方へ。</h2>
+      <p>
+        課題形成・Insight提示・経営対話。<br>
+        これらを実務の中でどう使うか、30分の無料壁打ちで一緒に考えます。
+      </p>
+      <a href="index.html#form" class="cta-btn">無料キャリア壁打ちに申し込む →</a>
+      <p class="cta-note">完全無料・30分・強引な勧誘なし</p>
+    </div>
+
+    <div class="article-footer-nav">
+      <a href="index.html" class="back-link">← SE Career Lab トップへ戻る</a>
+      <span style="font-size: 13px; color: var(--text-muted);">SE Career Lab &copy; 2026</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 SE Career Lab. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

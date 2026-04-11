@@ -315,6 +315,7 @@
       max-width: 800px;
       margin: 0 auto 40px;
       white-space: nowrap;
+      transform: translateX(-8%);
     }
 
     @media (max-width: 700px) {
@@ -1852,6 +1853,35 @@
       </div>
     </div>
 
+    <!-- コンテンツ -->
+    <div class="nav-item">
+      <span class="nav-label" tabindex="0">
+        コンテンツ
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="nav-dropdown">
+        <a href="article-ai-proof-se.html">
+          <span class="dd-text">
+            <span class="dd-title">AIに代替されないSEになる3つの力</span>
+            <span class="dd-desc">技術力を活かして信頼されるSEになる方法</span>
+          </span>
+        </a>
+        <a href="article-trust-equation.html">
+          <span class="dd-text">
+            <span class="dd-title">信頼される人になるためのTrust Equation</span>
+            <span class="dd-desc">C・R・I・Sの4要素で信頼を構造的に把握</span>
+          </span>
+        </a>
+        <div class="dd-divider"></div>
+        <a href="article-sales-skill-se.html">
+          <span class="dd-text">
+            <span class="dd-title">SEに必要な「営業力」とは何か</span>
+            <span class="dd-desc">課題形成・Insight提示・経営対話力の5つ</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
   </nav>
 
   <a href="#form" class="header-cta">無料キャリア相談を申し込む</a>
@@ -1882,6 +1912,12 @@
     <a href="#flow" onclick="closeMobileNav()">📋 参加までの流れ</a>
     <a href="#voices" onclick="closeMobileNav()">💬 参加者の声</a>
     <a href="#faq" onclick="closeMobileNav()">❓ よくある質問</a>
+  </div>
+  <div class="mobile-nav-group">
+    <div class="mobile-nav-heading">コンテンツ</div>
+    <a href="article-ai-proof-se.html" onclick="closeMobileNav()">AIに代替されないSEになる3つの力</a>
+    <a href="article-trust-equation.html" onclick="closeMobileNav()">信頼される人になるためのTrust Equation</a>
+    <a href="article-sales-skill-se.html" onclick="closeMobileNav()">SEに必要な「営業力」とは何か</a>
   </div>
   <a href="#form" onclick="closeMobileNav()" style="color: var(--blue); border: 1.5px solid var(--blue); text-align:center; margin-top:4px; border-radius:6px; padding: 12px 14px; font-weight:700;">無料キャリア相談を申し込む →</a>
 </div>
@@ -1968,21 +2004,21 @@
 <!-- DIAGNOSTIC TEASER -->
 <section id="shindan" class="shindan-teaser">
   <div class="container">
-    <div class="shindan-teaser-tag">📊 無料・3分で完了</div>
+    <div class="shindan-teaser-tag">無料・3分で完了</div>
     <h2>あなたは<span>「単価が上がるSE」</span>ですか？</h2>
     <p>
-      技術力があっても、顧客への伝え方・課題整理・提案力が弱いと、<br>
-      単価も役割も上がりにくい。15問の診断で、今の自分のタイプと<br>伸ばすべき力がわかります。
+      技術力があっても、顧客への伝え方・課題整理・提案力が弱いと、単価も役割も上がりにくい。<br>
+      15問の診断で、今の自分のタイプと伸ばすべき力がわかります。
     </p>
     <div class="shindan-teaser-cards">
-      <div class="shindan-teaser-card">🎯 課題理解力</div>
-      <div class="shindan-teaser-card">💬 顧客対話力</div>
-      <div class="shindan-teaser-card">💡 提案力</div>
-      <div class="shindan-teaser-card">🗂 構造化力</div>
-      <div class="shindan-teaser-card">🤝 上位者対応力</div>
+      <div class="shindan-teaser-card">課題理解力</div>
+      <div class="shindan-teaser-card">顧客対話力</div>
+      <div class="shindan-teaser-card">提案力</div>
+      <div class="shindan-teaser-card">構造化力</div>
+      <div class="shindan-teaser-card">上位者対応力</div>
     </div>
     <button class="btn-shindan-start" onclick="openShindanModal()">
-      📊 無料で診断する →
+      無料で診断する →
     </button>
     <div class="shindan-note">強引な勧誘はありません。診断後にメールでより詳しい結果をお届けします。</div>
   </div>
@@ -2377,17 +2413,20 @@
 
     <!-- タブ切り替え -->
     <div style="display: flex; background: rgba(255,255,255,0.1); border-radius: 12px; padding: 4px; margin-bottom: 28px;">
-      <button id="tab-consult" onclick="switchTab('consult')" style="flex:1; padding: 12px; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--blue);">
+      <button id="tab-consult" onclick="switchTab('consult')" style="flex:1; padding: 12px; border: none; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--blue);">
         無料キャリア壁打ち
       </button>
-      <button id="tab-newsletter" onclick="switchTab('newsletter')" style="flex:1; padding: 12px; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; background: transparent; color: rgba(255,255,255,0.7);">
+      <button id="tab-newsletter" onclick="switchTab('newsletter')" style="flex:1; padding: 12px; border: none; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s; background: transparent; color: rgba(255,255,255,0.7);">
         案件情報メールに登録
+      </button>
+      <button id="tab-shindan" onclick="switchTab('shindan')" style="flex:1; padding: 12px; border: none; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s; background: transparent; color: rgba(255,255,255,0.7);">
+        SE診断（無料）
       </button>
     </div>
 
     <!-- 無料壁打ちフォーム -->
     <div id="panel-consult" class="form-card">
-      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px; text-align:center;">現状のキャリアを整理して、次の一手を一緒に考えます。完全無料・30分・強引な勧誘なし。</p>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px; text-align:center;">現状のキャリアを整理して、次の一手を一緒に考えます。<br>完全無料・30分・強引な勧誘なし。</p>
 
       <div id="form-success" style="display:none; text-align:center; padding: 24px 0;">
         <p style="font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 8px;">申し込みを受け付けました。</p>
@@ -2508,6 +2547,38 @@
       </form>
     </div>
 
+    <!-- 診断パネル -->
+    <div id="panel-shindan" class="form-card" style="display:none; text-align:center;">
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">あなたは実装特化型か、提案型SEか。<br>15問・約3分で今の強みと伸ばすべき力がわかります。</p>
+      <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:24px;">
+        <div style="background:var(--bg); border-radius:10px; padding:14px 18px; display:flex; align-items:center; gap:12px; text-align:left;">
+          <span style="font-size:22px; flex-shrink:0;">📊</span>
+          <div>
+            <div style="font-size:14px; font-weight:700; color:var(--text);">5つの力を可視化</div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">課題理解力・顧客対話力・提案力・構造化力・上位者対応力</div>
+          </div>
+        </div>
+        <div style="background:var(--bg); border-radius:10px; padding:14px 18px; display:flex; align-items:center; gap:12px; text-align:left;">
+          <span style="font-size:22px; flex-shrink:0;">🏷️</span>
+          <div>
+            <div style="font-size:14px; font-weight:700; color:var(--text);">SEタイプを4段階で判定</div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">実装特化型 → 技術説明型 → 課題整理型 → 提案型・上流候補型</div>
+          </div>
+        </div>
+        <div style="background:var(--bg); border-radius:10px; padding:14px 18px; display:flex; align-items:center; gap:12px; text-align:left;">
+          <span style="font-size:22px; flex-shrink:0;">📩</span>
+          <div>
+            <div style="font-size:14px; font-weight:700; color:var(--text);">結果をメールで受け取れる</div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">登録後、タイプ別の詳細フィードバックをお届け</div>
+          </div>
+        </div>
+      </div>
+      <button onclick="openShindanModal()" style="display:block; width:100%; background:var(--blue); color:var(--white); border:none; padding:15px; border-radius:8px; font-size:16px; font-weight:700; cursor:pointer; transition:background 0.2s;" onmouseover="this.style.background='var(--blue-dark)'" onmouseout="this.style.background='var(--blue)'">
+        無料で診断する →
+      </button>
+      <p style="font-size:11px; color:var(--text-muted); margin-top:10px;">強引な勧誘はありません</p>
+    </div>
+
   </div>
 </section>
 
@@ -2527,6 +2598,12 @@
         <div style="font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--blue); margin-bottom: 10px;">信頼設計</div>
         <h3 style="font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 10px; line-height: 1.4;">顧客に「信頼される人」になるための方程式 Trust Equation</h3>
         <p style="font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">C・R・I・Sの4要素で信頼を構造的に把握し、上流で選ばれるSEになる方法を解説。</p>
+        <span style="font-size: 14px; font-weight: 600; color: var(--blue);">記事を読む →</span>
+      </a>
+      <a href="article-sales-skill-se.html" style="display: block; background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 28px; text-decoration: none; transition: box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.1)'" onmouseout="this.style.boxShadow='none'">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--blue); margin-bottom: 10px;">スキル強化</div>
+        <h3 style="font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 10px; line-height: 1.4;">SEに必要な「営業力」とは何か。押し売りでも転職でもない、5つの力</h3>
+        <p style="font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">課題形成・Insight提示・ホワイトボーディング・経営対話力。技術力を持つSEが身につけるべき力を解説。</p>
         <span style="font-size: 14px; font-weight: 600; color: var(--blue);">記事を読む →</span>
       </a>
     </div>
@@ -2656,13 +2733,13 @@
   }
 
   function switchTab(tab) {
-    const isConsult = tab === 'consult';
-    document.getElementById('panel-consult').style.display = isConsult ? 'block' : 'none';
-    document.getElementById('panel-newsletter').style.display = isConsult ? 'none' : 'block';
-    document.getElementById('tab-consult').style.background = isConsult ? 'var(--white)' : 'transparent';
-    document.getElementById('tab-consult').style.color = isConsult ? 'var(--blue)' : 'rgba(255,255,255,0.7)';
-    document.getElementById('tab-newsletter').style.background = isConsult ? 'transparent' : 'var(--white)';
-    document.getElementById('tab-newsletter').style.color = isConsult ? 'rgba(255,255,255,0.7)' : 'var(--blue)';
+    const tabs = ['consult', 'newsletter', 'shindan'];
+    tabs.forEach(t => {
+      const isActive = t === tab;
+      document.getElementById('panel-' + t).style.display = isActive ? 'block' : 'none';
+      document.getElementById('tab-' + t).style.background = isActive ? 'var(--white)' : 'transparent';
+      document.getElementById('tab-' + t).style.color = isActive ? 'var(--blue)' : 'rgba(255,255,255,0.7)';
+    });
   }
 
   // ニュースレター登録フォーム
