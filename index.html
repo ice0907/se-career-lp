@@ -226,11 +226,11 @@
       top: 57px;
       left: 0;
       right: 0;
-      height: calc(100vh - 57px);
-      height: calc(100dvh - 57px);
+      bottom: 0;
       background: var(--white);
       border-top: 1px solid var(--border);
-      padding: 12px 16px 48px;
+      padding: 12px 16px;
+      padding-bottom: max(80px, env(safe-area-inset-bottom, 80px));
       z-index: 99;
       flex-direction: column;
       gap: 2px;
