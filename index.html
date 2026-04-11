@@ -224,13 +224,16 @@
       top: 57px;
       left: 0;
       right: 0;
+      bottom: 0;
       background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 16px 16px;
+      border-top: 1px solid var(--border);
+      padding: 12px 16px 32px;
       z-index: 99;
       flex-direction: column;
       gap: 2px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .mobile-nav.open { display: flex; }
@@ -1916,21 +1919,21 @@
 <div class="mobile-nav" id="mobile-nav">
   <div class="mobile-nav-group">
     <div class="mobile-nav-heading">SE Career Labとは</div>
-    <a href="#what" onclick="closeMobileNav()">🎯 サービス概要</a>
-    <a href="#crisis" onclick="closeMobileNav()">⚡ SEを取り巻く環境の変化</a>
-    <a href="#pain" onclick="closeMobileNav()">💭 こんな悩みはありませんか</a>
+    <a href="#what" onclick="closeMobileNav()">サービス概要</a>
+    <a href="#crisis" onclick="closeMobileNav()">SEを取り巻く環境の変化</a>
+    <a href="#pain" onclick="closeMobileNav()">こんな悩みはありませんか</a>
   </div>
   <div class="mobile-nav-group">
     <div class="mobile-nav-heading">サービスの特徴</div>
-    <a href="#incentive" onclick="closeMobileNav()">💰 単価の仕組み</a>
-    <a href="#career" onclick="closeMobileNav()">🚀 キャリアパス</a>
-    <a href="#compare" onclick="closeMobileNav()">📊 他社との違い</a>
+    <a href="#incentive" onclick="closeMobileNav()">単価の仕組み</a>
+    <a href="#career" onclick="closeMobileNav()">キャリアパス</a>
+    <a href="#compare" onclick="closeMobileNav()">他社との違い</a>
   </div>
   <div class="mobile-nav-group">
     <div class="mobile-nav-heading">参加を考えている方へ</div>
-    <a href="#flow" onclick="closeMobileNav()">📋 参加までの流れ</a>
-    <a href="#voices" onclick="closeMobileNav()">💬 参加者の声</a>
-    <a href="#faq" onclick="closeMobileNav()">❓ よくある質問</a>
+    <a href="#flow" onclick="closeMobileNav()">参加までの流れ</a>
+    <a href="#voices" onclick="closeMobileNav()">参加者の声</a>
+    <a href="#faq" onclick="closeMobileNav()">よくある質問</a>
   </div>
   <div class="mobile-nav-group">
     <div class="mobile-nav-heading">コンテンツ</div>
