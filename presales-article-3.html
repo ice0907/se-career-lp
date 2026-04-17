@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salesforce・AWSプリセールス徹底解説｜導入SEとの違い・単価・職歴の書き方まで</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --accent-2: #0f766e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.8;
+    }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+    .hero {
+      background: linear-gradient(135deg, #dbeafe 0%, #f0fdf4 100%);
+      border: 1px solid #dbe4f0;
+      border-radius: 20px;
+      padding: 40px 28px;
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: 34px;
+      line-height: 1.35;
+      margin: 0 0 14px;
+    }
+    .lead {
+      font-size: 17px;
+      color: #334155;
+      margin: 0;
+    }
+    .meta {
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      margin-top: 22px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    }
+    h2 {
+      font-size: 26px;
+      line-height: 1.45;
+      margin: 0 0 14px;
+    }
+    h3 {
+      font-size: 20px;
+      line-height: 1.5;
+      margin: 24px 0 10px;
+    }
+    p { margin: 0 0 14px; }
+    ul {
+      margin: 10px 0 16px 1.2em;
+      padding: 0;
+    }
+    li { margin-bottom: 8px; }
+    .highlight {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 18px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .mini {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      background: #fcfcfd;
+    }
+    .mini h4 { margin: 0 0 8px; font-size: 17px; }
+    .cta {
+      background: linear-gradient(135deg, #1d4ed8 0%, #0f766e 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 28px;
+      margin-top: 28px;
+    }
+    .cta h2, .cta p { color: white; }
+    .cta a {
+      display: inline-block;
+      margin-top: 10px;
+      background: white;
+      color: #0f172a;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+    .note { font-size: 13px; color: var(--muted); }
+    @media (max-width: 720px) {
+      h1 { font-size: 28px; }
+      h2 { font-size: 23px; }
+      .grid { grid-template-columns: 1fr; }
+      .hero, .card, .cta { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">フリーランス集客コンテンツ</div>
+      <h1>Salesforce・AWSプリセールス徹底解説｜導入SEとの違い・単価・職歴の書き方まで</h1>
+      <p class="lead">
+        導入SEとプリセールスの違い、AWS構築案件との選び方、提案補助からのキャリアの作り方、単価アップの考え方、職務経歴書の書き方まで。Salesforce・AWSフリーランスが上流に広がるための実務情報を網羅します。
+      </p>
+      <div class="meta">公開日: 2026-04-17 / 想定読者: Salesforce・AWS経験者、単価アップを目指すフリーランス、提案寄り案件に関心のあるSE</div>
+    </section>
+
+    <section class="card">
+      <h2>Salesforce導入SEとプリセールスの違いとは</h2>
+      <p>
+        Salesforce案件に関わるフリーランスの中には、「導入SEとしての経験はあるが、プリセールスとの違いがよく分からない」という方も少なくありません。
+        両者は近い領域に見えますが、主に関わるフェーズと期待される役割が異なります。
+      </p>
+      <p>
+        導入SEは、受注後の要件定義、設定、開発、移行、定着化支援といった導入フェーズの中心を担います。一方、プリセールスは受注前の商談フェーズで、顧客課題の整理、製品や機能の説明、提案書作成、構成検討、営業支援を担います。
+      </p>
+      <p>
+        ただし、この2つは完全に切り離されているわけではありません。むしろSalesforceのように業務整理が重要な商材では、導入経験者ほどプリセールスとして強みを出しやすくなります。現場でどこが詰まりやすいか、定着化で何が必要かを知っているからです。
+      </p>
+      <div class="highlight">
+        Salesforce導入経験者にとって、プリセールスは"別職種への転身"というより、"今の経験を上流に広げる延長線"と考えるほうが自然です。
+      </div>
+      <p>
+        営業経験が浅い人は、最初から大規模提案の主担当を目指すより、営業同席、要件整理、提案資料作成などから入るとスムーズです。
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>AWS構築案件とAWSプリセールス案件、どちらが向いている？</h2>
+      <p>
+        AWS案件を探すとき、多くの人はまず設計構築や運用改善の案件を見ます。一方で、近年はクラウド移行、コスト最適化、セキュリティ強化などの文脈で、提案段階から入るAWSプリセールス案件にも注目が集まっています。
+      </p>
+      <p>
+        AWS構築案件の魅力は、技術を深く扱えることです。詳細設計、構築、検証、移行、運用設計といった工程に集中したい人には向いています。一方、AWSプリセールス案件は、顧客の課題整理、提案方針、構成の妥当性説明、営業同席など、より上流かつ対話型の役割が増えます。
+      </p>
+      <p>
+        どちらが向いているかは、将来どうなりたいかで変わります。技術の深掘りを続けたいなら構築案件、顧客課題整理や提案まで含めて価値を出したいならプリセールス案件が向いています。
+      </p>
+      <div class="highlight">
+        AWS構築経験者が単価を上げたいと考えたとき、提案補助や営業支援SEから上流へ広がるルートは現実的です。
+      </div>
+      <p>
+        最初の一歩としては、いきなりフルスコープのプリセールスではなく、構成検討、提案資料作成、技術QA、営業同席などを含む案件から入ると、経験を活かしやすくなります。
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>提案補助から始めるプリセールスキャリアの作り方</h2>
+      <p>
+        プリセールスに興味はあっても、「まだ顧客折衝の経験が浅い」「提案主担当は不安」という人は少なくありません。そんなときに現実的なのが、提案補助や営業支援SEからスタートする方法です。
+      </p>
+      <p>
+        提案補助の役割では、営業が取ってきた課題や要件を整理し、提案資料のたたき台を作成し、技術的な論点を確認しながら商談を前に進めます。主担当ほどの責任は持たなくても、提案の流れと顧客対応の勘所を学べるため、キャリアの入り口として非常に有効です。
+      </p>
+      <h3>提案補助で身につくもの</h3>
+      <ul>
+        <li>顧客課題の整理力</li>
+        <li>資料構成力と説明力</li>
+        <li>営業との連携の取り方</li>
+        <li>技術的な論点の切り分け方</li>
+        <li>提案から受注後引き継ぎまでの全体像</li>
+      </ul>
+      <p>
+        この経験は、単に一つの案件で終わるものではありません。数件でも提案補助を経験すると、職務経歴書上で「営業同席経験あり」「提案資料作成経験あり」「顧客課題整理経験あり」と書けるようになり、次の案件の幅が一気に広がります。
+      </p>
+      <div class="highlight">
+        最初から完璧なプリセールスを目指す必要はありません。提案補助で実績を積み、少しずつ担当範囲を広げるほうが、結果的に強いキャリアになります。
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Salesforce・AWSの営業支援SE案件で評価されるスキルとは</h2>
+      <p>
+        営業支援SE案件は、単に「技術が分かる人」なら誰でもよいわけではありません。特にSalesforceやAWSのように、提案の中で業務理解や運用イメージまで求められる領域では、評価されるスキルの出し方が重要になります。
+      </p>
+      <p>
+        まず評価されやすいのは、顧客の話をそのまま受け取るのではなく、要件や論点として整理できることです。次に、資料に落とし込めること。最後に、提案内容を導入や構築の現場へつなげられること。この3つが揃うと、営業支援SEとしての価値が高くなります。
+      </p>
+      <h3>特に見られやすいポイント</h3>
+      <ul>
+        <li>ヒアリング内容の整理力</li>
+        <li>提案資料や説明資料の作成力</li>
+        <li>技術的な質問に対する一次回答力</li>
+        <li>導入・構築経験に基づく現実的な判断力</li>
+        <li>営業や開発チームとの連携力</li>
+      </ul>
+      <p>
+        Salesforceなら業務理解や定着化の視点、AWSなら構成妥当性や運用負荷の視点がより重視されやすいですが、どちらにも共通するのは「技術を相手に伝わる形で整理できること」です。
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>単価を上げたいSEがプリセールス案件を見るべき理由</h2>
+      <p>
+        フリーランスとして単価を上げたいと考えたとき、多くの人は技術をさらに深掘りする方向を想像します。それも重要ですが、もう一つの選択肢として有効なのが、提案や上流工程に入ることです。
+      </p>
+      <p>
+        プリセールス案件は、技術知見に加えて、顧客課題の整理、説明力、提案力が求められるため、希少性を出しやすい領域です。特にSalesforceやAWSは、導入前の設計思想や運用イメージまで含めて語れる人材が限られるため、実装だけの案件より高く評価される場面があります。
+      </p>
+      <p>
+        もちろん、すべての人に向いているわけではありません。ただ、今後も長く市場価値を高めたいと考えるなら、「自分で構築できる」だけでなく、「なぜその構成や運用がよいのかを提案できる」状態を目指すことは大きな武器になります。
+      </p>
+      <div class="highlight">
+        単価アップは、技術力の深さだけでなく、関われるフェーズの広さでも決まります。プリセールス案件は、その幅を広げる選択肢の一つです。
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>フルリモートで狙えるSalesforce・AWS上流案件の特徴</h2>
+      <p>
+        フリーランス案件を探すうえで、働き方の柔軟性は大きな関心事です。特にSalesforceやAWS領域では、オンライン商談やリモート導入支援が増えたことで、フルリモートまたはハイブリッドでも対応できる上流案件が増えています。
+      </p>
+      <p>
+        ただし、フルリモート案件だから簡単というわけではありません。リモート環境では、対面よりも資料の分かりやすさ、コミュニケーションの整理、ファシリテーション力が重要になります。そのため、単に技術力があるだけでなく、情報を構造化して伝えられる人が評価されやすくなります。
+      </p>
+      <h3>リモート案件で評価されやすい要素</h3>
+      <ul>
+        <li>論点を整理した資料作成ができる</li>
+        <li>オンライン会議で説明や進行ができる</li>
+        <li>チャットやドキュメントで要件を明確に残せる</li>
+        <li>自走しながら関係者と連携できる</li>
+      </ul>
+      <p>
+        フルリモートの上流案件を狙うなら、職務経歴書でも「顧客説明経験」「提案資料作成経験」「リモートでのプロジェクト推進経験」を明確に出すことが重要です。
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Salesforce・AWS経験者が今の実務をどう職務経歴に変えるべきか</h2>
+      <p>
+        せっかく提案に近い経験をしていても、それが職務経歴書で伝わっていないケースは少なくありません。特にSalesforceやAWSの実務では、実装だけでなく、要件整理、説明、資料作成、運用改善提案などを自然に行っていることがあります。
+      </p>
+      <p>
+        こうした経験は、書き方を変えるだけでプリセールスや営業支援SE案件への訴求力が高まります。例えば「設定作業」ではなく「顧客ヒアリングに基づく設定方針の整理」、「設計書作成」ではなく「顧客説明を踏まえた構成案作成」といった形です。
+      </p>
+      <p>
+        大事なのは、作業内容だけでなく、誰と何を整理し、どこに価値を出したかを書くことです。提案フェーズに活きる経験は、実際には多くのエンジニアがすでに持っています。
+      </p>
+      <div class="highlight">
+        今の経験を正しく言語化できれば、案件の選択肢は大きく広がります。キャリアの幅は、経験そのものだけでなく、見せ方でも変わります。
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Salesforce・AWSのプリセールス案件に興味がある方へ</h2>
+      <p>
+        導入支援や構築経験を活かして、提案補助・営業支援SE・プリセールス案件へ広がりたい方向けに、経験に応じた案件をご紹介できます。
+        顧客折衝が浅い方でも、提案補助から入れる案件をご案内可能です。
+      </p>
+      <a href="presales.html#form">相談する</a>
+    </section>
+
+    <p class="note" style="margin-top:16px; text-align: center;">
+      <a href="presales.html" style="color: #2563eb; font-size: 14px;">← プリセールス特化ページに戻る</a>
+    </p>
+  </main>
+</body>
+</html>
