@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FDE vs DS（Deployment Strategist）の違い｜OpenAIが定義するAI時代の2職種を徹底比較</title>
+  <meta name="description" content="FDEとDS（Deployment Strategist）の役割の違い、向いている人の違い、AI系テック企業での求人動向まで解説。">
+  <style>
+    :root {
+      --bg: #f0fdf8;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #d1fae5;
+      --accent: #059669;
+      --accent-soft: #ecfdf5;
+      --accent-2: #065F46;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.8;
+    }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+    .hero {
+      background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+      border: 1px solid #a7f3d0;
+      border-radius: 20px;
+      padding: 40px 28px;
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      background: rgba(5, 150, 105, 0.12);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+    }
+    h1 { font-size: 34px; line-height: 1.35; margin: 0 0 14px; }
+    .lead { font-size: 17px; color: #134e4a; margin: 0; }
+    .meta { margin-top: 18px; font-size: 14px; color: var(--muted); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      margin-top: 22px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    }
+    h2 { font-size: 26px; line-height: 1.45; margin: 0 0 14px; }
+    h3 { font-size: 20px; line-height: 1.5; margin: 24px 0 10px; }
+    p { margin: 0 0 14px; }
+    ul { margin: 10px 0 16px 1.2em; padding: 0; }
+    li { margin-bottom: 8px; }
+    .highlight {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 18px 0;
+    }
+    .highlight-blue {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 18px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .mini {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      background: #f8fffe;
+    }
+    .mini h4 { margin: 0 0 8px; font-size: 17px; }
+    .mini-blue {
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      padding: 18px;
+      background: #f0f9ff;
+    }
+    .mini-blue h4 { margin: 0 0 8px; font-size: 17px; color: #1d4ed8; }
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 640px;
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #f8fafc; font-weight: 700; }
+    .th-fde { background: var(--accent-soft); color: var(--accent-2); }
+    .th-ds { background: #eff6ff; color: #1d4ed8; }
+    .cta {
+      background: linear-gradient(135deg, #065F46 0%, #059669 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 28px;
+      margin-top: 28px;
+    }
+    .cta h2, .cta p { color: white; }
+    .cta a {
+      display: inline-block;
+      margin-top: 10px;
+      background: white;
+      color: #065F46;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+    .note { font-size: 13px; color: var(--muted); }
+    .label-fde {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .label-ds {
+      display: inline-block;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    @media (max-width: 720px) {
+      h1 { font-size: 26px; }
+      h2 { font-size: 22px; }
+      .grid { grid-template-columns: 1fr; }
+      .hero, .card, .cta { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+
+    <section class="hero">
+      <div class="eyebrow">市場・キャリア</div>
+      <h1>FDE vs DS（Deployment Strategist）の違い｜OpenAIが定義するAI時代の2職種を徹底比較</h1>
+      <p class="lead">
+        OpenAIやAnthropicなどのAI企業が採用を拡大する中、「FDE」と「DS（Deployment Strategist）」という2つの職種が注目されています。
+        どちらも顧客にAIを届ける役割ですが、求められる素質は大きく異なります。
+        この記事では両職種の定義・業務・向いている人・キャリアパスを徹底比較します。
+      </p>
+      <div class="meta">公開日: 2026-04-18 / 想定読者: AI系テック企業へのキャリア転換を考えているSE・PM・コンサルの方</div>
+    </section>
+
+    <section class="card">
+      <h2>FDEとDSはなぜ混同されるのか</h2>
+      <p>
+        OpenAIをはじめとするAI企業では、企業顧客向けに「AIを導入・定着させる」役割を担う職種を複数設けています。
+        その中でも代表的な2つが <span class="label-fde">FDE（Forward Deployed Engineer）</span> と
+        <span class="label-ds">DS（Deployment Strategist）</span> です。
+      </p>
+      <p>
+        両者は「顧客にAIを届ける」という大きなミッションは共通しており、実際の求人票でも業務説明が重なる部分があるため混同されやすいです。
+        しかし、コアの役割・必要なスキル・キャリアの方向性は明確に異なります。
+      </p>
+      <div class="highlight">
+        一言で言えば：<br>
+        FDEは「技術で解く人」、DSは「戦略で展開する人」です。
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>FDEとDS——定義と役割の違い</h2>
+      <div class="grid">
+        <div class="mini">
+          <h4><span class="label-fde">FDE</span> の役割</h4>
+          <p>
+            顧客の現場に入り込み、課題を技術的に解決する。要件定義・PoC実装・本番デプロイ・改善サイクルまでを一人（または小チーム）でエンジニアとして主導。
+          </p>
+          <ul>
+            <li>顧客課題を探索・整理する</li>
+            <li>PoCを自ら実装して見せる</li>
+            <li>本番環境へのデプロイを担う</li>
+            <li>顧客チームの技術的な自走を支援する</li>
+            <li>プロダクトへのフィードバックを社内に届ける</li>
+          </ul>
+        </div>
+        <div class="mini-blue">
+          <h4><span class="label-ds">DS</span> の役割</h4>
+          <p>
+            AIの展開（Deployment）を戦略的に推進する。技術実装より「どう組織に定着させるか」「どこから始めるか」の計画立案・推進が中心。
+          </p>
+          <ul>
+            <li>AI導入のロードマップを策定する</li>
+            <li>顧客組織の変革管理・変化促進</li>
+            <li>展開優先度・スコープの設計</li>
+            <li>ステークホルダーマネジメント</li>
+            <li>導入効果の測定・KPI設計</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>業務・スキル・成果物の詳細比較</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>比較軸</th>
+              <th class="th-fde">FDE（Forward Deployed Engineer）</th>
+              <th class="th-ds">DS（Deployment Strategist）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>主なスキル</td>
+              <td>ソフトウェア実装力、要件定義力、技術的問題解決</td>
+              <td>戦略立案、変革管理、ステークホルダー調整</td>
+            </tr>
+            <tr>
+              <td>コーディング</td>
+              <td>必須（PoC・本番実装）</td>
+              <td>不要（ツール活用程度）</td>
+            </tr>
+            <tr>
+              <td>主な成果物</td>
+              <td>動くシステム、実装済みPoC、デプロイ済み機能</td>
+              <td>導入計画書、変革ロードマップ、KPI報告</td>
+            </tr>
+            <tr>
+              <td>顧客との関わり方</td>
+              <td>現場担当者・エンジニアと技術的に協働</td>
+              <td>経営層・変革推進担当と戦略的に協働</td>
+            </tr>
+            <tr>
+              <td>重視されるバックグラウンド</td>
+              <td>SE・開発エンジニア・PM（技術寄り）</td>
+              <td>コンサル・PM・プロジェクトマネージャー</td>
+            </tr>
+            <tr>
+              <td>問題解決のアプローチ</td>
+              <td>技術的解決策を実装して検証</td>
+              <td>組織的・戦略的アプローチで推進</td>
+            </tr>
+            <tr>
+              <td>AI導入フェーズでの役割</td>
+              <td>PoC〜本番実装・定着の技術面を担う</td>
+              <td>AI導入の全体計画・優先順位・組織変革を担う</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>向いている人の違い</h2>
+      <div class="grid">
+        <div class="mini">
+          <h4><span class="label-fde">FDEに向いている人</span></h4>
+          <ul>
+            <li>技術と顧客折衝の両方が好きな人</li>
+            <li>「手を動かして解決する」ことに喜びを感じる人</li>
+            <li>PoCを作って顧客に見せることが楽しめる人</li>
+            <li>技術的な問題を創造的に解くのが得意な人</li>
+            <li>エンジニアとして成長しながら上流にも関わりたい人</li>
+            <li>SE・開発経験があり、より顧客に近い仕事がしたい人</li>
+          </ul>
+        </div>
+        <div class="mini-blue">
+          <h4><span class="label-ds">DSに向いている人</span></h4>
+          <ul>
+            <li>組織変革・戦略推進が好きな人</li>
+            <li>コーディングより「どう動かすか」の設計が得意な人</li>
+            <li>経営層との対話・ステークホルダー調整が強みの人</li>
+            <li>変革管理・チェンジマネジメントに興味がある人</li>
+            <li>コンサル・PMとしてAI領域に転換したい人</li>
+            <li>技術実装より「組織全体のAI活用」を推進したい人</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>AI系テック企業での求人動向（2026年現在）</h2>
+      <p>
+        OpenAI・Anthropic・Cohereなどのトップティア企業から、国内AI系スタートアップまで、
+        FDE・DS相当のポジションの採用が急拡大しています。
+      </p>
+      <h3>国際テック企業でのFDE・DS求人の特徴</h3>
+      <ul>
+        <li><strong>OpenAI：</strong>「Applied AI Engineer」「Solutions Engineer」などFDE相当ポジションを複数設置。技術力と顧客対話力の両立が必須</li>
+        <li><strong>Anthropic：</strong>「Deployment Engineer」として顧客のClaude活用を技術面で支援するロール</li>
+        <li><strong>Palantir：</strong>FDEの発祥元。年収帯は高く、実装力と問題解決力を最重視</li>
+        <li><strong>Cohere・Mistral等：</strong>エンタープライズ向けLLM導入を支えるFDE・SA的ロールが増加中</li>
+      </ul>
+      <h3>国内AI系スタートアップでの状況</h3>
+      <ul>
+        <li>FDE・「Implementation Engineer」「Solutions Engineer」といった名称での採用が急増</li>
+        <li>年収帯：800万〜1,200万円が中心（シリーズB以降の企業）</li>
+        <li>SE・PM経験3〜7年程度でAI・クラウド実装力がある人材を積極採用</li>
+        <li>コーディング面接あり（PythonでのAPI実装・データ処理レベル）</li>
+      </ul>
+      <div class="highlight">
+        FDE求人はエンジニア採用と営業採用の「間」に位置するため、従来の転職サイトでは見つけにくい傾向があります。
+        AI系テック企業の採用ページや、FDE特化の求人情報を活用することが重要です。
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>FDEとDSどちらを目指すべきか——判断基準</h2>
+      <p>現職のバックグラウンドと強みから、どちらが自分に合っているかを判断するフレームワークです。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>あなたの現状・強み</th>
+              <th class="th-fde">FDEが向いている</th>
+              <th class="th-ds">DSが向いている</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SE・開発エンジニア経験あり</td>
+              <td>向いている</td>
+              <td>実装力を捨てるなら</td>
+            </tr>
+            <tr>
+              <td>コンサル・プロジェクトマネージャー経験あり</td>
+              <td>実装力補強で可能</td>
+              <td>非常に向いている</td>
+            </tr>
+            <tr>
+              <td>コーディングが好き・得意</td>
+              <td>向いている</td>
+              <td>やや合わない可能性</td>
+            </tr>
+            <tr>
+              <td>組織変革・ステークホルダー調整が得意</td>
+              <td>プラスアルファ</td>
+              <td>向いている</td>
+            </tr>
+            <tr>
+              <td>技術と経営の橋渡しがしたい</td>
+              <td>向いている（技術側から）</td>
+              <td>向いている（戦略側から）</td>
+            </tr>
+            <tr>
+              <td>AI・クラウドを使いこなしてモノを作りたい</td>
+              <td>向いている</td>
+              <td>合わない可能性</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="highlight">
+        迷ったときの判断基準：「自分でPoCを作って顧客に見せることにワクワクするか？」がYesならFDE。
+        「どうすれば組織全体がAIを使いこなせるかを設計することにワクワクするか？」がYesならDS。
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>FDE・DSとSolution Architectの関係性</h2>
+      <p>
+        AI系テック企業には、FDE・DSに加えて「SA（Solution Architect）」という職種も存在します。
+        3者の関係を整理しておきましょう。
+      </p>
+      <div class="grid">
+        <div class="mini">
+          <h4><span class="label-fde">FDE</span></h4>
+          <p>技術を使って現場課題を解く。PoC〜本番実装まで一貫して担う「実装者」。</p>
+        </div>
+        <div class="mini-blue">
+          <h4><span class="label-ds">DS</span></h4>
+          <p>AI展開の戦略・計画・組織変革を担う「推進者」。技術実装よりも展開設計が中心。</p>
+        </div>
+        <div class="mini">
+          <h4>SA（Solution Architect）</h4>
+          <p>技術アーキテクチャの全体設計を担う「設計者」。FDEより上位の技術ポジション。複数のFDE・開発チームをアーキテクチャで支える。</p>
+        </div>
+        <div class="mini">
+          <h4>キャリアパスの関係</h4>
+          <p>FDE → SA（技術深化）、FDE → DS（戦略シフト）、DS → AIコンサル（上流展開）というキャリア移動が多く見られます。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>FDE・DSどちらを目指すか一緒に整理したい方へ</h2>
+      <p>
+        「自分にはFDEとDSどちらが合うか分からない」という方向けに、キャリア診断と無料相談を提供しています。
+        現職での強みを棚卸しし、AI時代に最も価値が上がるキャリアへの転換をサポートします。
+      </p>
+      <a href="fde.html#form">無料キャリア相談を申し込む</a>
+    </section>
+
+    <p class="note" style="margin-top:16px; text-align: center;">
+      <a href="fde.html" style="color: #059669; font-size: 14px;">← FDE専門キャリア支援ページに戻る</a>
+    </p>
+
+  </main>
+</body>
+</html>

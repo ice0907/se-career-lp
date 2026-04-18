@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FDE（Forward Deployed Engineer）とは何か｜Palantir発の職種がAI時代に広がる理由</title>
+  <meta name="description" content="SE・PM・コンサルとの違い、主な仕事内容、向いている人まで実務目線で解説。AI時代に最も注目されるFDEという職種の全貌。">
+  <style>
+    :root {
+      --bg: #f0fdf8;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #d1fae5;
+      --accent: #059669;
+      --accent-soft: #ecfdf5;
+      --accent-2: #065F46;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.8;
+    }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+    .hero {
+      background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+      border: 1px solid #a7f3d0;
+      border-radius: 20px;
+      padding: 40px 28px;
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      background: rgba(5, 150, 105, 0.12);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: 34px;
+      line-height: 1.35;
+      margin: 0 0 14px;
+    }
+    .lead {
+      font-size: 17px;
+      color: #134e4a;
+      margin: 0;
+    }
+    .meta {
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      margin-top: 22px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    }
+    h2 {
+      font-size: 26px;
+      line-height: 1.45;
+      margin: 0 0 14px;
+    }
+    h3 {
+      font-size: 20px;
+      line-height: 1.5;
+      margin: 24px 0 10px;
+    }
+    p { margin: 0 0 14px; }
+    ul {
+      margin: 10px 0 16px 1.2em;
+      padding: 0;
+    }
+    li { margin-bottom: 8px; }
+    .highlight {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 18px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .mini {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      background: #f8fffe;
+    }
+    .mini h4 { margin: 0 0 8px; font-size: 17px; }
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid #d1fae5;
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #f0fdf8; font-weight: 700; }
+    .cta {
+      background: linear-gradient(135deg, #065F46 0%, #059669 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 28px;
+      margin-top: 28px;
+    }
+    .cta h2, .cta p { color: white; }
+    .cta a {
+      display: inline-block;
+      margin-top: 10px;
+      background: white;
+      color: #065F46;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+    .note { font-size: 13px; color: var(--muted); }
+    .tag {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+    @media (max-width: 720px) {
+      h1 { font-size: 26px; }
+      h2 { font-size: 22px; }
+      .grid { grid-template-columns: 1fr; }
+      .hero, .card, .cta { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+
+    <section class="hero">
+      <div class="eyebrow">職種解説</div>
+      <h1>FDE（Forward Deployed Engineer）とは何か｜Palantir発の職種がAI時代に広がる理由</h1>
+      <p class="lead">
+        営業でもSEでもコンサルでもなく、その全部を技術でつなぐ人——それがFDEです。
+        顧客の現場に深く入り込み、課題をヒアリングし、要件を整理し、実際に動くものを作り切る。
+        この記事ではFDEという職種の定義から仕事内容、SE・コンサルとの違い、向いている人まで実務目線で解説します。
+      </p>
+      <div class="meta">公開日: 2026-04-18 / 想定読者: SE・PM・コンサルでキャリア転換を考えている方、FDEに興味がある方</div>
+    </section>
+
+    <section class="card">
+      <h2>FDEとは何か——Palantirが生み出した「技術と現場をつなぐ」職種</h2>
+      <p>
+        FDE（Forward Deployed Engineer）は、Palantir Technologiesが生み出した職種で、顧客の現場に「前線展開（Forward Deploy）」して、
+        課題の発見から要件定義、実装、本番稼働、改善サイクルまでを一貫して担うエンジニアを指します。
+      </p>
+      <p>
+        一般的なSEが「受託した要件を実装する」のに対し、FDEは「そもそも何を作るべきか」を顧客と一緒に考え、
+        エンジニアとしての技術力を武器に現場課題を解決します。
+      </p>
+      <div class="highlight">
+        FDEの本質は「技術者でありながら、顧客の事業課題を自分ごととして解くこと」。
+        PoC（概念実証）を素早く作り、フィードバックを受けながら本番環境へと育てていくプロセスが核心です。
+      </div>
+      <p>
+        近年はOpenAI、Anthropic、Cohere、国内AI系スタートアップなどがFDE相当の職種を積極採用しており、
+        Palantir発の職種定義がAI業界全体に広がっています。
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>FDEの主な仕事内容——6つのコア業務</h2>
+      <div class="grid">
+        <div class="mini">
+          <h4>1. 顧客課題のヒアリング・探索</h4>
+          <p>現場担当者・経営層に深くヒアリングし、表面化した要望の背後にある本質的な課題を特定します。ビジネス文脈を読む力が問われます。</p>
+        </div>
+        <div class="mini">
+          <h4>2. 要件定義・設計</h4>
+          <p>ヒアリングした課題を技術的に解ける形に変換し、スコープ・優先順位・成功条件を顧客と合意します。あいまいさを潰す力が重要です。</p>
+        </div>
+        <div class="mini">
+          <h4>3. PoC・プロトタイプの実装</h4>
+          <p>「まず動くものを作る」のがFDEの真骨頂。数日〜数週間で顧客が実際に触れるプロトタイプを作り、方向性を検証します。</p>
+        </div>
+        <div class="mini">
+          <h4>4. 本番環境へのデプロイ・定着</h4>
+          <p>PoCを本番品質に引き上げ、顧客チームが自走できる状態まで持っていきます。インフラ・運用設計も担うことがあります。</p>
+        </div>
+        <div class="mini">
+          <h4>5. 顧客チームのイネーブルメント</h4>
+          <p>導入して終わりでなく、顧客側の担当者がシステムを使いこなせるように技術支援・トレーニングを行います。</p>
+        </div>
+        <div class="mini">
+          <h4>6. 社内エンジニアチームへの橋渡し</h4>
+          <p>現場で発見したプロダクト要望・技術課題を社内のプロダクト・エンジニアチームにフィードバックし、製品改善に貢献します。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>SE・Solution Consultant・FDEの違いを整理する</h2>
+      <p>
+        FDEと混同されやすい職種がSE（システムエンジニア）とSolution Consultant（ソリューションコンサルタント）です。
+        3者の違いを実務目線で比較します。
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>比較軸</th>
+              <th>SE（システムエンジニア）</th>
+              <th>Solution Consultant</th>
+              <th>FDE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>主な役割</td>
+              <td>要件を実装・テスト・納品</td>
+              <td>課題ヒアリング・提案・デモ</td>
+              <td>課題探索から実装・本番稼働まで一貫</td>
+            </tr>
+            <tr>
+              <td>コーディング・実装</td>
+              <td>主業務</td>
+              <td>ほぼしない</td>
+              <td>必須（PoC・本番実装）</td>
+            </tr>
+            <tr>
+              <td>顧客との関与の深さ</td>
+              <td>要件定義フェーズが中心</td>
+              <td>提案フェーズが中心</td>
+              <td>全フェーズに深く関与</td>
+            </tr>
+            <tr>
+              <td>業務設計・要件定義</td>
+              <td>受け取る側が多い</td>
+              <td>提案レベルで行う</td>
+              <td>顧客と共同で深く行う</td>
+            </tr>
+            <tr>
+              <td>主な成果物</td>
+              <td>ソフトウェア・設計書</td>
+              <td>提案資料・デモ</td>
+              <td>動くプロダクト・実装済みシステム</td>
+            </tr>
+            <tr>
+              <td>PoCから本番への移行</td>
+              <td>役割外のことが多い</td>
+              <td>役割外</td>
+              <td>中心的役割</td>
+            </tr>
+            <tr>
+              <td>AI導入での活躍場面</td>
+              <td>指定されたシステム実装</td>
+              <td>AI活用提案・デモ</td>
+              <td>AI活用の設計〜実装〜定着まで</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="highlight">
+        FDEの最大の特徴は「提案で終わらず、手を動かして作り切る」こと。
+        コンサルの視点とエンジニアの実装力を同時に持つ、ハイブリッドな職種です。
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>FDEに求められる4つのコアスキル</h2>
+      <div class="grid">
+        <div class="mini">
+          <h4>ソフトウェア実装力</h4>
+          <p>PoCを数日で作り、本番品質に引き上げられる実装力。Python、API連携、クラウドサービス活用が基礎になります。</p>
+        </div>
+        <div class="mini">
+          <h4>要件定義力</h4>
+          <p>顧客の「あいまいな要望」を具体的なシステム仕様に落とし込む力。「何を作るか」の合意形成が最も難しく、最も価値があります。</p>
+        </div>
+        <div class="mini">
+          <h4>顧客コミュニケーション力</h4>
+          <p>技術的な内容を非エンジニアの経営層・現場担当者に分かりやすく説明し、信頼関係を築く力。</p>
+        </div>
+        <div class="mini">
+          <h4>事業理解力</h4>
+          <p>顧客のビジネスモデル・業界・KPIを理解した上で、技術的な解決策を事業価値として提示できる力。</p>
+        </div>
+      </div>
+      <p style="margin-top: 16px;">
+        さらに「曖昧耐性」も重要です。FDEは「答えが定義されていない状況」で動き続ける仕事。
+        仕様が不明確な中でも仮説を立てて動き、フィードバックで修正していくプロセスを楽しめる人が向いています。
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>FDEに向いている人・向いていない人</h2>
+      <div class="grid">
+        <div class="mini">
+          <h4>向いている人</h4>
+          <ul>
+            <li>技術と顧客折衝の両方が好きな人</li>
+            <li>「なぜこれを作るのか」から考えたい人</li>
+            <li>曖昧な状況でも自律的に動ける人</li>
+            <li>PoCから本番まで一気通貫で関わりたい人</li>
+            <li>AI・クラウド技術をビジネスに繋げたい人</li>
+            <li>多様な業界・課題に触れて成長したい人</li>
+          </ul>
+        </div>
+        <div class="mini">
+          <h4>向いていない人</h4>
+          <ul>
+            <li>仕様書通りに実装することが好きな人</li>
+            <li>顧客折衝を極力避けたい人</li>
+            <li>一つのプロダクトを長期深掘りしたい人</li>
+            <li>決まったタスクを確実にこなすことが強みの人</li>
+            <li>曖昧さにストレスを感じやすい人</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>FDEのキャリアパス——なぜAI時代に価値が急上昇しているのか</h2>
+      <p>
+        AI技術が急速に普及する中、「AIを使って何かを作れる人」よりも「AIを使って顧客の事業課題を解決できる人」の価値が高まっています。
+        FDEはまさにこのポジションを担う職種です。
+      </p>
+      <p>
+        PalantirのFDEは平均年収1,500万円超とも言われ、国内AI系スタートアップのFDE相当ポジションでも
+        800万〜1,200万円の求人が増えています。単なる実装エンジニアと比べて付加価値が高い分、
+        市場での評価も急上昇しています。
+      </p>
+      <h3>FDEからの一般的なキャリア展開</h3>
+      <ul>
+        <li><strong>Solution Architect（SA）：</strong>技術アーキテクチャの全体設計を担うポジションへ</li>
+        <li><strong>AI導入コンサルタント：</strong>FDE経験を活かした戦略コンサルへ</li>
+        <li><strong>プロダクトマネージャー：</strong>顧客課題の解像度を活かしてプロダクト開発側へ</li>
+        <li><strong>事業開発・起業：</strong>技術と顧客理解を活かしてゼロイチの事業構築へ</li>
+      </ul>
+      <div class="highlight">
+        FDEはキャリアの「行き止まり」ではなく、技術・コンサル・事業開発どの方向にも広がれる「ハブ職種」です。
+        AI時代のキャリアオプションを最大化する起点として、注目が集まっています。
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>SE・PMがFDEを目指すうえで最初にやること</h2>
+      <p>
+        SE・PM・コンサルとして働いている方がFDEを目指す場合、いきなり転職する必要はありません。
+        現職の中で「FDE的な動き方」を少しずつ取り入れることが最初のステップです。
+      </p>
+      <div class="grid">
+        <div class="mini">
+          <h4>SEの場合</h4>
+          <p>要件定義フェーズで顧客との対話を増やす。「なぜこの要件が必要か」を積極的に問う習慣をつける。小さなPoCを自発的に作ってみる。</p>
+        </div>
+        <div class="mini">
+          <h4>PMの場合</h4>
+          <p>技術的な実装力を補強する。PythonやAPIを使った小さなプロトタイプを作る経験を積む。エンジニアとの協働を深め、実装の解像度を上げる。</p>
+        </div>
+        <div class="mini">
+          <h4>コンサルの場合</h4>
+          <p>「提案して終わり」から「作って検証する」へのシフト。小さなシステム実装経験を積み、技術的な実行力を身につける。</p>
+        </div>
+        <div class="mini">
+          <h4>共通して重要なこと</h4>
+          <p>AI・クラウドツールを実際に使いこなす経験を積む。顧客・ステークホルダーとの対話を記録し、自分の「要件定義力」を言語化する。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>FDEへのキャリア転換を本気で考えている方へ</h2>
+      <p>
+        SE・PM・コンサルからFDEへの転換をサポートする専門のキャリア支援を行っています。
+        現職でのキャリア棚卸しから、FDE向け求人のご紹介まで、無料相談で対応します。
+      </p>
+      <a href="fde.html#form">無料キャリア相談を申し込む</a>
+    </section>
+
+    <p class="note" style="margin-top:16px; text-align: center;">
+      <a href="fde.html" style="color: #059669; font-size: 14px;">← FDE専門キャリア支援ページに戻る</a>
+    </p>
+
+  </main>
+</body>
+</html>

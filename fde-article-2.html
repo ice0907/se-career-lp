@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SE・PMからFDEへ転換するためのスキルセット｜4つの力と習得優先順位</title>
+  <meta name="description" content="未経験からFDEを目指すために何を、どの順番で積むべきか。現職別の転換ルートを実務目線で整理します。">
+  <style>
+    :root {
+      --bg: #f0fdf8;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #d1fae5;
+      --accent: #059669;
+      --accent-soft: #ecfdf5;
+      --accent-2: #065F46;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.8;
+    }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+    .hero {
+      background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+      border: 1px solid #a7f3d0;
+      border-radius: 20px;
+      padding: 40px 28px;
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      background: rgba(5, 150, 105, 0.12);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+    }
+    h1 { font-size: 34px; line-height: 1.35; margin: 0 0 14px; }
+    .lead { font-size: 17px; color: #134e4a; margin: 0; }
+    .meta { margin-top: 18px; font-size: 14px; color: var(--muted); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      margin-top: 22px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    }
+    h2 { font-size: 26px; line-height: 1.45; margin: 0 0 14px; }
+    h3 { font-size: 20px; line-height: 1.5; margin: 24px 0 10px; }
+    p { margin: 0 0 14px; }
+    ul { margin: 10px 0 16px 1.2em; padding: 0; }
+    li { margin-bottom: 8px; }
+    .highlight {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 18px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .mini {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      background: #f8fffe;
+    }
+    .mini h4 { margin: 0 0 8px; font-size: 17px; }
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .step-body h4 { margin: 0 0 6px; font-size: 17px; }
+    .step-body p { margin: 0; font-size: 15px; color: var(--muted); }
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 640px;
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid #d1fae5;
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #f0fdf8; font-weight: 700; }
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .badge-must { background: #fef2f2; color: #dc2626; }
+    .badge-important { background: #fffbeb; color: #d97706; }
+    .badge-plus { background: var(--accent-soft); color: var(--accent); }
+    .cta {
+      background: linear-gradient(135deg, #065F46 0%, #059669 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 28px;
+      margin-top: 28px;
+    }
+    .cta h2, .cta p { color: white; }
+    .cta a {
+      display: inline-block;
+      margin-top: 10px;
+      background: white;
+      color: #065F46;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+    .note { font-size: 13px; color: var(--muted); }
+    @media (max-width: 720px) {
+      h1 { font-size: 26px; }
+      h2 { font-size: 22px; }
+      .grid { grid-template-columns: 1fr; }
+      .hero, .card, .cta { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+
+    <section class="hero">
+      <div class="eyebrow">スキル・転換ルート</div>
+      <h1>SE・PMからFDEへ転換するためのスキルセット｜4つの力と習得優先順位</h1>
+      <p class="lead">
+        「FDEに興味はある。でも自分に何が足りないのか分からない」——そんな方向けに、
+        FDEに必要な4つのコアスキルと、SE・PM・コンサルそれぞれの現職から転換するロードマップを実務目線で整理しました。
+      </p>
+      <div class="meta">公開日: 2026-04-18 / 想定読者: SE・PM・コンサルでFDEへの転換を検討している方</div>
+    </section>
+
+    <section class="card">
+      <h2>FDEに必要な4つのコアスキルと優先順位</h2>
+      <p>
+        FDEのスキルセットは大きく4つに分かれます。どれも重要ですが、習得の優先順位があります。
+        「まずこれができないとFDEとして機能しない」という順に並べています。
+      </p>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>ソフトウェア実装力 <span class="badge badge-must">必須</span></h4>
+          <p>
+            PoCや小さなプロトタイプを数日で作れる実装力。Python、API連携、クラウドサービス（AWS/GCP/Azure）の基礎操作が最低限必要。
+            Webフレームワーク（FastAPI、Streamlitなど）を使って「動くデモ」を作れるレベルが目安。
+            FDEはコードを書かないエンジニアではありません——実装が止まると全プロセスが止まります。
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>要件定義力 <span class="badge badge-must">必須</span></h4>
+          <p>
+            顧客の「なんとなくこういうものが欲しい」を「こういう仕様で、こういう条件を満たせばOK」に変換する力。
+            曖昧な要望を具体化し、スコープを合意し、成功条件を定義する。
+            SE経験者はここに強みを持つことが多いですが、「言われた要件を整理する」ではなく「課題から要件を引き出す」レベルが求められます。
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>顧客コミュニケーション力 <span class="badge badge-important">重要</span></h4>
+          <p>
+            技術を知らない経営層・現場担当者との対話を主導できる力。「技術用語を使わずに技術的な内容を説明する」のではなく、
+            「相手のビジネス言語で技術的な価値を語る」レベル。
+            これは経験で磨かれる部分が大きいため、現職で意識的に積んでいく必要があります。
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>事業理解力 <span class="badge badge-plus">プラスアルファ</span></h4>
+          <p>
+            顧客のビジネスモデル・KPI・業界構造を理解した上で「この技術的解決が事業にどう貢献するか」を言える力。
+            最初から高いレベルは不要ですが、業界勉強・ビジネス読解力を磨いていくことが差別化につながります。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>現職別：FDEへの転換ロードマップ</h2>
+      <p>SE・PM・コンサルそれぞれの強みと弱みを踏まえた、FDE転換のロードマップです。</p>
+
+      <h3>SEからFDEへ</h3>
+      <div class="highlight">
+        SEの強み：実装力（スキル1）は高い。弱みは顧客主導の要件探索（スキル2上位）と事業理解（スキル4）。
+      </div>
+      <p><strong>推奨ロードマップ：</strong></p>
+      <ol style="margin: 10px 0 16px 1.2em; padding: 0;">
+        <li>現職での要件定義フェーズへの積極参加——「なぜこの要件が必要か」を顧客に問う習慣をつける</li>
+        <li>小さなPoCを自発的に作り、顧客にデモする機会を作る</li>
+        <li>AI・LLM関連の実装（OpenAI API、LangChainなど）を手を動かして学ぶ</li>
+        <li>顧客との折衝メモ・議事録を書き続け、「要件定義力」を言語化できるようにする</li>
+        <li>FDE求人・スタートアップへの転換を検討</li>
+      </ol>
+      <p>SEは実装力があるため、「要件定義力と顧客コミュニケーション力を補強する」ことがFDE転換の最短ルートです。</p>
+
+      <h3>PMからFDEへ</h3>
+      <div class="highlight">
+        PMの強み：要件定義力（スキル2）・顧客折衝（スキル3）・事業理解（スキル4）は高い。弱みは実装力（スキル1）。
+      </div>
+      <p><strong>推奨ロードマップ：</strong></p>
+      <ol style="margin: 10px 0 16px 1.2em; padding: 0;">
+        <li>Pythonを使った自動化スクリプト・データ処理を日常的に書く習慣をつける</li>
+        <li>FastAPI・Streamlitなどを使って「自分でPoC・デモを作れる」状態を目指す</li>
+        <li>APIの設計・連携（REST API、OpenAI APIなど）を理解し、自分で実装できるようにする</li>
+        <li>クラウドサービス（AWS Lambdaなど）を使った小規模デプロイを経験する</li>
+        <li>「技術力があるPM」として現職でFDE的なPoC開発を担い、実績を作る</li>
+      </ol>
+      <p>PMはFDEに最も近い職種の一つです。実装力さえ補強できれば、FDE転換への壁は比較的低いです。</p>
+
+      <h3>コンサルからFDEへ</h3>
+      <div class="highlight">
+        コンサルの強み：事業理解（スキル4）・顧客コミュニケーション（スキル3）は非常に高い。弱みは実装力（スキル1）と技術的な要件定義（スキル2）。
+      </div>
+      <p><strong>推奨ロードマップ：</strong></p>
+      <ol style="margin: 10px 0 16px 1.2em; padding: 0;">
+        <li>Pythonの基礎実装力を固める（データ処理、API連携、Webアプリ作成）</li>
+        <li>技術ドキュメントやシステム設計書を読み解く力をつける</li>
+        <li>「提案して終わり」から「動くPoCを作って見せる」スタイルに転換する</li>
+        <li>エンジニアとのペアワークを増やし、技術実装の解像度を上げる</li>
+        <li>テック系案件でのFDE型業務（PoC実装補助など）から実績を積む</li>
+      </ol>
+      <p>コンサルは事業理解が高いため、実装力を身につければFDEとして非常に高い価値を出せます。</p>
+    </section>
+
+    <section class="card">
+      <h2>FDE転換に向けた技術スキルの具体的な習得方法</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>スキル領域</th>
+              <th>習得内容の目安</th>
+              <th>推奨リソース例</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Python基礎</td>
+              <td>データ処理、ファイル操作、APIリクエスト、エラーハンドリング</td>
+              <td>Pythonチュートリアル、paizaラーニング</td>
+            </tr>
+            <tr>
+              <td>API連携</td>
+              <td>REST APIの呼び出し、OpenAI API、JSONパース</td>
+              <td>OpenAI公式ドキュメント、RapidAPI</td>
+            </tr>
+            <tr>
+              <td>Webアプリ作成</td>
+              <td>StreamlitやFastAPIで動くデモアプリを作れる</td>
+              <td>Streamlit公式チュートリアル</td>
+            </tr>
+            <tr>
+              <td>クラウド基礎</td>
+              <td>AWS Lambda、S3、EC2の基本操作、デプロイ</td>
+              <td>AWS Skill Builder、Udemy</td>
+            </tr>
+            <tr>
+              <td>LLM活用</td>
+              <td>LangChain基礎、RAG構築、プロンプトエンジニアリング</td>
+              <td>LangChain公式ドキュメント、Coursera</td>
+            </tr>
+            <tr>
+              <td>要件定義</td>
+              <td>ユーザーインタビュー手法、ジョブ理論、ユーザーストーリー</td>
+              <td>「INSPIRED」「ユーザーストーリーマッピング」</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="highlight">
+        技術習得は「知っている」レベルではなく「自分で動くものを作れる」レベルが目標。
+        学習リソースを読むだけでなく、必ず手を動かしてプロトタイプを作ることが重要です。
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>FDE転換の現実的なタイムライン</h2>
+      <div class="grid">
+        <div class="mini">
+          <h4>SEの場合（目安3〜6ヶ月）</h4>
+          <p>実装力はあるため、要件定義力と顧客折衝のスキルを現職で意識的に積みながら、AI・クラウド実装を補強。3〜6ヶ月でFDE求人への応募が現実的。</p>
+        </div>
+        <div class="mini">
+          <h4>PMの場合（目安6〜9ヶ月）</h4>
+          <p>Python・API・クラウドの実装力を本格的に積む必要あり。副業・個人プロジェクトでPoC経験を作りながら、6〜9ヶ月での転換が目安。</p>
+        </div>
+        <div class="mini">
+          <h4>コンサルの場合（目安9〜12ヶ月）</h4>
+          <p>実装力の習得が最大の課題。集中的なプログラミング学習と実務でのPoC補助経験を積みながら、9〜12ヶ月での転換が現実的な目安。</p>
+        </div>
+        <div class="mini">
+          <h4>全職種共通の注意点</h4>
+          <p>「完璧に準備してから転換」は現実的でない。スキルが7〜8割揃ったタイミングで動き始め、実務で残り2〜3割を補うアプローチが成功しやすい。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>FDE転換前に整理しておくべき3つのこと</h2>
+      <p>転換活動を始める前に、以下の3点を言語化しておくと面接・マッチングがスムーズになります。</p>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>自分がFDEとして解きたい課題領域</h4>
+          <p>「どの業界・どんな課題に対してFDEとして価値を出したいか」を言語化する。製造業のDX、金融のAI活用、医療現場の業務自動化など、得意な業界・ドメインを軸にすると説得力が増します。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>FDE的な経験の棚卸し</h4>
+          <p>現職の中で「顧客課題を直接ヒアリングした」「要件を自分で整理した」「PoCや試作品を作った」「本番環境への展開に関わった」などの経験を整理する。小さな経験でも積み重ねると強みになります。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>転換先の企業・案件タイプの絞り込み</h4>
+          <p>FDE求人はAI系スタートアップ・SaaS企業・コンサルファームのデジタル部門などに多い。自分がどのサイズ・フェーズの組織でFDE的な働き方をしたいかを事前に整理しておく。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>FDEへの転換を具体的に相談したい方へ</h2>
+      <p>
+        現職でのスキル棚卸し、転換ロードマップの策定、FDE向け求人のご紹介まで、
+        専門のキャリアアドバイザーが無料でサポートします。
+        SE・PM・コンサルからのFDE転換実績をもとに、最短ルートをご提案します。
+      </p>
+      <a href="fde.html#form">無料キャリア相談を申し込む</a>
+    </section>
+
+    <p class="note" style="margin-top:16px; text-align: center;">
+      <a href="fde.html" style="color: #059669; font-size: 14px;">← FDE専門キャリア支援ページに戻る</a>
+    </p>
+
+  </main>
+</body>
+</html>
